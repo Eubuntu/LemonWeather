@@ -33,8 +33,8 @@ public class Knifekit {
         return Unbinder.EMPTY;
     }
 
-    public static void ubind(Unbinder unbinder){
-        if (unbinder != Unbinder.EMPTY){
+    public static void ubind(Unbinder unbinder) {
+        if (unbinder != Unbinder.EMPTY) {
             unbinder.unbind();
         }
     }
