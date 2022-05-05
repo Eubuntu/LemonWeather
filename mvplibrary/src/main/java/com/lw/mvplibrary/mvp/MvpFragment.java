@@ -3,10 +3,10 @@ package com.lw.mvplibrary.mvp;
 import android.os.Bundle;
 
 import com.lw.mvplibrary.base.BaseFragment;
-import com.lw.mvplibrary.base.BasePersenter;
+import com.lw.mvplibrary.base.BasePresenter;
 import com.lw.mvplibrary.base.BaseView;
 
-public abstract class MvpFragment<P extends BasePersenter> extends BaseFragment {
+public abstract class MvpFragment<P extends BasePresenter> extends BaseFragment {
     protected P mPresent;
 
     protected abstract P createPresent();

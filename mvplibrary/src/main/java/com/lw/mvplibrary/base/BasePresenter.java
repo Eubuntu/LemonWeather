@@ -2,7 +2,7 @@ package com.lw.mvplibrary.base;
 
 import java.lang.ref.WeakReference;
 
-public class BasePersenter<V extends BaseView> {
+public class BasePresenter<V extends BaseView> {
     private WeakReference<V> mWeakReference;
 
     public void attach(V v) {
