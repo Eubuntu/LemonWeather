@@ -3,18 +3,22 @@ package com.lw.lemonweather;
 import android.Manifest;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.lw.lemonweather.bean.TodayResponse;
+import com.lw.lemonweather.bean.WeatherForecastResponse;
 import com.lw.lemonweather.contract.WeatherContract;
 import com.lw.lemonweather.utils.ToastUtils;
 import com.lw.mvplibrary.mvp.MvpActivity;
+import com.lw.mvplibrary.view.WhiteWindmills;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import retrofit2.Response;
@@ -26,11 +30,19 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     public LocationClient mLocationClient = null;
     private MyLocationListener myListener = new MyLocationListener();
 
+
     private TextView tvInfo;
     private TextView tvTemperature;
     private TextView tvLowHeight;
     private TextView tvCity;
     private TextView tvOldTime;
+    private RecyclerView rv;
+    private RelativeLayout rlWind;
+    private WhiteWindmills wwBig;
+    private WhiteWindmills wwSmall;
+    private TextView tvWindDirection;
+    private TextView tvWindPower;
+    private ImageView ivCitySelect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +60,13 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         tvLowHeight = findViewById(R.id.tv_low_height);
         tvCity = findViewById(R.id.tv_city);
         tvOldTime = findViewById(R.id.tv_old_time);
+        rv = findViewById(R.id.rv);
+        rlWind = findViewById(R.id.rl_wind);
+        wwBig = findViewById(R.id.ww_big);
+        wwSmall = findViewById(R.id.ww_small);
+        tvWindDirection = findViewById(R.id.tv_wind_direction);
+        tvWindPower = findViewById(R.id.tv_wind_power);
+        ivCitySelect = findViewById(R.id.iv_city_select);
     }
 
     //权限判断
@@ -92,6 +111,11 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
 
     @Override
     public void getTodayWeatherResult(Response<TodayResponse> response) {
+
+    }
+
+    @Override
+    public void getWeatherForecastResult(Response<WeatherForecastResponse> response) {
 
     }
 

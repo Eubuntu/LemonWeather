@@ -140,10 +140,6 @@ public class WeatherForecastResponse {
         }
 
         public static class UpdateBean {
-            /**
-             * loc : 2019-11-19 19:57
-             * utc : 2019-11-19 11:57
-             */
 
             private String loc;
             private String utc;

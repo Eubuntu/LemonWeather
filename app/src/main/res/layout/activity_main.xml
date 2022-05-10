@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:gravity="center"
-    android:fitsSystemWindows="true"
-    android:background="@drawable/pic_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/pic_bg"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -18,22 +18,35 @@
             android:layout_height="match_parent"
             android:alpha="0.3"
             android:background="#000" />
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:contentInsetLeft="16dp"
                 app:popupTheme="@style/AppTheme.PopupOverlay">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="城市天气"
-                    android:textSize="16sp"
-                    android:textColor="#FFF"/>
+                    android:textColor="#FFF"
+                    android:textSize="@dimen/sp_16" />
+
+                <ImageView
+                    android:id="@+id/iv_city_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:src="@mipmap/icon_city" />
+
             </androidx.appcompat.widget.Toolbar>
 
             <LinearLayout
@@ -41,55 +54,117 @@
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/tv_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_info"
                     android:paddingLeft="16dp"
                     android:paddingTop="12dp"
-                    android:textSize="18sp"
-                    android:textColor="#FFF"/>
+                    android:textColor="#FFF"
+                    android:textSize="18sp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="top|center_horizontal"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="20dp"
+                    android:gravity="top|center_horizontal">
+
                     <TextView
+                        android:id="@+id/tv_temperature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tv_temperature"
                         android:text="0"
-                        android:textSize="60sp"
-                        android:textColor="#FFF"/>
+                        android:textColor="#FFF"
+                        android:textSize="60sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="°c"
-                        android:textSize="24sp"
-                        android:textColor="#FFF"/>
+                        android:textColor="#FFF"
+                        android:textSize="24sp" />
                 </LinearLayout>
+
                 <TextView
+                    android:id="@+id/tv_low_height"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_low_height"
-                    android:textSize="14sp"
-                    android:textColor="#FFF"/>
+                    android:textColor="#FFF"
+                    android:textSize="14sp" />
+
                 <TextView
+                    android:id="@+id/tv_city"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:id="@+id/tv_city"
                     android:text="城市"
-                    android:textSize="20sp"
-                    android:textColor="#FFF"/>
+                    android:textColor="#FFF"
+                    android:textSize="20sp" />
+
                 <TextView
+                    android:id="@+id/tv_old_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:id="@+id/tv_old_time"
                     android:text="上次更新时间："
-                    android:textSize="12sp"
-                    android:textColor="#FFF"/>
+                    android:textColor="#FFF"
+                    android:textSize="12sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="20dp">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_wind"
+                        android:layout_width="130dp"
+                        android:layout_height="120dp">
+
+                        <com.lw.mvplibrary.view.WhiteWindmills
+                            android:id="@+id/ww_big"
+                            android:layout_width="100dp"
+                            android:layout_height="120dp" />
+
+                        <com.lw.mvplibrary.view.WhiteWindmills
+                            android:id="@+id/ww_small"
+                            android:layout_width="50dp"
+                            android:layout_height="60dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+                        <!--风向-->
+                        <TextView
+                            android:id="@+id/tv_wind_direction"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#FFF"
+                            android:textSize="14sp" />
+                        <!--风力-->
+                        <TextView
+                            android:id="@+id/tv_wind_power"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:textColor="#FFF"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
