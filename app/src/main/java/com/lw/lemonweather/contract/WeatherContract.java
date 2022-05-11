@@ -15,7 +15,8 @@ import retrofit2.Response;
 
 public class WeatherContract {
     public static class WeatherPresenter extends BasePresenter<IWeatherView> {
-        public void todayWeather(final Context context, String location) {
+
+        /*public void todayWeather(final Context context, String location) {
             ApiService service = ServiceGenerator.createService(ApiService.class);
             service.getTodayWeather(location).enqueue(new NetCallBack<TodayResponse>() {
                 @Override
@@ -52,14 +53,16 @@ public class WeatherContract {
                     }
                 }
             });
-        }
+        }*/
+
+
     }
 
 
     public interface IWeatherView extends BaseView {
-        void getTodayWeatherResult(Response<TodayResponse> response);
+        /*void getTodayWeatherResult(Response<TodayResponse> response);
 
-        void getWeatherForecastResult(Response<WeatherForecastResponse> response);
+        void getWeatherForecastResult(Response<WeatherForecastResponse> response);*/
 
         void getDataFailed();
     }

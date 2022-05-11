@@ -1,10 +1,12 @@
-package com.lw.mvplibrary.utils;
+package com.lw.mvplibrary.view;
 
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 
 import androidx.annotation.NonNull;
+
+import com.lw.mvplibrary.utils.ActivityManager;
 
 /**
  * 工程管理

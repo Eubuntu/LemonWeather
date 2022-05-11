@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.lw.mvplibrary.kit.Knifekit;
-import com.lw.mvplibrary.utils.BaseApplication;
+import com.lw.mvplibrary.view.BaseApplication;
 
 import butterknife.Unbinder;
 

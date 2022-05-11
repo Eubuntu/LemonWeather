@@ -109,7 +109,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         }
     }
 
-    @Override
+    /*@Override
     public void getTodayWeatherResult(Response<TodayResponse> response) {
 
     }
@@ -117,7 +117,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     @Override
     public void getWeatherForecastResult(Response<WeatherForecastResponse> response) {
 
-    }
+    }*/
 
     @Override
     public void getDataFailed() {
