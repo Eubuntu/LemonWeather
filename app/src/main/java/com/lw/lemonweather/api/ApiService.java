@@ -15,11 +15,11 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
-    /*@GET("")
+    @GET("")
     Call<TodayResponse> getTodayWeather(@Query("location") String location);
 
     @GET("")
-    Call<WeatherForecastResponse> getWeatherForecast(@Query("location") String location);*/
+    Call<WeatherForecastResponse> getWeatherForecast(@Query("location") String location);
 
     @GET("/v7/weather/now?key=806072ffa95d4a5897fcbcf1b5866452")
     Call<NowResponse> nowWeather(@Query("location") String location);

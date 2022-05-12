@@ -45,28 +45,24 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     private ImageView ivCitySelect;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initView();
+    public void getDataFailed() {
+        ToastUtils.showShortToast(context, "网络异常");
     }
 
-    private void initView() {
-        //权限判断
+    @Override
+    public void initData(Bundle savedInstanceState) {
         rxPermissions = new RxPermissions(this);
         permissionVersion();
-        tvInfo = findViewById(R.id.tv_info);
-        tvTemperature = findViewById(R.id.tv_temperature);
-        tvLowHeight = findViewById(R.id.tv_low_height);
-        tvCity = findViewById(R.id.tv_city);
-        tvOldTime = findViewById(R.id.tv_old_time);
-        rv = findViewById(R.id.rv);
-        rlWind = findViewById(R.id.rl_wind);
-        wwBig = findViewById(R.id.ww_big);
-        wwSmall = findViewById(R.id.ww_small);
-        tvWindDirection = findViewById(R.id.tv_wind_direction);
-        tvWindPower = findViewById(R.id.tv_wind_power);
-        ivCitySelect = findViewById(R.id.iv_city_select);
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected WeatherContract.WeatherPresenter createPresent() {
+        return new WeatherContract.WeatherPresenter();
     }
 
     //权限判断
@@ -109,43 +105,18 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         }
     }
 
-    /*@Override
-    public void getTodayWeatherResult(Response<TodayResponse> response) {
-
-    }
-
-    @Override
-    public void getWeatherForecastResult(Response<WeatherForecastResponse> response) {
-
-    }*/
-
-    @Override
-    public void getDataFailed() {
-
-    }
-
-    @Override
-    public void initData(Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    public int getLayoutId() {
-        return 0;
-    }
-
-    @Override
-    protected WeatherContract.WeatherPresenter createPresent() {
-        return null;
-    }
-
     /**
      *
      */
     private class MyLocationListener extends BDAbstractLocationListener {
         @Override
         public void onReceiveLocation(BDLocation bdLocation) {
-            double latitude = bdLocation.getLatitude();
+            //获取区/县
+            String district = bdLocation.getDistrict();
+            //获取今天的天气数据
+            mPresent.todayWeather(context,district);
+
+            /*double latitude = bdLocation.getLatitude();
             double longitude = bdLocation.getLongitude();
             float radius = bdLocation.getRadius();
             String coorType = bdLocation.getCoorType();
@@ -156,7 +127,29 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
             String city = bdLocation.getCity();
             String district = bdLocation.getDistrict();
             String street = bdLocation.getStreet();
-            String locationDescribe = bdLocation.getLocationDescribe();
+            String locationDescribe = bdLocation.getLocationDescribe();*/
         }
     }
+
+    //查询当天天气，请求成功后的数据返回
+    @Override
+    public void getTodayWeatherResult(Response<TodayResponse> response) {
+        //数据返回后关闭定位
+        mLocationClient.stop();
+        if (response.body().getHeWeather6().get(0).getBasic() != null) {//得到数据不为空则进行数据显示
+            //数据渲染显示出来
+            tvTemperature.setText(response.body().getHeWeather6().get(0).getNow().getTmp());//温度
+            tvCity.setText(response.body().getHeWeather6().get(0).getBasic().getLocation());//城市
+            tvInfo.setText(response.body().getHeWeather6().get(0).getNow().getCond_txt());//天气状况
+            tvOldTime.setText("上次更新时间：" + response.body().getHeWeather6().get(0).getUpdate().getLoc());
+        } else {
+            ToastUtils.showShortToast(context, response.body().getHeWeather6().get(0).getStatus());
+        }
+    }
+
+    @Override
+    public void getWeatherForecastResult(Response<WeatherForecastResponse> response) {
+
+    }
+
 }
