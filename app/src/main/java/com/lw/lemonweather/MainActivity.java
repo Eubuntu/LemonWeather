@@ -1,18 +1,27 @@
 package com.lw.lemonweather;
 
 import android.Manifest;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
+import com.lw.lemonweather.bean.BiYingImgResponse;
 import com.lw.lemonweather.bean.TodayResponse;
 import com.lw.lemonweather.bean.WeatherForecastResponse;
 import com.lw.lemonweather.contract.WeatherContract;
@@ -43,6 +52,10 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     private TextView tvWindDirection;
     private TextView tvWindPower;
     private ImageView ivCitySelect;
+    private android.widget.LinearLayout bg;
+    private com.scwang.smartrefresh.layout.SmartRefreshLayout refresh;
+
+    private String district;
 
     @Override
     public void getDataFailed() {
@@ -105,6 +118,11 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         }
     }
 
+    private void initView() {
+        bg = findViewById(R.id.bg);
+        refresh = findViewById(R.id.refresh);
+    }
+
     /**
      *
      */
@@ -113,8 +131,15 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         public void onReceiveLocation(BDLocation bdLocation) {
             //获取区/县
             String district = bdLocation.getDistrict();
+
+            showLoadingDialog();
+
             //获取今天的天气数据
             mPresent.todayWeather(context,district);
+
+            mPresent.weatherForecast(context,district);
+
+            mPresent.biying(context);
 
             /*double latitude = bdLocation.getLatitude();
             double longitude = bdLocation.getLongitude();
@@ -150,6 +175,23 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     @Override
     public void getWeatherForecastResult(Response<WeatherForecastResponse> response) {
 
+    }
+
+    @Override
+    public void getBiYingResult(Response<BiYingImgResponse> response) {
+        dismissLoadingDialog();
+        if (response.body().getImages() != null){
+            String imgUrl = "http://cn.bing.com" + response.body().getImages().get(0).getUrl();
+            Glide.with(context).asBitmap().load(imgUrl).into(new SimpleTarget<Bitmap>() {
+                @Override
+                public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                    Drawable drawable = new BitmapDrawable(context.getResources(),resource);
+                    bg.setBackground(drawable);
+                }
+            });
+        }else {
+            ToastUtils.showShortToast(context, "数据为空");
+        }
     }
 
 }

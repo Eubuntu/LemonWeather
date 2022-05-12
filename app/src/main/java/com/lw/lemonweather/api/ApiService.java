@@ -1,6 +1,7 @@
 package com.lw.lemonweather.api;
 
 import com.lw.lemonweather.bean.AirNowResponse;
+import com.lw.lemonweather.bean.BiYingImgResponse;
 import com.lw.lemonweather.bean.DailyResponse;
 import com.lw.lemonweather.bean.HourlyResponse;
 import com.lw.lemonweather.bean.LifestyleResponse;
@@ -38,4 +39,8 @@ public interface ApiService {
 
     @GET("/v7/city/lookup?key=806072ffa95d4a5897fcbcf1b5866452=cn")
     Call<NewSearchCityResponse> newSearchCity(@Query("location") String location, @Query("mode") String mode);
+
+    @GET("HPImageArchive.aspx?format=js&idx=0&n=1")
+    Call<BiYingImgResponse> biying();
+
 }

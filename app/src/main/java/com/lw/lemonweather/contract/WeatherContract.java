@@ -3,6 +3,7 @@ package com.lw.lemonweather.contract;
 import android.content.Context;
 
 import com.lw.lemonweather.api.ApiService;
+import com.lw.lemonweather.bean.BiYingImgResponse;
 import com.lw.lemonweather.bean.TodayResponse;
 import com.lw.lemonweather.bean.WeatherForecastResponse;
 import com.lw.mvplibrary.base.BasePresenter;
@@ -17,7 +18,7 @@ public class WeatherContract {
     public static class WeatherPresenter extends BasePresenter<IWeatherView> {
 
         public void todayWeather(final Context context, String location) {
-            ApiService service = ServiceGenerator.createService(ApiService.class);
+            ApiService service = ServiceGenerator.createService(ApiService.class, 0);
             service.getTodayWeather(location).enqueue(new NetCallBack<TodayResponse>() {
                 @Override
                 public void onSuccess(Call<TodayResponse> call, Response<TodayResponse> response) {
@@ -37,7 +38,7 @@ public class WeatherContract {
         }
 
         public void weatherForecast(final Context context, String location) {
-            ApiService service = ServiceGenerator.createService(ApiService.class);
+            ApiService service = ServiceGenerator.createService(ApiService.class, 0);
             service.getWeatherForecast(location).enqueue(new NetCallBack<WeatherForecastResponse>() {
                 @Override
                 public void onSuccess(Call<WeatherForecastResponse> call, Response<WeatherForecastResponse> response) {
@@ -55,7 +56,24 @@ public class WeatherContract {
             });
         }
 
+        public void biying(final Context context) {
+            ApiService service = ServiceGenerator.createService(ApiService.class, 1);
+            service.biying().enqueue(new NetCallBack<BiYingImgResponse>() {
+                @Override
+                public void onSuccess(Call<BiYingImgResponse> call, Response<BiYingImgResponse> response) {
+                    if (getView() != null) {
+                        getView().getBiYingResult(response);
+                    }
+                }
 
+                @Override
+                public void onFailed() {
+                    if (getView() != null) {
+                        getView().getDataFailed();
+                    }
+                }
+            });
+        }
     }
 
 
@@ -63,6 +81,8 @@ public class WeatherContract {
         void getTodayWeatherResult(Response<TodayResponse> response);
 
         void getWeatherForecastResult(Response<WeatherForecastResponse> response);
+
+        void getBiYingResult(Response<BiYingImgResponse> response);
 
         void getDataFailed();
     }

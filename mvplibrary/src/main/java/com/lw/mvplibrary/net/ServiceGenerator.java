@@ -10,6 +10,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceGenerator {
     //https://free-api.heweather.net/s6/weather/now?key=3086e91d66c04ce588a7f538f917c7f4&location=深圳
     //将上方的API接口地址进行拆分得到不变的一部分,实际开发中可以将这一部分作为服务器的ip访问地址
+    public static String BASE_URL = null;
+
+    private static String urlType(int type) {
+        switch (type) {
+            case 0:
+                BASE_URL = "https://free-api.heweather.net";
+                break;
+            case 1:
+                BASE_URL = "https://cn.bing.com";
+                break;
+        }
+        return BASE_URL;
+    }
 
     //https://devapi.qweather.com/v7/weather/now?[请求参数]
     // key
@@ -17,10 +30,9 @@ public class ServiceGenerator {
     //location
     //需要查询地区的LocationID或以英文逗号分隔的经度,纬度坐标（十进制，最多支持小数点后两位），LocationID可通过城市搜索服务获取。例如 location=101010100 或 location=116.41,39.92
     //开发版https://devapi.qweather.com/v7/weather/now?location=101010100&key=你的KEY
-    public static String BASE_URL = "https://free-api.heweather.net";
 
     //创建服务  参数就是API服务
-    public static <T> T createService(Class<T> serviceClass) {
+    public static <T> T createService(Class<T> serviceClass, int type) {
 
         //创建OkHttpClient构建器对象
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
@@ -40,7 +52,7 @@ public class ServiceGenerator {
         okHttpClientBuilder.addInterceptor(httpLoggingInterceptor);
 
         //在Retrofit中设置httpclient
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)//设置地址  就是上面的固定地址,如果你是本地访问的话，可以拼接上端口号  例如 +":8080"
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(urlType(type))//设置地址  就是上面的固定地址,如果你是本地访问的话，可以拼接上端口号  例如 +":8080"
                 .addConverterFactory(GsonConverterFactory.create())//用Gson把服务端返回的json数据解析成实体
                 .client(okHttpClientBuilder.build())//放入OKHttp，之前说过retrofit是对OkHttp的进一步封装
                 .build();
