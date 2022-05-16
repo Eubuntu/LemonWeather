@@ -138,7 +138,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
             mPresent.todayWeather(context,district);
 
             mPresent.weatherForecast(context,district);
-
+            //获取必应每日一图
             mPresent.biying(context);
 
             /*double latitude = bdLocation.getLatitude();

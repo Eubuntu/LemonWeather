@@ -20,6 +20,9 @@ public class ServiceGenerator {
             case 1:
                 BASE_URL = "https://cn.bing.com";
                 break;
+            case 2:
+                BASE_URL = "https://search.heweather.net";
+                break;
         }
         return BASE_URL;
     }

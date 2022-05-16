@@ -4,8 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/cursor_style.xml" value="0.1685" />
+        <entry key="app/src/main/res/drawable/shape_gray_bg_14.xml" value="0.1685" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_search_city.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_city_list.xml" value="0.16894630192502533" />
+        <entry key="app/src/main/res/layout/item_search_city_list.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/item_weather_forecast_list.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/window_city_list.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.16894630192502533" />

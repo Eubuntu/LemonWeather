@@ -7,6 +7,7 @@ import com.lw.lemonweather.bean.HourlyResponse;
 import com.lw.lemonweather.bean.LifestyleResponse;
 import com.lw.lemonweather.bean.NewSearchCityResponse;
 import com.lw.lemonweather.bean.NowResponse;
+import com.lw.lemonweather.bean.SearchCityResponse;
 import com.lw.lemonweather.bean.TodayResponse;
 import com.lw.lemonweather.bean.WeatherForecastResponse;
 
@@ -42,5 +43,8 @@ public interface ApiService {
 
     @GET("HPImageArchive.aspx?format=js&idx=0&n=1")
     Call<BiYingImgResponse> biying();
+
+    @GET("/find?key=806072ffa95d4a5897fcbcf1b5866452&group=cn&number=10")
+    Call<SearchCityResponse> searchCity(@Query("location") String location);
 
 }
