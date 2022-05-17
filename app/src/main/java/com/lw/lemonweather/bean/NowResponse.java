@@ -2,6 +2,9 @@ package com.lw.lemonweather.bean;
 
 import java.util.List;
 
+/**
+ * 今日天气数据实体
+ */
 public class NowResponse {
     private String code;
     private String updateTime;

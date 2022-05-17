@@ -22,6 +22,9 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 public class WeatherApplication extends BaseApplication {
+    /**
+     * 应用实例
+     */
     public static WeatherApplication weatherApplication;
     private static Context context;
     private static ActivityManager activityManager;
@@ -95,7 +98,9 @@ public class WeatherApplication extends BaseApplication {
         super.onConfigurationChanged(newConfig);
     }
 
+    //static 代码段可以防止内存泄漏
     static {
+        //设置全局的Header构建器
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
             @Override
             public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
@@ -103,9 +108,11 @@ public class WeatherApplication extends BaseApplication {
                 return new ClassicsHeader(context);
             }
         });
+        //设置全局的Footer构建器
         SmartRefreshLayout.setDefaultRefreshFooterCreator(new DefaultRefreshFooterCreator() {
             @Override
             public RefreshFooter createRefreshFooter(Context context, RefreshLayout layout) {
+                //指定为经典Footer，默认是BallPulseFooter
                 return new ClassicsFooter(context).setDrawableSize(20);
             }
         });

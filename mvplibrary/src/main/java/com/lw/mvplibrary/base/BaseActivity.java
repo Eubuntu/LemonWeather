@@ -13,6 +13,9 @@ import com.lw.mvplibrary.view.BaseApplication;
 
 import butterknife.Unbinder;
 
+/**
+ * 用于不需要请求网络接口的Activity
+ */
 public abstract class BaseActivity extends AppCompatActivity implements UiCallBack {
 
     protected Activity context;
@@ -24,7 +27,7 @@ public abstract class BaseActivity extends AppCompatActivity implements UiCallBa
         super.onCreate(savedInstanceState);
         initBeforeView(savedInstanceState);
         this.context = this;
-        //
+        //添加继承这个BaseActivity的Activity
         BaseApplication.getActivityManager().addActivity(this);
         if (getLayoutId() > 0) {
             setContentView(getLayoutId());

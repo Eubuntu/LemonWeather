@@ -7,6 +7,9 @@ import com.lw.lemonweather.bean.WeatherForecastResponse;
 
 import java.util.List;
 
+/**
+ * 天气预报列表展示适配器
+ */
 public class WeatherForecastAdapter extends BaseQuickAdapter<WeatherForecastResponse.HeWeather6Bean.DailyForecastBean, BaseViewHolder> {
     public WeatherForecastAdapter(int layoutResId, List<WeatherForecastResponse.HeWeather6Bean.DailyForecastBean> data) {
         super(layoutResId, data);

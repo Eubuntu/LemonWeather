@@ -10,6 +10,7 @@
         android:orientation="horizontal"
         android:padding="12sp">
 
+        <!--日期-->
         <TextView
             android:id="@+id/tv_date"
             android:layout_width="0dp"
@@ -19,6 +20,7 @@
             android:textColor="#FFF"
             android:textSize="14sp" />
 
+        <!--天气描述-->
         <TextView
             android:id="@+id/tv_info"
             android:layout_width="0dp"
@@ -28,6 +30,7 @@
             android:textColor="#FFF"
             android:textSize="14sp" />
 
+        <!--最高温、最低温-->
         <TextView
             android:id="@+id/tv_low_and_height"
             android:layout_width="0dp"

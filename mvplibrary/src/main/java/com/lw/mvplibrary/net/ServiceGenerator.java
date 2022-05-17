@@ -7,6 +7,9 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * 服务构建器 API服务设置在里面
+ */
 public class ServiceGenerator {
     //https://free-api.heweather.net/s6/weather/now?key=3086e91d66c04ce588a7f538f917c7f4&location=深圳
     //将上方的API接口地址进行拆分得到不变的一部分,实际开发中可以将这一部分作为服务器的ip访问地址
@@ -14,14 +17,25 @@ public class ServiceGenerator {
 
     private static String urlType(int type) {
         switch (type) {
+            //和风天气
             case 0:
                 BASE_URL = "https://free-api.heweather.net";
                 break;
+            //必应每日一图
             case 1:
                 BASE_URL = "https://cn.bing.com";
                 break;
+            //搜索城市
             case 2:
                 BASE_URL = "https://search.heweather.net";
+                break;
+            //和风天气 新增 V7版本接口地址
+            case 3:
+                BASE_URL = "https://devapi.heweather.net";
+                break;
+            //搜索城市 新增 V7版本下搜索城市地址
+            case 4:
+                BASE_URL = "https://geoapi.heweather.net";
                 break;
         }
         return BASE_URL;

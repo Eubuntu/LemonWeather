@@ -2,6 +2,9 @@ package com.lw.lemonweather.bean;
 
 import java.util.List;
 
+/**
+ * 生活指数数据实体
+ */
 public class LifestyleResponse {
     private String code;
     private String updateTime;

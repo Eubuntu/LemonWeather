@@ -2,6 +2,9 @@ package com.lw.lemonweather.bean;
 
 import java.util.List;
 
+/**
+ * 当天空气质量数据实体
+ */
 public class AirNowResponse {
     private String code;
     private String updateTime;

@@ -15,6 +15,9 @@ import com.lw.mvplibrary.kit.Knifekit;
 
 import butterknife.Unbinder;
 
+/**
+ * 用于不需要请求网络接口的BaseFragment
+ */
 public abstract class BaseFragment extends Fragment implements UiCallBack {
     protected View rootView;
     protected LayoutInflater layoutInflater;

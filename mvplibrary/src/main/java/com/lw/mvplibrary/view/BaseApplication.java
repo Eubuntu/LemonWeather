@@ -19,6 +19,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        //声明Activity管理
         activityManager = new ActivityManager();
         context = getApplicationContext();
         application = this;
@@ -33,6 +34,7 @@ public class BaseApplication extends Application {
         return activityManager;
     }
 
+    //内容提供器
     public static Context getContext() {
         return context;
     }

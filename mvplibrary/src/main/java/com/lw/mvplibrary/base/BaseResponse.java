@@ -1,6 +1,15 @@
 package com.lw.mvplibrary.base;
 
+/**
+ * 网络请求返回解析类
+ */
 public class BaseResponse {
+    /**
+     * code：200
+     * msg：incorrent password
+     * data：null
+     */
+
     private int code;
     private String msg;
     private Object data;

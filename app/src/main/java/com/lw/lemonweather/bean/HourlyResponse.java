@@ -2,6 +2,9 @@ package com.lw.lemonweather.bean;
 
 import java.util.List;
 
+/**
+ * 逐小时天气数据实体
+ */
 public class HourlyResponse {
     private String code;
     private String updateTime;

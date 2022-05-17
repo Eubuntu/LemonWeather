@@ -11,6 +11,8 @@ import butterknife.Unbinder;
  * 绑定视图控件ID
  */
 public class Knifekit {
+
+    //解绑
     public static Unbinder bind(Object target) {
         if (target instanceof Activity) {
             return ButterKnife.bind((Activity) target);
@@ -22,6 +24,7 @@ public class Knifekit {
         return Unbinder.EMPTY;
     }
 
+    //绑定输入目标资源
     public static Unbinder bind(Object target, Object source) {
         if (source instanceof Activity) {
             return ButterKnife.bind(target, (Activity) source);
@@ -33,6 +36,7 @@ public class Knifekit {
         return Unbinder.EMPTY;
     }
 
+    //解绑
     public static void ubind(Unbinder unbinder) {
         if (unbinder != Unbinder.EMPTY) {
             unbinder.unbind();

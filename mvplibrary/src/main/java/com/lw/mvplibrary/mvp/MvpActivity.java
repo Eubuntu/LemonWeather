@@ -6,6 +6,11 @@ import com.lw.mvplibrary.base.BaseActivity;
 import com.lw.mvplibrary.base.BasePresenter;
 import com.lw.mvplibrary.base.BaseView;
 
+/**
+ * 适用于需要访问网络接口的Activity
+ *
+ * @param <P>
+ */
 public abstract class MvpActivity<P extends BasePresenter> extends BaseActivity {
     protected P mPresent;
 

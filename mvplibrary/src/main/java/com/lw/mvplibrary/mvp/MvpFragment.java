@@ -6,6 +6,10 @@ import com.lw.mvplibrary.base.BaseFragment;
 import com.lw.mvplibrary.base.BasePresenter;
 import com.lw.mvplibrary.base.BaseView;
 
+/**
+ * 适用于需要访问网络接口的Fragment
+ * @param <P>
+ */
 public abstract class MvpFragment<P extends BasePresenter> extends BaseFragment {
     protected P mPresent;
 

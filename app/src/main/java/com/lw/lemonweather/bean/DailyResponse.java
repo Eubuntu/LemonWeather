@@ -2,6 +2,9 @@ package com.lw.lemonweather.bean;
 
 import java.util.List;
 
+/**
+ * 天气预报数据实体
+ */
 public class DailyResponse {
     private String code;
     private String updateTime;

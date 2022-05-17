@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.baidu.location.BDAbstractLocationListener;
@@ -21,24 +22,34 @@ import com.baidu.location.LocationClientOption;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.lw.lemonweather.adapter.WeatherForecastAdapter;
 import com.lw.lemonweather.bean.BiYingImgResponse;
+import com.lw.lemonweather.bean.NewSearchCityResponse;
+import com.lw.lemonweather.bean.NowResponse;
 import com.lw.lemonweather.bean.TodayResponse;
 import com.lw.lemonweather.bean.WeatherForecastResponse;
 import com.lw.lemonweather.contract.WeatherContract;
+import com.lw.lemonweather.utils.StatusBarUtil;
 import com.lw.lemonweather.utils.ToastUtils;
 import com.lw.mvplibrary.mvp.MvpActivity;
 import com.lw.mvplibrary.view.WhiteWindmills;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Response;
 
 public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> implements WeatherContract.IWeatherView {
 
-    //权限
+    //权限请求框架
     private RxPermissions rxPermissions;
+    //定位器
     public LocationClient mLocationClient = null;
     private MyLocationListener myListener = new MyLocationListener();
 
+    private List<WeatherForecastResponse.HeWeather6Bean.DailyForecastBean> mList;
+    private WeatherForecastAdapter mAdapter;
 
     private TextView tvInfo;
     private TextView tvTemperature;
@@ -64,8 +75,22 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        StatusBarUtil.transparencyBar(context);
+        initList();
+        //实例化请求框架
         rxPermissions = new RxPermissions(this);
         permissionVersion();
+    }
+
+    /**
+     * 初始化天气预报数据列表
+     */
+    private void initList() {
+        mList = new ArrayList<>();
+        mAdapter = new WeatherForecastAdapter(R.layout.item_weather_forecast_list, mList);
+        LinearLayoutManager manager = new LinearLayoutManager(context);
+        rv.setLayoutManager(manager);
+        rv.setAdapter(mAdapter);
     }
 
     @Override
@@ -90,30 +115,39 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         }
     }
 
-    //
+    //动态权限申请
     private void permissionsRequest() {
         rxPermissions.request(Manifest.permission.ACCESS_FINE_LOCATION).subscribe(granted -> {
             if (granted) {
+                //申请成功后，开始定位
                 startLocation();
             } else {
+                //申请失败
                 ToastUtils.showShortToast(this, "权限未开启");
             }
         });
     }
 
+    //定位
     private void startLocation() {
         LocationClient.setAgreePrivacy(true);
         try {
+            //声明LocationClient类
             mLocationClient = new LocationClient(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
         if (mLocationClient != null) {
+            //注册监听函数
             mLocationClient.registerLocationListener(myListener);
             LocationClientOption option = new LocationClientOption();
+            //如果需要当前点的位置信息，设置为true
             option.setIsNeedAddress(true);
+            //设置是否需要最新版本的地址信息。默认不需要，参数为false
             option.setNeedNewVersionRgc(true);
+            //将配置好的LocationClientOption对象，通过setLocOption方法传递给LocationClient对象使用
             mLocationClient.setLocOption(option);
+            //启动定位
             mLocationClient.start();
         }
     }
@@ -124,7 +158,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     }
 
     /**
-     *
+     *定位结果返回
      */
     private class MyLocationListener extends BDAbstractLocationListener {
         @Override
@@ -134,10 +168,10 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
 
             showLoadingDialog();
 
-            //获取今天的天气数据
+/*            //获取今天的天气数据
             mPresent.todayWeather(context,district);
-
-            mPresent.weatherForecast(context,district);
+            //获取天气预报数据
+            mPresent.weatherForecast(context,district);*/
             //获取必应每日一图
             mPresent.biying(context);
 
@@ -157,25 +191,46 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     }
 
     //查询当天天气，请求成功后的数据返回
-    @Override
+/*    @Override
     public void getTodayWeatherResult(Response<TodayResponse> response) {
         //数据返回后关闭定位
         mLocationClient.stop();
-        if (response.body().getHeWeather6().get(0).getBasic() != null) {//得到数据不为空则进行数据显示
+        if (response.body().getHeWeather6().get(0).getBasic() != null) {
+            //得到数据不为空则进行数据显示
             //数据渲染显示出来
-            tvTemperature.setText(response.body().getHeWeather6().get(0).getNow().getTmp());//温度
-            tvCity.setText(response.body().getHeWeather6().get(0).getBasic().getLocation());//城市
-            tvInfo.setText(response.body().getHeWeather6().get(0).getNow().getCond_txt());//天气状况
+            //温度
+            tvTemperature.setText(response.body().getHeWeather6().get(0).getNow().getTmp());
+            //城市
+            tvCity.setText(response.body().getHeWeather6().get(0).getBasic().getLocation());
+            //天气状况
+            tvInfo.setText(response.body().getHeWeather6().get(0).getNow().getCond_txt());
             tvOldTime.setText("上次更新时间：" + response.body().getHeWeather6().get(0).getUpdate().getLoc());
         } else {
             ToastUtils.showShortToast(context, response.body().getHeWeather6().get(0).getStatus());
         }
-    }
+    }*/
 
-    @Override
+    //查询天气预报，请求成功后的数据返回
+  /*  @Override
     public void getWeatherForecastResult(Response<WeatherForecastResponse> response) {
+        if (("ok").equals(response.body().getHeWeather6().get(0).getStatus())) {
+            //最低温和最高温
+            tvLowHeight.setText(response.body().getHeWeather6().get(0).getDaily_forecast().get(0).getTmp_min() + " / " +
+                    response.body().getHeWeather6().get(0).getDaily_forecast().get(0).getTmp_max() + "℃");
 
-    }
+            if (response.body().getHeWeather6().get(0).getDaily_forecast() != null) {
+                List<WeatherForecastResponse.HeWeather6Bean.DailyForecastBean> data
+                        = response.body().getHeWeather6().get(0).getDaily_forecast();
+                mList.clear();//添加数据之前先清除
+                mList.addAll(data);//添加数据
+                mAdapter.notifyDataSetChanged();//刷新列表
+            } else {
+                ToastUtils.showShortToast(context, "天气预报数据为空");
+            }
+        } else {
+            ToastUtils.showShortToast(context, response.body().getHeWeather6().get(0).getStatus());
+        }
+    }*/
 
     @Override
     public void getBiYingResult(Response<BiYingImgResponse> response) {
@@ -192,6 +247,16 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         }else {
             ToastUtils.showShortToast(context, "数据为空");
         }
+    }
+
+    @Override
+    public void getNewSearchCityResult(Response<NewSearchCityResponse> response) {
+
+    }
+
+    @Override
+    public void getNowResult(Response<NowResponse> response) {
+
     }
 
 }
