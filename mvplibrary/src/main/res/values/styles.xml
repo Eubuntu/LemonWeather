@@ -4,7 +4,6 @@
     <declare-styleable name="WhiteWindmills">
         <attr name="windColor" format="reference|color" />
     </declare-styleable>
-
     <!--弹窗样式-->
     <!--右侧-->
     <style name="AnimationRightFade">
@@ -13,13 +12,16 @@
         <!--关闭动画-->
         <item name="android:windowExitAnimation">@anim/out_left_to_right</item>
     </style>
-
+    <!--中间-->
+    <style name="AnimationCenterFade">
+        <item name="android:windowEnterAnimation">@anim/window_show_anim</item>
+        <item name="android:windowExitAnimation">@anim/window_hidden_anim</item>
+    </style>
     <!--底部-->
     <style name="AnimationBottomFade">
         <item name="android:windowEnterAnimation">@anim/in_bottom_to_top</item>
         <item name="android:windowExitAnimation">@anim/out_top_to_bottom</item>
     </style>
-
     <!--加载弹窗的样式-->
     <style name="loading_dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
@@ -30,7 +32,28 @@
         <item name="android:windowBackground">@null</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
-
+    <!--圆环进度条-->
+    <declare-styleable name="RoundProgressBar">
+        <attr name="round_max_progress" format="float" />
+        <attr name="round_bg_color" format="color" />
+        <attr name="round_stroke_width" format="dimension" />
+        <attr name="round_progress" format="float" />
+        <attr name="round_progress_color" format="color" />
+        <attr name="round_first_text" format="string" />
+        <attr name="round_first_text_color" format="color" />
+        <attr name="round_first_text_size" format="dimension" />
+        <attr name="round_second_text" format="string" />
+        <attr name="round_second_text_color" format="color" />
+        <attr name="round_second_text_size" format="dimension" />
+        <attr name="round_min_text" format="string" />
+        <attr name="round_min_text_color" format="color" />
+        <attr name="round_min_text_size" format="dimension" />
+        <attr name="round_max_text" format="string" />
+        <attr name="round_max_text_color" format="color" />
+        <attr name="round_max_text_size" format="dimension" />
+        <attr name="round_angle_size" format="float" />
+        <attr name="round_start_angle" format="float" />
+    </declare-styleable>
     <!--开关按钮-->
     <declare-styleable name="SwitchButton">
         <attr name="sb_shadow_radius" format="reference|dimension" />
@@ -52,7 +75,6 @@
         <attr name="sb_background" format="reference|color" />
         <attr name="sb_enable_effect" format="reference|boolean" />
     </declare-styleable>
-
     <!--右上角加号点击弹窗动画效果-->
     <style name="pop_add">
         <item name="android:windowEnterAnimation">@anim/pop_add_show</item>

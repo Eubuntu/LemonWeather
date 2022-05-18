@@ -61,11 +61,28 @@ dependencies {
     api 'com.squareup.okhttp3:okhttp:3.12.0'
     api 'com.squareup.retrofit2:retrofit:2.4.0'
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
-    api 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    //api 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    //日志拦截器
+    api 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     //阿里巴巴 FastJson
     api 'com.alibaba:fastjson:1.2.57'
     //下拉刷新框架
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
     //没有使用特殊Header，可以不加这行
     api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
+    //自由嵌套的RadioGroup
+    api 'com.github.fodroid:XRadioGroup:v1.5'
+    //EventBus
+    api 'org.greenrobot:eventbus:3.1.1'
+    //蠕虫蠕动动画TabLayout
+    api 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
+    //Optional: see how to use the utility.
+    api 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
+    //Android SQLite操作框架
+    api 'org.litepal.guolindev:core:3.1.1'
+    //列表item侧滑删除
+    api 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
+    //下拉框
+    api 'com.github.arcadefire:nice-spinner:1.4.3'
 }

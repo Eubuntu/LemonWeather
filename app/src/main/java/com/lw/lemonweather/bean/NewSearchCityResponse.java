@@ -2,6 +2,9 @@ package com.lw.lemonweather.bean;
 
 import java.util.List;
 
+/**
+ * 城市数据实体类
+ */
 public class NewSearchCityResponse {
     private String code;
     private ReferBean refer;

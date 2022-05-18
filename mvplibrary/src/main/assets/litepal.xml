@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <!--数据库名称-->
+    <dbname value="LemonWeather" />
+    <!--数据库版本-->
+    <version value="1" />
+    <!--数据列表  映射模型-->
+    <list>
+        <mapping class="com.lw.mvplibrary.bean.ResidentCity"/><!--常用城市-->
+        <mapping class="com.lw.mvplibrary.bean.Country"/><!--世界国家-->
+        <mapping class="com.lw.mvplibrary.bean.AppVersion"/><!--App版本信息-->
+        <mapping class="com.lw.mvplibrary.bean.WallPaper"/><!--壁纸数据-->
+    </list>
+
+</litepal>

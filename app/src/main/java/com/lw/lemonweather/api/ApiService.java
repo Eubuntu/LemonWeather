@@ -8,8 +8,6 @@ import com.lw.lemonweather.bean.LifestyleResponse;
 import com.lw.lemonweather.bean.NewSearchCityResponse;
 import com.lw.lemonweather.bean.NowResponse;
 import com.lw.lemonweather.bean.SearchCityResponse;
-import com.lw.lemonweather.bean.TodayResponse;
-import com.lw.lemonweather.bean.WeatherForecastResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -20,11 +18,6 @@ import retrofit2.http.Query;
  * API服务接口
  */
 public interface ApiService {
-    @GET("")
-    Call<TodayResponse> getTodayWeather(@Query("location") String location);
-
-    @GET("")
-    Call<WeatherForecastResponse> getWeatherForecast(@Query("location") String location);
 
     /**
      * 实况天气
@@ -69,7 +62,7 @@ public interface ApiService {
      * @return 返回当前生活指数数据
      */
     @GET("/v7/indices/1d?key=806072ffa95d4a5897fcbcf1b5866452")
-    Call<LifestyleResponse> Lifestyle(@Query("type") String type, @Query("location") String location);
+    Call<LifestyleResponse> lifestyle(@Query("type") String type, @Query("location") String location);
 
     /**
      * 搜索城市 V7版本 模糊搜索，国内范围 返回10条数据
@@ -80,6 +73,10 @@ public interface ApiService {
     @GET("/v2/city/lookup?key=806072ffa95d4a5897fcbcf1b5866452=cn")
     Call<NewSearchCityResponse> newSearchCity(@Query("location") String location, @Query("mode") String mode);
 
+    /**
+     * 必应 每日一图
+     * @return
+     */
     @GET("HPImageArchive.aspx?format=js&idx=0&n=1")
     Call<BiYingImgResponse> biying();
 

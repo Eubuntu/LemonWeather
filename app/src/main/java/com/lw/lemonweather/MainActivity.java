@@ -23,7 +23,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.lw.lemonweather.adapter.WeatherForecastAdapter;
+import com.lw.lemonweather.adapter.WeatherHourlyAdapter;
+import com.lw.lemonweather.bean.AirNowResponse;
 import com.lw.lemonweather.bean.BiYingImgResponse;
+import com.lw.lemonweather.bean.DailyResponse;
+import com.lw.lemonweather.bean.HourlyResponse;
+import com.lw.lemonweather.bean.LifestyleResponse;
 import com.lw.lemonweather.bean.NewSearchCityResponse;
 import com.lw.lemonweather.bean.NowResponse;
 import com.lw.lemonweather.bean.TodayResponse;
@@ -50,6 +55,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
 
     private List<WeatherForecastResponse.HeWeather6Bean.DailyForecastBean> mList;
     private WeatherForecastAdapter mAdapter;
+    private List<HourlyResponse.HourlyBean> mListHourly;
+    private WeatherHourlyAdapter mAdapterHourly;
 
     private TextView tvInfo;
     private TextView tvTemperature;
@@ -67,10 +74,32 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     private com.scwang.smartrefresh.layout.SmartRefreshLayout refresh;
 
     private String district;
+    private androidx.appcompat.widget.Toolbar toolbar;
+    private ImageView ivLocation;
+    private RecyclerView rvHourly;
+    private TextView tvComf;
+    private TextView tvTrav;
+    private TextView tvSport;
+    private TextView tvCw;
+    private TextView tvAir;
+    private TextView tvDrsg;
+    private TextView tvFlu;
+    private com.lw.mvplibrary.view.RoundProgressBar rpbAqi;
+    private TextView tvPm10;
+    private TextView tvPm25;
+    private TextView tvNo2;
+    private TextView tvSo2;
+    private TextView tvO3;
+    private TextView tvCo;
 
     @Override
     public void getDataFailed() {
         ToastUtils.showShortToast(context, "网络异常");
+    }
+
+    @Override
+    public void getWeatherDataFailed() {
+
     }
 
     @Override
@@ -86,11 +115,19 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
      * 初始化天气预报数据列表
      */
     private void initList() {
+        //七天天气预报
         mList = new ArrayList<>();
         mAdapter = new WeatherForecastAdapter(R.layout.item_weather_forecast_list, mList);
         LinearLayoutManager manager = new LinearLayoutManager(context);
         rv.setLayoutManager(manager);
         rv.setAdapter(mAdapter);
+        //逐小时天气预报
+        mListHourly = new ArrayList<>();
+        mAdapterHourly = new WeatherHourlyAdapter(R.layout.item_weather_hourly_list,mListHourly);
+        LinearLayoutManager managerHourly = new LinearLayoutManager(context);
+        managerHourly.setOrientation(RecyclerView.HORIZONTAL);
+        rvHourly.setLayoutManager(managerHourly);
+        rvHourly.setAdapter(mAdapterHourly);
     }
 
     @Override
@@ -155,6 +192,23 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     private void initView() {
         bg = findViewById(R.id.bg);
         refresh = findViewById(R.id.refresh);
+        toolbar = findViewById(R.id.toolbar);
+        ivLocation = findViewById(R.id.iv_location);
+        rvHourly = findViewById(R.id.rv_hourly);
+        tvComf = findViewById(R.id.tv_comf);
+        tvTrav = findViewById(R.id.tv_trav);
+        tvSport = findViewById(R.id.tv_sport);
+        tvCw = findViewById(R.id.tv_cw);
+        tvAir = findViewById(R.id.tv_air);
+        tvDrsg = findViewById(R.id.tv_drsg);
+        tvFlu = findViewById(R.id.tv_flu);
+        rpbAqi = findViewById(R.id.rpb_aqi);
+        tvPm10 = findViewById(R.id.tv_pm10);
+        tvPm25 = findViewById(R.id.tv_pm25);
+        tvNo2 = findViewById(R.id.tv_no2);
+        tvSo2 = findViewById(R.id.tv_so2);
+        tvO3 = findViewById(R.id.tv_o3);
+        tvCo = findViewById(R.id.tv_co);
     }
 
     /**
@@ -164,14 +218,11 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         @Override
         public void onReceiveLocation(BDLocation bdLocation) {
             //获取区/县
-            String district = bdLocation.getDistrict();
-
+            district = bdLocation.getDistrict();
+            //在数据请求之前加载等待弹窗
             showLoadingDialog();
-
-/*            //获取今天的天气数据
-            mPresent.todayWeather(context,district);
-            //获取天气预报数据
-            mPresent.weatherForecast(context,district);*/
+            //获取生活指数数据
+            //mPresent.lifestyle(context, district);
             //获取必应每日一图
             mPresent.biying(context);
 
@@ -256,6 +307,28 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
 
     @Override
     public void getNowResult(Response<NowResponse> response) {
+
+    }
+
+    @Override
+    public void getDailyResult(Response<DailyResponse> response) {
+
+    }
+
+    @Override
+    public void getHourlyResult(Response<HourlyResponse> response) {
+        //关闭弹窗
+        dismissLoadingDialog();
+
+    }
+
+    @Override
+    public void getAirNowResult(Response<AirNowResponse> response) {
+
+    }
+
+    @Override
+    public void getLifestyleResult(Response<LifestyleResponse> response) {
 
     }
 
