@@ -155,7 +155,7 @@ public class WhiteWindmills extends View {
         mHandler.sendEmptyMessageDelayed(0, 10);
     }
 
-    private void stop() {
+    public void stop() {
         mHandler.removeMessages(0);
     }
 

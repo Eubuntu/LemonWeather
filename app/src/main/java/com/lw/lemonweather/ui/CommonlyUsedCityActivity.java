@@ -48,14 +48,6 @@ public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.Sea
      * @param response
      */
     @Override
-    public void getSearchCityResult(Response<SearchCityResponse> response) {
-
-    }
-
-    /**
-     * @param response
-     */
-    @Override
     public void getNewSearchCityResult(Response<NewSearchCityResponse> response) {
 
     }

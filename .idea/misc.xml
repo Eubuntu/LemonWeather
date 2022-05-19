@@ -16,8 +16,10 @@
         <entry key="app/src/main/res/layout/item_search_city_list.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/item_weather_forecast_list.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/item_weather_hourly_list.xml" value="0.16134751773049646" />
+        <entry key="app/src/main/res/layout/window_add.xml" value="0.25" />
         <entry key="app/src/main/res/layout/window_city_list.xml" value="0.16894630192502533" />
-        <entry key="app/src/main/res/layout/window_forecast_detail.xml" value="0.16134751773049646" />
+        <entry key="app/src/main/res/layout/window_forecast_detail.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/window_hourly_detail.xml" value="0.25" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.16894630192502533" />
         <entry key="mvplibrary/src/main/res/drawable-v21/bg_white.xml" value="0.135" />
         <entry key="mvplibrary/src/main/res/drawable-v21/bg_wihte.xml" value="0.135" />

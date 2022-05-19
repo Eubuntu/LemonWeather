@@ -17,6 +17,6 @@ public class WeatherForecastAdapter extends BaseQuickAdapter<WeatherForecastResp
 
     @Override
     protected void convert(BaseViewHolder helper, WeatherForecastResponse.HeWeather6Bean.DailyForecastBean item) {
-        helper.setText(R.id.tv_date, item.getDate()).setText(R.id.tv_info, item.getCond_txt_d()).setText(R.id.tv_low_and_height, item.getTmp_min() + "/" + item.getTmp_max() + "°c");
+        helper.setText(R.id.tv_date, item.getDate()).setText(R.id.tv_info, item.getCond_txt_d()).setText(R.id.tv_low_height, item.getTmp_min() + "/" + item.getTmp_max() + "°c");
     }
 }

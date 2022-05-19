@@ -14,30 +14,15 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 /**
- *  城市搜索订阅器
+ *  城市搜索订阅器 V7
  */
 public class SearchCityContract {
     public static class SearchCityPresenter extends BasePresenter<ISearchCityView> {
 
-        public void searchCity(final Context context, String location) {
-            ApiService service = ServiceGenerator.createService(ApiService.class, 2);
-            service.searchCity(location).enqueue(new NetCallBack<SearchCityResponse>() {
-                @Override
-                public void onSuccess(Call<SearchCityResponse> call, Response<SearchCityResponse> response) {
-                    if (getView() != null) {
-                        getView().getSearchCityResult(response);
-                    }
-                }
-
-                @Override
-                public void onFailed() {
-                    if (getView() != null) {
-                        getView().getDataFailed();
-                    }
-                }
-            });
-        }
-
+        /**
+         * 搜索城市 V7版本 模糊搜索 返回10条相关数据
+         * @param location
+         */
         public void newSearchCity(String location){
             ApiService service = ServiceGenerator.createService(ApiService.class,4);
             service.newSearchCity(location,"fuzzy").enqueue(new NetCallBack<NewSearchCityResponse>() {
@@ -59,11 +44,9 @@ public class SearchCityContract {
 
     }
     public interface ISearchCityView extends BaseView{
-        void getSearchCityResult(Response<SearchCityResponse> response);
-
+        //搜索城市返回数据 V7
         void getNewSearchCityResult(Response<NewSearchCityResponse> response);
-
+        //错误返回
         void getDataFailed();
-
     }
 }
