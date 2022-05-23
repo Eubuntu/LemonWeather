@@ -5,6 +5,7 @@ import com.lw.lemonweather.bean.BiYingImgResponse;
 import com.lw.lemonweather.bean.DailyResponse;
 import com.lw.lemonweather.bean.HourlyResponse;
 import com.lw.lemonweather.bean.LifestyleResponse;
+import com.lw.lemonweather.bean.MoreAirFiveResponse;
 import com.lw.lemonweather.bean.NewSearchCityResponse;
 import com.lw.lemonweather.bean.NowResponse;
 import com.lw.lemonweather.bean.SearchCityResponse;
@@ -55,6 +56,15 @@ public interface ApiService {
     Call<AirNowResponse> airNowWeather(@Query("location") String location);
 
     /**
+     * 空气质量5天预报
+     *
+     * @param location 城市id
+     * @return 返回空气质量5天预报数据
+     */
+    @GET("/v7/air/5d?key=806072ffa95d4a5897fcbcf1b5866452")
+    Call<MoreAirFiveResponse> airFiveWeather(@Query("location") String location);
+
+    /**
      * 生活指数
      * @param type 可以控制定向获取那几项数据 全部数据 0, 运动指数	1 ，洗车指数	2 ，穿衣指数	3 ，
      *             钓鱼指数	4 ，紫外线指数  5 ，旅游指数  6，花粉过敏指数	7，舒适度指数	8，
@@ -72,7 +82,7 @@ public interface ApiService {
      * @param mode exact精准搜索 fuzzy 模糊搜索
      * @return
      */
-    @GET("/v2/city/lookup?key=806072ffa95d4a5897fcbcf1b5866452=cn")
+    @GET("/v2/city/lookup?key=806072ffa95d4a5897fcbcf1b5866452&range=cn")
     Call<NewSearchCityResponse> newSearchCity(@Query("location") String location, @Query("mode") String mode);
 
     /**

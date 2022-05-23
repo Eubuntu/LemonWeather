@@ -9,6 +9,9 @@ import com.lw.lemonweather.bean.CityResponse;
 
 import java.util.List;
 
+/**
+ * 区/县列表适配器
+ */
 public class AreaAdapter extends BaseQuickAdapter<CityResponse.CityBean.AreaBean, BaseViewHolder> {
     public AreaAdapter(int layoutResId, @Nullable List<CityResponse.CityBean.AreaBean> data) {
         super(layoutResId, data);

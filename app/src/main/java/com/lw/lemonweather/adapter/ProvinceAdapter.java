@@ -9,6 +9,9 @@ import com.lw.lemonweather.bean.CityResponse;
 
 import java.util.List;
 
+/**
+ * 省列表适配器
+ */
 public class ProvinceAdapter extends BaseQuickAdapter<CityResponse, BaseViewHolder> {
 
     public ProvinceAdapter(int layoutResId, @Nullable List<CityResponse> data) {

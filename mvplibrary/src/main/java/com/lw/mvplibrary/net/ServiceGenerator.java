@@ -69,6 +69,7 @@ public class ServiceGenerator {
         //放入OKHttp，之前说过retrofit是对OkHttp的进一步封装
         //返回这个创建好的API服务
         Retrofit retrofit = new Retrofit.Builder().baseUrl(urlType(type)).addConverterFactory(GsonConverterFactory.create()).client(okHttpClientBuilder.build()).build();
+        //返回创建好的API服务
         return retrofit.create(serviceClass);
     }
 }

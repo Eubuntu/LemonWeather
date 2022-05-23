@@ -10,4 +10,6 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="arc_bg_color">#C6D7F4</color>
+    <color name="arc_progress_color">#FBFEF7</color>
 </resources>

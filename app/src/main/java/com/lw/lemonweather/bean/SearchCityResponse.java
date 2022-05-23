@@ -2,6 +2,9 @@ package com.lw.lemonweather.bean;
 
 import java.util.List;
 
+/**
+ * 搜索城市数据实体
+ */
 public class SearchCityResponse {
     private List<HeWeather6Bean> HeWeather6;
 

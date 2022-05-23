@@ -11,7 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.lw.mvplibrary.R;
 import com.lw.mvplibrary.kit.KnifeKit;
-import com.lw.mvplibrary.view.BaseApplication;
+import com.lw.mvplibrary.BaseApplication;
 
 import butterknife.Unbinder;
 

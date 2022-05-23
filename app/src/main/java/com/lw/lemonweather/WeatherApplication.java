@@ -6,12 +6,10 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
+import com.baidu.mapapi.CoordType;
+import com.baidu.mapapi.SDKInitializer;
 import com.lw.mvplibrary.utils.ActivityManager;
-import com.lw.mvplibrary.view.BaseApplication;
+import com.lw.mvplibrary.BaseApplication;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -30,18 +28,20 @@ public class WeatherApplication extends BaseApplication {
     public static WeatherApplication weatherApplication;
     private static Context context;
     private static ActivityManager activityManager;
+
     private static Activity sActivity;
-    private Handler myHandler;
 
     public static Context getMyContext() {
         return weatherApplication == null ? null : weatherApplication.getApplicationContext();
     }
 
+    private Handler myHandler;
+
     public Handler getMyHandler() {
         return myHandler;
     }
 
-    public void setMyHandler(Handler handler){
+    public void setMyHandler(Handler handler) {
         myHandler = handler;
     }
 
@@ -53,70 +53,82 @@ public class WeatherApplication extends BaseApplication {
         context = getApplicationContext();
         weatherApplication = this;
 
+
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
-            public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle bundle) {
-
+            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
             }
 
             @Override
-            public void onActivityStarted(@NonNull Activity activity) {
+            public void onActivityStarted(Activity activity) {
                 sActivity = activity;
-            }
-
-            @Override
-            public void onActivityResumed(@NonNull Activity activity) {
 
             }
 
             @Override
-            public void onActivityPaused(@NonNull Activity activity) {
+            public void onActivityResumed(Activity activity) {
 
             }
 
             @Override
-            public void onActivityStopped(@NonNull Activity activity) {
+            public void onActivityPaused(Activity activity) {
 
             }
 
             @Override
-            public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle bundle) {
+            public void onActivityStopped(Activity activity) {
 
             }
 
             @Override
-            public void onActivityDestroyed(@NonNull Activity activity) {
+            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+
+            }
+
+            @Override
+            public void onActivityDestroyed(Activity activity) {
 
             }
         });
-        //初始化数据库
-        LitePal.initialize(this);
+
+        LitePal.initialize(this);//初始化
+
+        //在使用SDK各组件之前初始化context信息，传入ApplicationContext
+        SDKInitializer.initialize(this);
+
+        //自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.
+        //包括BD09LL和GCJ02两种坐标，默认是BD09LL坐标。
+        SDKInitializer.setCoordType(CoordType.BD09LL);
     }
 
-    public static ActivityManager getActivityManager(){
+
+    public static ActivityManager getActivityManager() {
         return activityManager;
     }
 
+
+
     @Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
     }
 
-    //static 代码段可以防止内存泄漏
+
+    //static 代码段可以防止内存泄露
     static {
         //设置全局的Header构建器
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
             @Override
             public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
-                layout.setPrimaryColorsId(android.R.color.darker_gray, android.R.color.black);
-                return new ClassicsHeader(context);
+                layout.setPrimaryColorsId(android.R.color.darker_gray, android.R.color.black);//全局设置主题颜色
+                return new ClassicsHeader(context);//.setTimeFormat(new DynamicTimeFormat("更新于 %s"));//指定为经典Header，默认是 贝塞尔雷达Header
             }
         });
         //设置全局的Footer构建器
         SmartRefreshLayout.setDefaultRefreshFooterCreator(new DefaultRefreshFooterCreator() {
             @Override
             public RefreshFooter createRefreshFooter(Context context, RefreshLayout layout) {
-                //指定为经典Footer，默认是BallPulseFooter
+                //指定为经典Footer，默认是 BallPulseFooter
                 return new ClassicsFooter(context).setDrawableSize(20);
             }
         });

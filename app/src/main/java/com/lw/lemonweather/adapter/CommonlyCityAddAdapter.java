@@ -18,8 +18,6 @@ import java.util.List;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 /**
  * 添加城市时搜索返回结果列表适配器
- *
- * @author llw
  */
 public class CommonlyCityAddAdapter extends BaseQuickAdapter<NewSearchCityResponse.LocationBean, BaseViewHolder> {
 

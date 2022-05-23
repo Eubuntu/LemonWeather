@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
     <!--支持侧滑的布局-->
-    <com.mcxtzhang.swipemenulib.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.mcxtzhang.swipemenulib.SwipeMenuLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_50"
         android:clickable="true"
@@ -12,13 +13,13 @@
         <!--显示文本-->
         <TextView
             android:id="@+id/tv_city_name"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?android:attr/selectableItemBackground"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/dp_16"
-            android:text="城市"
-            android:textColor="@color/shallow_black" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/shallow_black"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="城市"/>
 
         <!-- 侧滑菜单的内容  现在里面只有一个按钮 -->
         <Button
@@ -27,14 +28,14 @@
             android:layout_height="match_parent"
             android:background="@color/red"
             android:text="删除"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"/>
 
     </com.mcxtzhang.swipemenulib.SwipeMenuLayout>
     <!--分隔线-->
     <View
+        android:background="@color/line_gray"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:background="@color/line_gray" />
+        android:layout_height="@dimen/dp_1"/>
 </LinearLayout>
 
 

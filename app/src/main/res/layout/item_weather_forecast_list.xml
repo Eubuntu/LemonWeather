@@ -59,5 +59,6 @@
                 android:textColor="@color/temp_min_tx"
                 android:textSize="@dimen/sp_14" />
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

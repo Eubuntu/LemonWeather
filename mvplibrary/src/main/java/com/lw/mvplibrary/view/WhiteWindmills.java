@@ -19,6 +19,9 @@ import com.lw.mvplibrary.R;
 
 import java.lang.ref.WeakReference;
 
+/**
+ * 白色风车
+ */
 public class WhiteWindmills extends View {
     /**
      * 叶片的长度
@@ -102,11 +105,18 @@ public class WhiteWindmills extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        //画扇叶旋转的中心
         drawPivot(canvas);
+        //画扇叶
         drawWindBlade(canvas);
+        //画底部支柱
         drawPillar(canvas);
     }
 
+    /**
+     * 画支柱
+     * @param canvas
+     */
     private void drawPillar(Canvas canvas) {
         mPath.reset();
         //画上下半圆之间的柱形
@@ -126,6 +136,10 @@ public class WhiteWindmills extends View {
         canvas.drawPath(mPath, mPaint);
     }
 
+    /**
+     * 画叶片
+     * @param canvas
+     */
     private void drawWindBlade(Canvas canvas) {
         canvas.save();
         mPath.reset();
@@ -145,16 +159,26 @@ public class WhiteWindmills extends View {
 
     }
 
+    /**
+     * 画风车支点
+     * @param canvas
+     */
     private void drawPivot(Canvas canvas) {
         mPaint.setStyle(Paint.Style.FILL);
         canvas.drawCircle(mCenterX, mCenterY, mPivotRadius, mPaint);
     }
 
+    /**
+     * 开始旋转
+     */
     public void startRotate() {
         stop();
         mHandler.sendEmptyMessageDelayed(0, 10);
     }
 
+    /**
+     * 停止旋转
+     */
     public void stop() {
         mHandler.removeMessages(0);
     }

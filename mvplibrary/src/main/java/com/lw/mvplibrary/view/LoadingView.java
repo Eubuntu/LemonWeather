@@ -14,21 +14,23 @@ import com.lw.mvplibrary.R;
 
 import java.lang.ref.SoftReference;
 
-public class LoadingView extends AppCompatImageView {
-    private int mCenterRotateX;
-    private int mCenterRotateY;
+/**
+ * 加载框
+ */
+public class LoadingView extends androidx.appcompat.widget.AppCompatImageView {
+    private int mCenterRotateX;//图片旋转点x
+    private int mCenterRotateY;//图片旋转点y
     private LoadingRunnable mRunnable;
 
-
-    public LoadingView(@NonNull Context context) {
+    public LoadingView(Context context) {
         this(context, null);
     }
 
-    public LoadingView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public LoadingView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public LoadingView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public LoadingView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -41,24 +43,30 @@ public class LoadingView extends AppCompatImageView {
         mCenterRotateY = bitmap.getHeight() / 2;
     }
 
+    /**
+     * onDraw()之前调用
+     */
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        if (mRunnable == null) {
-            mRunnable = new LoadingRunnable(this);
+        if (mRunnable==null){
+            mRunnable=new LoadingRunnable(this);
         }
-        if (!mRunnable.isLoading) {
+        if (!mRunnable.isLoading){
             mRunnable.start();
         }
     }
 
+    /**
+     * view销毁时调用
+     */
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if (mRunnable != null) {
+        if (mRunnable!=null){
             mRunnable.stop();
         }
-        mRunnable = null;
+        mRunnable=null;
     }
 
     class LoadingRunnable implements Runnable {
@@ -78,14 +86,13 @@ public class LoadingView extends AppCompatImageView {
                 mDegrees += 30f;
                 mMatrix.setRotate(mDegrees, mCenterRotateX, mCenterRotateY);
                 mLoadingViewSoftReference.get().setImageMatrix(mMatrix);
-                if (mDegrees == 360) {
-                    mDegrees = 0f;
+                if (mDegrees==360){
+                    mDegrees=0f;
                 }
                 if (isLoading) {
                     mLoadingViewSoftReference.get().postDelayed(mLoadingViewSoftReference.get().mRunnable, 100);
                 }
             }
-
         }
 
         public void stop() {
@@ -99,4 +106,5 @@ public class LoadingView extends AppCompatImageView {
             }
         }
     }
+
 }

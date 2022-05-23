@@ -9,11 +9,8 @@ import com.lw.mvplibrary.bean.ResidentCity;
 
 import java.util.List;
 
-
 /**
  * 常用城市列表适配器
- *
- * @author llw
  */
 public class CommonlyCityAdapter extends BaseQuickAdapter<ResidentCity, BaseViewHolder> {
     public CommonlyCityAdapter(int layoutResId, @Nullable List<ResidentCity> data) {

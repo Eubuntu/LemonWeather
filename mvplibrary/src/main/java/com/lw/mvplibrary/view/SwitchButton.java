@@ -1124,7 +1124,6 @@ public class SwitchButton extends View implements Checkable {
         }
     };
 
-
     /*******************************************************/
     /**
      * 保存动画状态
@@ -1146,10 +1145,7 @@ public class SwitchButton extends View implements Checkable {
          * 状态背景的半径
          */
         float radius;
-
-        ViewState() {
-        }
-
+        ViewState() {}
         private void copy(ViewState source) {
             this.buttonX = source.buttonX;
             this.checkStateColor = source.checkStateColor;

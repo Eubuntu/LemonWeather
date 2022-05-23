@@ -193,7 +193,6 @@ public class SearchCityActivity extends MvpActivity<SearchCityContract.SearchCit
                 SPUtils.putString(Constant.LOCATION, mList.get(position).getName(), context);
                 //发送消息 Adm2 代表市
                 EventBus.getDefault().post(new SearchCityEvent(mList.get(position).getName(), mList.get(position).getAdm2()));
-
                 finish();
             }
         });

@@ -8,7 +8,9 @@ import com.lw.lemonweather.R;
 import com.lw.lemonweather.bean.CityResponse;
 
 import java.util.List;
-
+/**
+ * 市列表适配器
+ */
 public class CityAdapter extends BaseQuickAdapter<CityResponse.CityBean, BaseViewHolder> {
 
 
