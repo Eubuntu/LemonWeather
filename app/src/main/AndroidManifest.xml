@@ -21,12 +21,6 @@
         android:roundIcon="@mipmap/icon_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.LemonWeather">
-        <activity android:name=".ui.MapWeatherActivity" />
-        <activity android:name=".ui.WarnActivity" />
-        <activity android:name=".ui.MoreLifestyleActivity" />
-        <activity android:name=".ui.MoreAirActivity" />
-        <activity android:name=".ui.MoreDailyActivity" />
-        <activity android:name=".ui.WorldCityActivity" />
         <activity
             android:name=".ui.SplashActivity"
             android:launchMode="singleTask"
@@ -34,7 +28,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -42,6 +35,12 @@
         <activity android:name=".ui.CommonlyUsedCityActivity" />
         <activity android:name=".ui.WorldCityWeatherActivity" />
         <activity android:name=".ui.SearchCityActivity" />
+        <activity android:name=".ui.MapWeatherActivity" />
+        <activity android:name=".ui.WarnActivity" />
+        <activity android:name=".ui.MoreLifestyleActivity" />
+        <activity android:name=".ui.MoreAirActivity" />
+        <activity android:name=".ui.MoreDailyActivity" />
+        <activity android:name=".ui.WorldCityActivity" />
         <activity android:name=".ui.BackgroundManagerActivity" /> <!-- 百度定位AK -->
         <!-- 百度定位AK -->
         <meta-data
