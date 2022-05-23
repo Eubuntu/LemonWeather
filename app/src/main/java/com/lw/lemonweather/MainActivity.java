@@ -1,5 +1,7 @@
 package com.lw.lemonweather;
 
+import static com.lw.mvplibrary.utils.RecyclerViewAnimation.runLayoutAnimationRight;
+
 import android.Manifest;
 import android.animation.Animator;
 import android.content.Intent;
@@ -83,6 +85,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import retrofit2.Response;
 
 public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> implements WeatherContract.IWeatherView {
@@ -134,7 +137,6 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     private String city;
     //城市id，用于查询城市数据  V7版本 中 才有
     private String locationId = null;
-
     //右上角的弹窗
     private PopupWindow mPopupWindow;
     private AnimationUtil animUtil;
@@ -197,6 +199,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     private WhiteWindmills wwSmall;
     private TextView tvWindDirection;
     private TextView tvWindPower;
+    private TextView tvUv;
     private TextView tvComf;
     private TextView tvTrav;
     private TextView tvSport;
@@ -205,6 +208,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     private TextView tvDrsg;
     private TextView tvFlu;
     private ImageView ivAdd;
+
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -227,8 +231,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         EventBus.getDefault().register(this);
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
     //接收
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(SearchCityEvent event) {
 //        //获取weather所有数据
 //        mPresent.weatherData(context, event.mLocation);
@@ -261,6 +265,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         wwSmall = findViewById(R.id.ww_small);
         tvWindDirection = findViewById(R.id.tv_wind_direction);
         tvWindPower = findViewById(R.id.tv_wind_power);
+        tvUv = findViewById(R.id.tv_uv);
         tvComf = findViewById(R.id.tv_comf);
         tvTrav = findViewById(R.id.tv_trav);
         tvSport = findViewById(R.id.tv_sport);
@@ -462,7 +467,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                         recyclerView.setLayoutManager(manager1);
                         recyclerView.setAdapter(cityAdapter);
                         cityAdapter.notifyDataSetChanged();
-                        //runLayoutAnimationRight(recyclerView);
+                        runLayoutAnimationRight(recyclerView);
 
                         cityAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                             @Override
@@ -507,7 +512,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                                     recyclerView.setLayoutManager(manager2);
                                     recyclerView.setAdapter(areaAdapter);
                                     areaAdapter.notifyDataSetChanged();
-                                    //runLayoutAnimationRight(recyclerView);
+                                    runLayoutAnimationRight(recyclerView);
 
                                     areaAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                                         @Override
@@ -544,11 +549,11 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     }
 
     //点击事件  图标的ID也做了更换，点击之后的弹窗也更换了
-    /*@OnClick(R.id.iv_add)
+    @OnClick(R.id.iv_add)
     public void onViewClicked() {
-        //showAddWindow();//更多功能弹窗
+        showAddWindow();//更多功能弹窗
         toggleBright();//计算动画时间
-    }*/
+    }
 
     /**
      * 定位结果返回
@@ -847,7 +852,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
             for (int i = 0; i < data.size(); i++) {
                 switch (data.get(i).getType()) {
                     case "5":
-                        //tvUv.setText("紫外线：" + data.get(i).getText());
+                        tvUv.setText("紫外线：" + data.get(i).getText());
                         break;
                     case "8":
                         tvComf.setText("舒适度：" + data.get(i).getText());

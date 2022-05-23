@@ -10,7 +10,7 @@ import butterknife.Unbinder;
 /**
  * 绑定视图控件ID
  */
-public class Knifekit {
+public class KnifeKit {
 
     //解绑
     public static Unbinder bind(Object target) {

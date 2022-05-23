@@ -8,6 +8,8 @@ import com.lw.lemonweather.bean.LifestyleResponse;
 import com.lw.lemonweather.bean.NewSearchCityResponse;
 import com.lw.lemonweather.bean.NowResponse;
 import com.lw.lemonweather.bean.SearchCityResponse;
+import com.lw.lemonweather.bean.WarningResponse;
+import com.lw.lemonweather.bean.WorldCityResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -24,7 +26,7 @@ public interface ApiService {
      * @param location 城市名
      * @return 返回实况天气数据
      */
-    @GET("/v7/weather/now?key=806072ffa95d4a5897fcbcf1b5866452")
+    @GET("/v7/weather/now?key=806072ffa95d4a5897fcbcf1b5866452&gzip=n")
     Call<NowResponse> nowWeather(@Query("location") String location);
 
     /**
@@ -80,7 +82,25 @@ public interface ApiService {
     @GET("HPImageArchive.aspx?format=js&idx=0&n=1")
     Call<BiYingImgResponse> biying();
 
-    @GET("/find?key=806072ffa95d4a5897fcbcf1b5866452&group=cn&number=10")
-    Call<SearchCityResponse> searchCity(@Query("location") String location);
+/*    @GET("/find?key=806072ffa95d4a5897fcbcf1b5866452&group=cn&number=10")
+    Call<SearchCityResponse> searchCity(@Query("location") String location);*/
+
+    /**
+     * 世界城市
+     *
+     * @param range cn表示国内  world 表示全世界
+     * @return 返回热门城市数据 遗憾的是，现在最多只能返回20条，
+     * 之前是有50条的，后面只能想别的办法来做海外热门城市了，目前就先这样了
+     */
+    @GET("/v2/city/top?key=806072ffa95d4a5897fcbcf1b5866452&number=20")
+    Call<WorldCityResponse> worldCity(@Query("range") String range);
+
+    /**
+     * 当前城市灾害预警
+     * @param location  城市id ，通过搜索城市获得
+     * @return
+     */
+    @GET("/v7/warning/now?key=806072ffa95d4a5897fcbcf1b5866452")
+    Call<WarningResponse> nowWarn(@Query("location") String location);
 
 }

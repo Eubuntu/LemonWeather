@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.lw.mvplibrary.R;
 
-public class RecycleViewAnimation {
+public class RecyclerViewAnimation {
 
     public static void runLayoutAnimation(final RecyclerView recyclerView) {
         final Context context = recyclerView.getContext();

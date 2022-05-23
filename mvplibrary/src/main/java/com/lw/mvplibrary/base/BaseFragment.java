@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.lw.mvplibrary.kit.Knifekit;
+import com.lw.mvplibrary.kit.KnifeKit;
 
 import butterknife.Unbinder;
 
@@ -36,7 +36,7 @@ public abstract class BaseFragment extends Fragment implements UiCallBack {
         layoutInflater = inflater;
         if (rootView == null) {
             rootView = inflater.inflate(getLayoutId(), null);
-            unbinder = Knifekit.bind(this, rootView);
+            unbinder = KnifeKit.bind(this, rootView);
         } else {
             ViewGroup viewGroup = (ViewGroup) rootView.getParent();
             if (viewGroup != null) {

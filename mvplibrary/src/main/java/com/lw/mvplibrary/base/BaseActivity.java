@@ -3,12 +3,14 @@ package com.lw.mvplibrary.base;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.lw.mvplibrary.R;
-import com.lw.mvplibrary.kit.Knifekit;
+import com.lw.mvplibrary.kit.KnifeKit;
 import com.lw.mvplibrary.view.BaseApplication;
 
 import butterknife.Unbinder;
@@ -18,9 +20,11 @@ import butterknife.Unbinder;
  */
 public abstract class BaseActivity extends AppCompatActivity implements UiCallBack {
 
+    private static final int FAST_CLICK_DELAY_TIME = 500;
+    private static long lastClickTime;
     protected Activity context;
     private Unbinder unbinder;
-    private Dialog mDialog;
+    private Dialog mDialog;//加载弹窗
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,7 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity implements UiCallBa
         BaseApplication.getActivityManager().addActivity(this);
         if (getLayoutId() > 0) {
             setContentView(getLayoutId());
-            unbinder = Knifekit.bind(this);
+            unbinder = KnifeKit.bind(this);
         }
         initData(savedInstanceState);
     }
@@ -41,6 +45,13 @@ public abstract class BaseActivity extends AppCompatActivity implements UiCallBa
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
+    //弹窗出现
     public void showLoadingDialog() {
         if (mDialog == null) {
             mDialog = new Dialog(context, R.style.loading_dialog);
@@ -51,6 +62,7 @@ public abstract class BaseActivity extends AppCompatActivity implements UiCallBa
         mDialog.show();
     }
 
+    //弹窗消失
     public void dismissLoadingDialog() {
         if (mDialog != null) {
             mDialog.dismiss();
@@ -58,8 +70,27 @@ public abstract class BaseActivity extends AppCompatActivity implements UiCallBa
         mDialog = null;
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+    //返回
+    public void Back(Toolbar toolbar) {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.finish();
+                if (!isFastClick()) {
+                    context.finish();
+                }
+            }
+        });
+    }
+
+    // 两次点击间隔不能少于500ms
+    public static boolean isFastClick() {
+        boolean flag = true;
+        long currentClickTime = System.currentTimeMillis();
+        if ((currentClickTime - lastClickTime) >= FAST_CLICK_DELAY_TIME) {
+            flag = false;
+        }
+        lastClickTime = currentClickTime;
+        return flag;
     }
 }
