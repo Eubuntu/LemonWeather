@@ -9,7 +9,7 @@ public class AppVersion extends LitePalSupport {
 
 
     /**
-     * name : 好天气
+     * name : 天气
      * version : 1
      * changelog : 新增地图天气
      * updated_at : 1598581575

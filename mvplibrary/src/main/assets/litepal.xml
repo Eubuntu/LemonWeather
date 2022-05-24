@@ -3,7 +3,7 @@
     <!--数据库名称-->
     <dbname value="LemonWeather" />
     <!--数据库版本-->
-    <version value="1" />
+    <version value="4" />
     <!--数据列表  映射模型-->
     <list>
         <mapping class="com.lw.mvplibrary.bean.ResidentCity"/><!--常用城市-->

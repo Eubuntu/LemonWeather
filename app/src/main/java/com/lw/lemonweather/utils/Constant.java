@@ -8,7 +8,7 @@ public class Constant {
     /**
      * 和风天气KEY
      */
-    public static final String API_KEY = "d4a619bfe3244190bfa84bb468c14316";
+    public static final String API_KEY = "806072ffa95d4a5897fcbcf1b5866452";
     /**
      * 更新APP的用户Id
      */
@@ -71,10 +71,12 @@ public class Constant {
      * 今日启动APP的时间
      */
     public static final String START_UP_APP_TIME = "startAppTime";
+
     /**
      * 成功
      */
     public static final String SUCCESS = "success";
+
     /**
      * 壁纸地址
      */
@@ -83,41 +85,15 @@ public class Constant {
      * 壁纸类型  1  壁纸列表  2  每日一图  3  手动上传  4  默认壁纸
      */
     public static final String WALLPAPER_TYPE = "wallpaperType";
+
     /**
      * 每日提示弹窗的背景图
      */
     public static final String EVERYDAY_TIP_IMG = "everydayTipImg";
+
     /**
      * 每日提示弹窗是否弹出
      */
     public static final String EVERYDAY_POP_BOOLEAN = "everydayPopBoolean";
-    /**
-     * 语音搜索是否关闭
-     */
-    public static final String VOICE_SEARCH_BOOLEAN = "voiceSearchBoolean";
-    /**
-     * 播报人
-     */
-    public static final String VOICE_NAME = "voiceName";
-    /**
-     * 语速
-     */
-    public static final String SPEED = "speed";
-    /**
-     * 音调
-     */
-    public static final String PITCH = "pitch";
-    /**
-     * 音量
-     */
-    public static final String VOLUME = "volume";
-    /**
-     * 是否同意隐私协议
-     */
-    public static final String AGREE = "agree";
-    /**
-     * 友盟SDK  AppKey
-     */
-    public static final String U_MENG_APPKEY = "612a33dc4bede245d9edf7c4";
 
 }

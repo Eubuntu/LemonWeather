@@ -24,7 +24,8 @@ public abstract class BaseActivity extends AppCompatActivity implements UiCallBa
     private static long lastClickTime;
     protected Activity context;
     private Unbinder unbinder;
-    private Dialog mDialog;//加载弹窗
+    //加载弹窗
+    private Dialog mDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,7 +52,9 @@ public abstract class BaseActivity extends AppCompatActivity implements UiCallBa
 
     }
 
-    //弹窗出现
+    /**
+     * 弹窗出现
+     */
     public void showLoadingDialog() {
         if (mDialog == null) {
             mDialog = new Dialog(context, R.style.loading_dialog);
@@ -62,7 +65,9 @@ public abstract class BaseActivity extends AppCompatActivity implements UiCallBa
         mDialog.show();
     }
 
-    //弹窗消失
+    /**
+     * 弹窗消失
+     */
     public void dismissLoadingDialog() {
         if (mDialog != null) {
             mDialog.dismiss();
@@ -70,7 +75,10 @@ public abstract class BaseActivity extends AppCompatActivity implements UiCallBa
         mDialog = null;
     }
 
-    //返回
+    /**
+     * 返回
+     * @param toolbar
+     */
     public void Back(Toolbar toolbar) {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

@@ -80,11 +80,11 @@ public abstract class TagAdapter<T> {
 
 
     public void onSelected(int position, View view) {
-        Log.d("llw", "onSelected " + position);
+        Log.d("lw", "onSelected " + position);
     }
 
     public void unSelected(int position, View view) {
-        Log.d("llw", "unSelected " + position);
+        Log.d("lw", "unSelected " + position);
     }
 
     public boolean setSelected(int position, T t) {

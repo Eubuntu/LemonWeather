@@ -13,11 +13,11 @@ import android.view.WindowManager;
  * 弹窗控制
  */
 public class AlertController {
-    private AlertDialog mAlertDialog;
+    private com.lw.mvplibrary.view.dialog.AlertDialog mAlertDialog;
     private Window mWindow;
     private DialogViewHelper mViewHelper;
 
-    public AlertController(AlertDialog alertDialog, Window window) {
+    public AlertController(com.lw.mvplibrary.view.dialog.AlertDialog alertDialog, Window window) {
         mAlertDialog = alertDialog;
         mWindow = window;
     }
@@ -43,7 +43,7 @@ public class AlertController {
         mViewHelper.setOnClickListener(viewId, onClickListener);
     }
 
-    public AlertDialog getDialog() {
+    public com.lw.mvplibrary.view.dialog.AlertDialog getDialog() {
         return mAlertDialog;
     }
 
