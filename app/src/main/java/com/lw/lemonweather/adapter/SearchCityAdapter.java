@@ -20,7 +20,8 @@ public class SearchCityAdapter extends BaseQuickAdapter<NewSearchCityResponse.Lo
     @Override
     protected void convert(BaseViewHolder helper, NewSearchCityResponse.LocationBean item) {
         helper.setText(R.id.tv_city_name, item.getName());
-        helper.addOnClickListener(R.id.tv_city_name);//绑定点击事件
+        //绑定点击事件
+        helper.addOnClickListener(R.id.tv_city_name);
 
     }
 }

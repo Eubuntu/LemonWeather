@@ -4,10 +4,35 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.31203703703703706" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/check_checked_rb.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/check_normal_rb.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/check_style.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/cursor_style.xml" value="0.1685" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/message_red.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/progress_bg.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/selector_bg_img.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/selector_collection.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_blue_8.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_btn_jianbian_bg.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_dash_line.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_dialog_foreground_bg_12.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_gradient_white.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/shape_gray_bg_14.xml" value="0.1685" />
+        <entry key="app/src/main/res/drawable/shape_left_bg.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_orange_8.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_pink_8.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_purple.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_right_bg.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_search_bg.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_splash_bg.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_top_radius_20.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_transparent_12.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_transparent_collection_bg.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/shape_white_5.xml" value="0.1685" />
         <entry key="app/src/main/res/layout/activity_about_us.xml" value="0.12031408308004053" />
+        <entry key="app/src/main/res/layout/activity_background_manager.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_commonly_used_city.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/activity_image.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />

@@ -46,7 +46,6 @@ import butterknife.OnClick;
 /**
  * 查看图片
  *
- * @author llw
  */
 public class ImageActivity extends BaseActivity {
     @BindView(R.id.iv_back)
@@ -87,7 +86,6 @@ public class ImageActivity extends BaseActivity {
         mAdapter = new WallPaperAdapter(R.layout.item_image_list, mList);
         //ViewPager2实现方式
         vp.setAdapter(mAdapter);
-
         vp.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -107,7 +105,6 @@ public class ImageActivity extends BaseActivity {
     public int getLayoutId() {
         return R.layout.activity_image;
     }
-
 
     @OnClick({R.id.iv_back, R.id.btn_setting_wallpaper, R.id.btn_download})
     public void onViewClicked(View view) {
@@ -136,7 +133,6 @@ public class ImageActivity extends BaseActivity {
      * 壁纸适配器
      */
     public class WallPaperAdapter extends BaseQuickAdapter<WallPaper, BaseViewHolder> {
-
         public WallPaperAdapter(int layoutResId, @Nullable List<WallPaper> data) {
             super(layoutResId, data);
         }
@@ -219,7 +215,6 @@ public class ImageActivity extends BaseActivity {
             }
         }).start();
         return bitmap;
-
     }
 
 }

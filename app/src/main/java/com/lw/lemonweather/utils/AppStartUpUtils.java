@@ -8,7 +8,6 @@ import java.util.Date;
 /**
  * APP启动判断工具类
  *
- * @author llw
  */
 public class AppStartUpUtils {
     /**

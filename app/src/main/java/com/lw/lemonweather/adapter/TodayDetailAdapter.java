@@ -22,8 +22,10 @@ public class TodayDetailAdapter extends BaseQuickAdapter<TodayDetailBean, BaseVi
     @Override
     protected void convert(BaseViewHolder helper, TodayDetailBean item) {
         ImageView imageView = helper.getView(R.id.iv_icon);
-        imageView.setImageResource(item.getIcon());//图标
-        helper.setText(R.id.tv_value,item.getValue())//值
-                .setText(R.id.tv_name,item.getName());//名称
+        //图标
+        imageView.setImageResource(item.getIcon());
+        //值//名称
+        helper.setText(R.id.tv_value, item.getValue())
+                .setText(R.id.tv_name, item.getName());
     }
 }

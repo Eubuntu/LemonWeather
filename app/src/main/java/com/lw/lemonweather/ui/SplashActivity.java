@@ -27,13 +27,15 @@ import java.util.List;
  * 欢迎页
  */
 public class SplashActivity extends BaseActivity {
-
-    private RxPermissions rxPermissions;//权限请求框架
+    //权限请求框架
+    private RxPermissions rxPermissions;
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        StatusBarUtil.transparencyBar(context);//透明状态栏
-        permissionVersion();//权限判断
+        //透明状态栏
+        StatusBarUtil.transparencyBar(context);
+        //权限判断
+        permissionVersion();
     }
 
     @Override
@@ -43,7 +45,8 @@ public class SplashActivity extends BaseActivity {
 
     //权限判断
     private void permissionVersion() {
-        if (Build.VERSION.SDK_INT >= 23) {//6.0或6.0以上
+        //6.0或6.0以上
+        if (Build.VERSION.SDK_INT >= 23) {
             //动态权限申请
             permissionsRequest();
         } else {//6.0以下
@@ -53,8 +56,9 @@ public class SplashActivity extends BaseActivity {
     }
 
     //动态权限申请
-    private void permissionsRequest() {//使用这个框架需要制定JDK版本，建议用1.8
-        rxPermissions = new RxPermissions(this);//实例化这个权限请求框架，否则会报错
+    private void permissionsRequest() {
+        //使用这个框架需要制定JDK版本，建议用1.8  实例化这个权限请求框架，否则会报错
+        rxPermissions = new RxPermissions(this);
         rxPermissions.request(Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -63,7 +67,6 @@ public class SplashActivity extends BaseActivity {
                         //得到权限可以进入APP
                         //加载世界国家数据到本地数据库,已有则不加载
                         initCountryData();
-
                     } else {//申请失败
                         finish();
                         ToastUtils.showShortToast(this, "权限未开启");
@@ -75,9 +78,11 @@ public class SplashActivity extends BaseActivity {
 
     private void initCountryData() {
         list = LitePal.findAll(Country.class);
-        if (list.size() > 0) {//有数据了
+        if (list.size() > 0) {
+            //有数据
             goToMain();
-        } else {//第一次加载
+        } else {
+            //第一次加载
             InputStreamReader is = null;
             try {
                 is = new InputStreamReader(getAssets().open("world_country.csv"), "UTF-8");
@@ -97,7 +102,6 @@ public class SplashActivity extends BaseActivity {
                 e.printStackTrace();
             }
         }
-
     }
 
     /**

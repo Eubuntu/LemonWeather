@@ -18,7 +18,6 @@ import java.io.File;
 /**
  * 下载APK广播
  *
- * @author llw
  */
 public class DownloadApkReceiver extends BroadcastReceiver {
 

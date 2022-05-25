@@ -15,7 +15,6 @@ import java.util.List;
 
 /**
  * 壁纸列表适配器
- *
  */
 public class WallPaperAdapter extends BaseQuickAdapter<WallPaperResponse.ResBean.VerticalBean, BaseViewHolder> {
 

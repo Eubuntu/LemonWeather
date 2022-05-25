@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * 分钟级降水 V7
- * @author llw
  */
 public class MinutePrecResponse {
 

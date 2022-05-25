@@ -33,6 +33,7 @@ import retrofit2.Response;
 /**
  * 更多空气质量信息
  *
+ * @author zhanghao
  */
 public class MoreAirActivity extends MvpActivity<MoreAirContract.MoreAirPresenter> implements MoreAirContract.IMoreAirView {
 
@@ -128,18 +129,21 @@ public class MoreAirActivity extends MvpActivity<MoreAirContract.MoreAirPresente
             AirNowResponse.NowBean data = response.body().getNow();
             List<AirNowResponse.StationBean> station = response.body().getStation();
             if (response.body().getNow() != null) {
-                String time = DateUtils.updateTime(response.body().getUpdateTime());//截去前面的字符，保留后面所有的字符，就剩下 22:00
+                //截去前面的字符，保留后面所有的字符，就剩下 22:00
+                String time = DateUtils.updateTime(response.body().getUpdateTime());
                 tvOldTime.setText("最近更新时间：" + WeatherUtil.showTimeInfo(time) + time);
-                showAirBasicData(data);//展示基础数据
-
+                //展示基础数据
+                showAirBasicData(data);
                 //展示检测站列表数据
                 MoreAirStationAdapter mAdapter = new MoreAirStationAdapter(R.layout.item_more_air_station_list, station);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
                 linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 rvStation.setLayoutManager(linearLayoutManager);
                 PagerSnapHelper snapHelper = new PagerSnapHelper();
-                rvStation.setOnFlingListener(null);//避免抛异常
-                snapHelper.attachToRecyclerView(rvStation);//滚动对齐，使RecyclerView像ViewPage一样，一次滑动一项,居中
+                //避免抛异常
+                rvStation.setOnFlingListener(null);
+                //滚动对齐，使RecyclerView像ViewPage一样，一次滑动一项,居中
+                snapHelper.attachToRecyclerView(rvStation);
                 rvStation.setAdapter(mAdapter);
 
             } else {

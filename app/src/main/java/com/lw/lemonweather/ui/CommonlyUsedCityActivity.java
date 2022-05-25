@@ -39,7 +39,6 @@ import retrofit2.Response;
 
 /**
  * 常用城市
- *
  */
 public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.SearchCityPresenter>
         implements SearchCityContract.ISearchCityView {
@@ -100,20 +99,25 @@ public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.Sea
      */
     private void QueryWeather(int position) {
         ResidentCity residentCity = new ResidentCity();
-        residentCity.setLocation(mList.get(position).getName());//地区／城市名称
-        residentCity.setParent_city(mList.get(position).getAdm2());//该地区／城市的上级城市
-        residentCity.setAdmin_area(mList.get(position).getAdm1());//该地区／城市所属行政区域
-        residentCity.setCnty(mList.get(position).getCountry());//该地区／城市所属国家名称
-
-        residentCity.save();//保存数据到数据库中
-        if (residentCity.save()) {//保存成功
+        //地区／城市名称
+        residentCity.setLocation(mList.get(position).getName());
+        //该地区／城市的上级城市
+        residentCity.setParent_city(mList.get(position).getAdm2());
+        //该地区／城市所属行政区域
+        residentCity.setAdmin_area(mList.get(position).getAdm1());
+        //该地区／城市所属国家名称
+        residentCity.setCnty(mList.get(position).getCountry());
+        //保存数据到数据库中
+        residentCity.save();
+        if (residentCity.save()) {
+            //保存成功
             //然后使用之前在搜索城市天气中写好的代码
             SPUtils.putString(Constant.LOCATION, mList.get(position).getName(), context);
             //发送消息
-            EventBus.getDefault().post(new SearchCityEvent(mList.get(position).getName(),
-                    mList.get(position).getAdm2()));
+            EventBus.getDefault().post(new SearchCityEvent(mList.get(position).getName(), mList.get(position).getAdm2()));
             finish();
-        } else {//保存失败
+        } else {
+            //保存失败
             ToastUtils.showShortToast(context, "添加城市失败");
         }
     }
@@ -152,14 +156,20 @@ public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.Sea
      * 根据常用城市数据来进行页面控件显示/隐藏
      */
     private void initHideOrShow() {
-        ivClearSearch.setVisibility(View.GONE);//隐藏清除输入框内容的图标
-        rvSearch.setVisibility(View.GONE);//隐藏搜索结果列表
-        if (cityList != null && cityList.size() > 0) {//有数据
-            rvCommonlyUsed.setVisibility(View.VISIBLE);//显示常用城市列表
-            layNormal.setVisibility(View.GONE);//隐藏没有数据时的布局
+        //隐藏清除输入框内容的图标
+        ivClearSearch.setVisibility(View.GONE);
+        //隐藏搜索结果列表
+        rvSearch.setVisibility(View.GONE);
+        if (cityList != null && cityList.size() > 0) {
+            //有数据//显示常用城市列表
+            rvCommonlyUsed.setVisibility(View.VISIBLE);
+            //隐藏没有数据时的布局
+            layNormal.setVisibility(View.GONE);
         } else {//没数据
-            rvCommonlyUsed.setVisibility(View.GONE);//隐藏常用城市列表
-            layNormal.setVisibility(View.VISIBLE);//显示没有数据时的布局
+            //隐藏常用城市列表
+            rvCommonlyUsed.setVisibility(View.GONE);
+            //显示没有数据时的布局
+            layNormal.setVisibility(View.VISIBLE);
         }
     }
 
@@ -169,10 +179,8 @@ public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.Sea
     private void initCityList() {
         //查询ResidentCity表中所有数据
         cityList = LitePal.findAll(ResidentCity.class);
-
         if (cityList.size() > 0 && cityList != null) {
             mAdapter = new CommonlyCityAdapter(R.layout.item_commonly_city_list, cityList);
-
             rvCommonlyUsed.setLayoutManager(new LinearLayoutManager(context));
             rvCommonlyUsed.setAdapter(mAdapter);
             mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
@@ -182,12 +190,13 @@ public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.Sea
                         case R.id.tv_city_name:
                             SPUtils.putString(Constant.LOCATION, cityList.get(position).getLocation(), context);
                             //发送消息
-                            EventBus.getDefault().post(new SearchCityEvent(cityList.get(position).getLocation(),
-                                    cityList.get(position).getParent_city()));
+                            EventBus.getDefault().post(new SearchCityEvent(cityList.get(position).getLocation(), cityList.get(position).getParent_city()));
                             finish();
                             break;
-                        case R.id.btn_delete://删除
-                            LitePal.delete(ResidentCity.class, cityList.get(position).getId());//删除指定id
+                        //删除
+                        case R.id.btn_delete:
+                            //删除指定id
+                            LitePal.delete(ResidentCity.class, cityList.get(position).getId());
                             initCityList();
                             //删除数据后判断一下显示和隐藏的控件
                             initHideOrShow();
@@ -196,14 +205,11 @@ public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.Sea
 
                 }
             });
-
             mAdapter.notifyDataSetChanged();
         } else {
             rvCommonlyUsed.setVisibility(View.GONE);
             layNormal.setVisibility(View.VISIBLE);
         }
-
-
     }
 
     @Override
@@ -227,11 +233,13 @@ public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.Sea
         if (response.body().getCode().equals(Constant.SUCCESS_CODE)) {
             List<NewSearchCityResponse.LocationBean> data = response.body().getLocation();
             if (data != null && data.size() > 0) {
-                rvCommonlyUsed.setVisibility(View.GONE);//隐藏常用城市列表
+                //隐藏常用城市列表
+                rvCommonlyUsed.setVisibility(View.GONE);
                 mList.clear();
                 mList.addAll(response.body().getLocation());
                 mAdapterAdd.notifyDataSetChanged();
-                rvSearch.setVisibility(View.VISIBLE);//显示搜索城市列表
+                //显示搜索城市列表
+                rvSearch.setVisibility(View.VISIBLE);
                 layNormal.setVisibility(View.GONE);
             } else {
                 ToastUtils.showShortToast(context, "没有找到相关城市");
@@ -247,13 +255,14 @@ public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.Sea
     @Override
     public void getDataFailed() {
         dismissLoadingDialog();//关闭弹窗
-        ToastUtils.showShortToast(context, "网络异常");//这里的context是框架中封装好的，等同于this
+        //这里的context是框架中封装好的，等同于this
+        ToastUtils.showShortToast(context, "网络异常");
     }
-
 
     @OnClick(R.id.iv_clear_search)
     public void onViewClicked() {
-        editQuery.setText("");//置为空
+        //置为空
+        editQuery.setText("");
         initHideOrShow();
     }
 

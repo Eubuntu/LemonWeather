@@ -34,7 +34,9 @@ public class BaseApplication extends Application {
         return activityManager;
     }
 
-    //内容提供器
+    /**
+     * 内容提供器
+     */
     public static Context getContext() {
         return context;
     }

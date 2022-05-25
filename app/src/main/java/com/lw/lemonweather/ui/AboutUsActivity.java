@@ -19,36 +19,43 @@ import com.lw.lemonweather.utils.ToastUtils;
 import com.lw.mvplibrary.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * 关于 Good Weather
+ * 关于 Weather
  */
 public class AboutUsActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    //版本
     @BindView(R.id.tv_version)
-    TextView tvVersion;//版本
+    TextView tvVersion;
+    //博客
     @BindView(R.id.tv_blog)
-    TextView tvBlog;//博客
+    TextView tvBlog;
+    //源码
     @BindView(R.id.tv_code)
-    TextView tvCode;//源码
+    TextView tvCode;
+    //复制邮箱
     @BindView(R.id.tv_copy_email)
-    TextView tvCopyEmail;//复制邮箱
+    TextView tvCopyEmail;
+    //作者
     @BindView(R.id.tv_author)
-    TextView tvAuthor;//作者
+    TextView tvAuthor;
     private ClipboardManager myClipboard;
     private ClipData myClip;
 
     @Override
     public void initData(Bundle savedInstanceState) {
         Back(toolbar);
-        StatusBarUtil.setStatusBarColor(context, com.lw.mvplibrary.R.color.about_bg_color);//白色状态栏
+        //白色状态栏
+        StatusBarUtil.setStatusBarColor(context, com.lw.mvplibrary.R.color.about_bg_color);
         tvVersion.setText(APKVersionInfoUtils.getVerName(context));
-        tvCopyEmail.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
-        tvCopyEmail.getPaint().setAntiAlias(true);//抗锯齿
+        //下划线
+        tvCopyEmail.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+        //抗锯齿
+        tvCopyEmail.getPaint().setAntiAlias(true);
     }
 
     @Override
@@ -56,17 +63,19 @@ public class AboutUsActivity extends BaseActivity {
         return R.layout.activity_about_us;
     }
 
-
     @OnClick({R.id.tv_blog, R.id.tv_code, R.id.tv_copy_email,R.id.tv_author})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.tv_blog://博客地址
-                //jumpUrl("https://blog.csdn.net/qq_38436214/category_9880722.html");
+            //博客地址
+            case R.id.tv_blog:
+                //jumpUrl(");
                 break;
-            case R.id.tv_code://源码地址
-                //jumpUrl("https://github.com/lilongweidev/GoodWeather");
+            //源码地址
+            case R.id.tv_code:
+                //jumpUrl("");
                 break;
-            case R.id.tv_copy_email://复制邮箱
+            //复制邮箱
+            case R.id.tv_copy_email:
                 myClipboard = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
                 myClip = ClipData.newPlainText("text", "123@qq.com");
                 myClipboard.setPrimaryClip(myClip);

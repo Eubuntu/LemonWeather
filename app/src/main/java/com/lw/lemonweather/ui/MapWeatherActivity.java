@@ -92,23 +92,25 @@ import retrofit2.Response;
 
 /**
  * 地图天气
- *
- * @author llw
  */
 
 public class MapWeatherActivity extends MvpActivity<MapWeatherContract.MapWeatherPresenter>
         implements MapWeatherContract.IMapWeatherView {
-
+    //地图控件
     @BindView(R.id.map_view)
-    MapView mapView;//地图控件
+    MapView mapView;
+    //重新定位按钮
     @BindView(R.id.btn_auto_location)
-    FloatingActionButton btnAutoLocation;//重新定位按钮
+    FloatingActionButton btnAutoLocation;
+    //城市
     @BindView(R.id.tv_city)
-    TextView tvCity;//城市
+    TextView tvCity;
+    //天气状态图片描述
     @BindView(R.id.iv_weather)
-    ImageView ivWeather;//天气状态图片描述
+    ImageView ivWeather;
+    //温度
     @BindView(R.id.tv_temperature)
-    TextView tvTemperature;//温度
+    TextView tvTemperature;
     @BindView(R.id.tv_weather_state_tv)
     TextView tvWeatherStateTv;//天气状态文字描述
     @BindView(R.id.tv_wind_info)
@@ -154,12 +156,14 @@ public class MapWeatherActivity extends MvpActivity<MapWeatherContract.MapWeathe
     @BindView(R.id.lay_search)
     RelativeLayout laySearch;//搜索布局
 
-
-    private LocationClient mLocationClient;//定位
-    private BaiduMap mBaiduMap;//百度地图
-
-    private Marker marker;//标点也可以说是覆盖物
-    private BitmapDescriptor bitmap;//标点的图标
+    //定位
+    private LocationClient mLocationClient;
+    //百度地图
+    private BaiduMap mBaiduMap;
+    //标点也可以说是覆盖物
+    private Marker marker;
+    //标点的图标
+    private BitmapDescriptor bitmap;
     private double markerLatitude = 0;//标点纬度
     private double markerLongitude = 0;//标点经度
     private double latitude;//定位纬度
@@ -468,22 +472,20 @@ public class MapWeatherActivity extends MvpActivity<MapWeatherContract.MapWeathe
         edSearch.setVisibility(View.GONE);
         edSearch.setText("");
         ivClose.setVisibility(View.GONE);
-
         LinearLayout.LayoutParams LayoutParams = (LinearLayout.LayoutParams) laySearch.getLayoutParams();
         LayoutParams.width = dip2px(48);
         LayoutParams.height = dip2px(48);
         LayoutParams.setMargins(dip2px(0), dip2px(0), dip2px(0), dip2px(0));
         laySearch.setLayoutParams(LayoutParams);
-
         //隐藏键盘
         InputMethodManager inputMethodManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(this.getWindow().getDecorView().getWindowToken(), 0);
-
         //开始动画
         beginDelayedTransition(laySearch);
-
-        if (markerLatitude != 0) {//自动定位
-            btnAutoLocation.show();//隐藏自动定位按钮
+        if (markerLatitude != 0) {
+            //自动定位
+            btnAutoLocation.show();
+            //隐藏自动定位按钮
         }
     }
 

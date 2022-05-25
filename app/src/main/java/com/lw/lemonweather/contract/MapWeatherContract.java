@@ -17,8 +17,6 @@ import retrofit2.Response;
 
 /**
  * 地图天气订阅器
- *
- * @author llw
  */
 public class MapWeatherContract {
 

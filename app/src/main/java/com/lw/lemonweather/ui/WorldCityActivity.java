@@ -27,7 +27,6 @@ import butterknife.BindView;
 /**
  * 世界城市  列举世界上两百多个国家其中包括地区，
  *
- * @author llw
  */
 public class WorldCityActivity extends BaseActivity {
 

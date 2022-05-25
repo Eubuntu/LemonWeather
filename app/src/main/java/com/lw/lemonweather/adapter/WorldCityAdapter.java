@@ -19,7 +19,7 @@ public class WorldCityAdapter extends BaseQuickAdapter<WorldCityResponse.TopCity
 
     @Override
     protected void convert(BaseViewHolder helper, WorldCityResponse.TopCityListBean item) {
-        helper.setText(R.id.tv_city,item.getName());
+        helper.setText(R.id.tv_city, item.getName());
         helper.addOnClickListener(R.id.tv_city);
     }
 }

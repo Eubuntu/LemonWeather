@@ -19,7 +19,7 @@ public class AreaAdapter extends BaseQuickAdapter<CityResponse.CityBean.AreaBean
 
     @Override
     protected void convert(BaseViewHolder helper, CityResponse.CityBean.AreaBean item) {
-        helper.setText(R.id.tv_city,item.getName());
+        helper.setText(R.id.tv_city, item.getName());
         helper.addOnClickListener(R.id.item_city);
     }
 }

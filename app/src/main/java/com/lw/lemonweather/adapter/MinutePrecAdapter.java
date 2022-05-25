@@ -14,7 +14,6 @@ import java.util.List;
 
 /**
  * 分钟级降水列表适配器
- * @author llw
  */
 public class MinutePrecAdapter extends BaseQuickAdapter<MinutePrecResponse.MinutelyBean, BaseViewHolder> {
 
@@ -28,11 +27,11 @@ public class MinutePrecAdapter extends BaseQuickAdapter<MinutePrecResponse.Minut
         //时间
         helper.setText(R.id.tv_time, WeatherUtil.showTimeInfo(time) + time);
         String type = null;
-        if("rain".equals(item.getType())){
+        if ("rain".equals(item.getType())) {
             type = "雨";
-        }else if("snow".equals(item.getType())){
+        } else if ("snow".equals(item.getType())) {
             type = "雪";
         }
-        helper.setText(R.id.tv_precip_info,item.getPrecip()+"   "+type);
+        helper.setText(R.id.tv_precip_info, item.getPrecip() + "   " + type);
     }
 }

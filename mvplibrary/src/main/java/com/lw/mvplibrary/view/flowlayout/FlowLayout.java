@@ -93,8 +93,8 @@ public class FlowLayout extends ViewGroup {
         int lineWidth = 0;
         int lineHeight = 0;
 
-        //在每一次换行之后记录，是否超过了行数
-        int lineCount = 0;//记录当前的行数
+        //在每一次换行之后记录，是否超过了行数 记录当前的行数
+        int lineCount = 0;
 
         int cCount = getChildCount();
 
@@ -149,7 +149,7 @@ public class FlowLayout extends ViewGroup {
                     if (lineCount == limitLineCount) {
                         setOverFlow(true);
                         break;
-                    }  else {
+                    } else {
                         setOverFlow(false);
                     }
                 }
@@ -177,8 +177,8 @@ public class FlowLayout extends ViewGroup {
         int lineWidth = 0;
         int lineHeight = 0;
 
-        //如果超过规定的行数则不进行绘制
-        int lineCount = 0;//记录当前的行数
+        //如果超过规定的行数则不进行绘制 记录当前的行数
+        int lineCount = 0;
 
         int cCount = getChildCount();
 
@@ -267,7 +267,6 @@ public class FlowLayout extends ViewGroup {
             }
             top += lineHeight;
         }
-
     }
 
     @Override

@@ -53,7 +53,6 @@ public class AlertController {
 
 //-------------------------------------------------------------------------------------------------
 
-
     public static class AlertParams {
 
         public Context mContext;
@@ -69,7 +68,6 @@ public class AlertController {
         public DialogInterface.OnKeyListener mOnKeyListener;
         //文本颜色
         public SparseArray<Integer> mTextColorArray = new SparseArray<>();
-
         //存放文本的更改
         public SparseArray<CharSequence> mTextArray = new SparseArray<>();
         //存放点击事件
@@ -117,9 +115,7 @@ public class AlertController {
                 throw new IllegalArgumentException("please set layout");
             }
             //将对话框布局设置到对话框
-
             alert.getDialog().setContentView(dialogViewHelper.getContentView());
-
             //设置DialogViewHelper辅助类
             alert.setDialogViewHelper(dialogViewHelper);
             //设置文本

@@ -35,40 +35,54 @@ import me.shihao.library.XRadioGroup;
  * 壁纸管理  三种模式，本地壁纸列表、必应每日一图、自己上传图片
  */
 public class BackgroundManagerActivity extends BaseActivity {
-
+    //标题栏返回
     @BindView(R.id.toolbar)
-    Toolbar toolbar;//标题栏返回
+    Toolbar toolbar;
+    //每日一图开关
     @BindView(R.id.wb_everyday)
-    SwitchButton wbEveryday;//每日一图开关
+    SwitchButton wbEveryday;
+    //图片列表
     @BindView(R.id.wb_img_list)
-    SwitchButton wbImgList;//图片列表
+    SwitchButton wbImgList;
+    //手动定义
     @BindView(R.id.wb_custom_)
-    SwitchButton wbCustom;//手动定义
-
-    LiWindow liWindow;//弹窗
-    RxPermissions rxPermissions;//权限请求
-
-    private AnimationUtil animationUtil;//动画工具类
-    private float bgAlpha = 1f;//背景透明度
-    private boolean bright = false;//判断标识
-    private static final long DURATION = 500;//0.5s
-    private static final float START_ALPHA = 0.7f;//开始透明度
-    private static final float END_ALPHA = 1f;//结束透明度
+    SwitchButton wbCustom;
+    //弹窗
+    LiWindow liWindow;
+    //权限请求
+    RxPermissions rxPermissions;
+    //动画工具类
+    private AnimationUtil animationUtil;
+    //背景透明度
+    private float bgAlpha = 1f;
+    //判断标识
+    private boolean bright = false;
+    //0.5s
+    private static final long DURATION = 500;
+    //开始透明度
+    private static final float START_ALPHA = 0.7f;
+    //结束透明度
+    private static final float END_ALPHA = 1f;
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        StatusBarUtil.StatusBarLightMode(this);//高亮状态栏
-        Back(toolbar);//左上角的返回
-        animationUtil = new AnimationUtil();//实例化
+        //高亮状态栏
+        StatusBarUtil.StatusBarLightMode(this);
+        //左上角的返回
+        Back(toolbar);
+        //实例化
+        animationUtil = new AnimationUtil();
         initSwitchButton();
     }
 
     //初始化三个开关按钮  三个只能开一个
     private void initSwitchButton() {
-
-        boolean isEverydayImg = SPUtils.getBoolean(Constant.EVERYDAY_IMG, false, context);//每日图片
-        boolean isImgList = SPUtils.getBoolean(Constant.IMG_LIST, false, context);//图片列表
-        boolean isCustomImg = SPUtils.getBoolean(Constant.CUSTOM_IMG, false, context);//手动定义
+        //每日图片
+        boolean isEverydayImg = SPUtils.getBoolean(Constant.EVERYDAY_IMG, false, context);
+        //图片列表
+        boolean isImgList = SPUtils.getBoolean(Constant.IMG_LIST, false, context);
+        //手动定义
+        boolean isCustomImg = SPUtils.getBoolean(Constant.CUSTOM_IMG, false, context);
         if (isEverydayImg == true) {
             wbEveryday.setChecked(true);
         } else if (isImgList == true) {
@@ -126,7 +140,8 @@ public class BackgroundManagerActivity extends BaseActivity {
     //权限判断
     private void permissionVersion() {
         Intent intent = new Intent();
-        if (Build.VERSION.SDK_INT >= 23) {//6.0或6.0以上
+        //6.0或6.0以上
+        if (Build.VERSION.SDK_INT >= 23) {
             //动态权限申请
             permissionsRequest();
         } else {//6.0以下
@@ -141,16 +156,18 @@ public class BackgroundManagerActivity extends BaseActivity {
 
     }
 
-    //动态权限申请
-    private void permissionsRequest() {//使用这个框架需要制定JDK版本，建议用1.8
+    //动态权限申请 使用这个框架需要制定JDK版本，建议用1.8
+    private void permissionsRequest() {
         rxPermissions = new RxPermissions(context);
         rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 .subscribe(granted -> {
-                    if (granted) {//申请成功
+                    if (granted) {
+                        //申请成功
                         //得到权限之后打开本地相册
                         Intent selectPhotoIntent = CameraUtils.getSelectPhotoIntent();
                         startActivityForResult(selectPhotoIntent, SELECT_PHOTO);
-                    } else {//申请失败
+                    } else {
+                        //申请失败
                         wbCustom.setChecked(false);
                         ToastUtils.showShortToast(this, "权限未开启");
                     }
@@ -201,7 +218,8 @@ public class BackgroundManagerActivity extends BaseActivity {
             SPUtils.putString(Constant.CUSTOM_IMG_PATH, imagePath, context);
             ToastUtils.showShortToast(context, "已更换为你选择的壁纸");
         } else {
-            wbCustom.setChecked(true);//关闭手动定义开关
+            //关闭手动定义开关
+            wbCustom.setChecked(true);
             ToastUtils.showShortToast(context, "图片获取失败");
         }
     }
@@ -293,7 +311,8 @@ public class BackgroundManagerActivity extends BaseActivity {
                 }
             }
         };
-        liWindow.showBottomPopupWindow(view, onDismissListener);//显示弹窗 ，传入关闭弹窗监听
+        //显示弹窗 ，传入关闭弹窗监听
+        liWindow.showBottomPopupWindow(view, onDismissListener);
 
     }
 

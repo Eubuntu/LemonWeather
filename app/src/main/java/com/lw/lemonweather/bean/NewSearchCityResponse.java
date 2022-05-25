@@ -4,8 +4,6 @@ import java.util.List;
 
 /**
  * 搜索城市天气实体  V7
- *
- * @author llw
  */
 public class NewSearchCityResponse {
 

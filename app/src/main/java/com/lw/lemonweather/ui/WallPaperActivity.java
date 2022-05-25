@@ -1,7 +1,5 @@
 package com.lw.lemonweather.ui;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import static com.lw.lemonweather.utils.Constant.SELECT_PHOTO;
 
 import android.content.DialogInterface;
@@ -52,7 +50,6 @@ import retrofit2.Response;
  */
 public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPresenter> implements WallPaperContract.IWallPaperView {
 
-
     /**
      * 标题
      */
@@ -73,7 +70,6 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
      */
     @BindView(R.id.fab_setting)
     FloatingActionButton fabSetting;
-
 
     /**
      * 壁纸数据列表
@@ -108,7 +104,6 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
      */
     AlertDialog bottomSettingDialog = null;
 
-
     @Override
     public void initData(Bundle savedInstanceState) {
         //加载弹窗
@@ -120,7 +115,6 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
         initWallPaperList();
 
     }
-
 
     /**
      * 初始化列表数据
@@ -175,7 +169,6 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
 
     }
 
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_wall_paper;
@@ -201,7 +194,6 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
             ToastUtils.showShortToast(context, "未获取到必应的图片");
         }
     }
-
 
     /**
      * 网络壁纸数据返回
@@ -261,14 +253,12 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
         ToastUtils.showShortToast(context, "请求超时");
     }
 
-
     @OnClick(R.id.fab_setting)
     public void onViewClicked() {
         fabSetting.hide();
         int type = SPUtils.getInt(Constant.WALLPAPER_TYPE, 4, context);
         showSettingDialog(type);
     }
-
 
     /**
      * 壁纸底部弹窗弹窗
@@ -289,7 +279,6 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
                     Intent intent = new Intent(context, ImageActivity.class);
                     intent.putExtra("position", 0);
                     startActivity(intent);
-
                     bottomSettingDialog.dismiss();
                     //每日一图
                 }).setOnClickListener(R.id.lay_everyday_wallpaper, v -> {
@@ -310,7 +299,6 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
                     SPUtils.putString(Constant.WALLPAPER_URL, null, context);
                     bottomSettingDialog.dismiss();
                 });
-
 
         bottomSettingDialog = builder.create();
 
@@ -339,9 +327,7 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
                 iv_default_wallpaper.setVisibility(View.GONE);
                 break;
         }
-
         bottomSettingDialog.show();
-
         //弹窗关闭监听
         bottomSettingDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
@@ -350,7 +336,6 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
             }
         });
     }
-
 
     /**
      * Activity返回结果
@@ -377,7 +362,6 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
                     displayImage(imagePath);
                 }
                 Log.d("result-->", requestCode + "   " + resultCode + "   " + data.getData().toString());
-
                 break;
             default:
                 Log.d("result-->", requestCode + "   " + resultCode + "   " + data.getData().toString());

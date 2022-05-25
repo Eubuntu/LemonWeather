@@ -4,8 +4,6 @@ import java.util.List;
 
 /**
  * 太阳和月亮数据实体
- *
- * @author llw
  */
 
 public class SunMoonResponse {

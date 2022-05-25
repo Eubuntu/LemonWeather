@@ -133,8 +133,8 @@ public class SearchCityActivity extends MvpActivity<SearchCityContract.SearchCit
         //黑色字体
         StatusBarUtil.StatusBarLightMode(context);
         Back(toolbar);
-
-        initView();//初始化页面数据
+        //初始化页面数据
+        initView();
         initAutoComplete("history", editQuery);
     }
 
@@ -293,7 +293,8 @@ public class SearchCityActivity extends MvpActivity<SearchCityContract.SearchCit
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 AutoCompleteTextView view = (AutoCompleteTextView) v;
-                if (hasFocus) {//出现历史输入记录
+                if (hasFocus) {
+                    //出现历史输入记录
                     view.showDropDown();
                 }
             }
@@ -387,7 +388,8 @@ public class SearchCityActivity extends MvpActivity<SearchCityContract.SearchCit
 
         @Override
         public void afterTextChanged(Editable s) {
-            if (!"".equals(s.toString())) {//输入后，显示清除按钮
+            if (!"".equals(s.toString())) {
+                //输入后，显示清除按钮
                 ivClearSearch.setVisibility(View.VISIBLE);
             } else {//隐藏按钮
                 ivClearSearch.setVisibility(View.GONE);
