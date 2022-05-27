@@ -467,7 +467,6 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         }
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -645,9 +644,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         mLocationClient.setLocOption(option);
         //启动定位
         mLocationClient.start();
-
     }
-
 
     /**
      * 城市弹窗
@@ -795,8 +792,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                                         @Override
                                         public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                                             showLoadingDialog();
-                                            district = arealist.get(position).getName();//选中的区/县赋值给这个全局变量
-
+                                            //选中的区/县赋值给这个全局变量
+                                            district = arealist.get(position).getName();
                                             //V7版本中需要先获取到城市ID ,在结果返回值中再进行下一步的数据查询
                                             //切换城市时
                                             mPresent.newSearchCity(district);
@@ -871,11 +868,14 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
             case R.id.iv_map://地图天气
                 startActivity(new Intent(context, MapWeatherActivity.class));
                 break;
-            case R.id.iv_add://更多功能弹窗
-                showAddWindow();//更多功能弹窗
-                toggleBright();//计算动画时间
+            case R.id.iv_add:
+                //更多功能弹窗
+                showAddWindow();
+                //计算动画时间
+                toggleBright();
                 break;
-            case R.id.tv_warn://灾害预警，不一定当前城市就有这个预警，如果有预警的话就可以进入查看详情
+            case R.id.tv_warn:
+                //灾害预警，不一定当前城市就有这个预警，如果有预警的话就可以进入查看详情
                 SPUtils.putBoolean(Constant.FLAG_OTHER_RETURN, false, context);//onViewCli缓存标识
                 Intent intent = new Intent(context, WarnActivity.class);
                 intent.putExtra("warnBodyString", warnBodyString);
@@ -1312,9 +1312,12 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
      */
     @Override
     public void onDestroy() {
-        wwBig.stop();//停止大风车
-        wwSmall.stop();//停止小风车
-        EventBus.getDefault().unregister(this);//解注
+        //停止大风车
+        wwBig.stop();
+        //停止小风车
+        wwSmall.stop();
+        //解注
+        EventBus.getDefault().unregister(this);
         super.onDestroy();
     }
 
@@ -1323,7 +1326,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
      */
     private void showAddWindow() {
         // 设置布局文件
-        mPopupWindow.setContentView(LayoutInflater.from(this).inflate(R.layout.window_add, null));// 为了避免部分机型不显示，我们需要重新设置一下宽高
+        mPopupWindow.setContentView(LayoutInflater.from(this).inflate(R.layout.window_add, null));
+        // 为了避免部分机型不显示，需要重新设置一下宽高
         mPopupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         mPopupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         mPopupWindow.setBackgroundDrawable(new ColorDrawable(0x0000));// 设置pop透明效果

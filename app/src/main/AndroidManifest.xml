@@ -10,8 +10,15 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 读取扩展存储 -->
+    <!--允许访问网络-->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!--允许录音-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!--访问设备状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!--悬浮窗权限，如果使用悬浮窗功能，该权限为必选-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
         android:name=".WeatherApplication"

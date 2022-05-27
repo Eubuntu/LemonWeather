@@ -16,7 +16,6 @@ import java.lang.reflect.Method;
 /**
  * 状态栏工具类
  *
- * @author llw
  */
 public class StatusBarUtil {
     /**

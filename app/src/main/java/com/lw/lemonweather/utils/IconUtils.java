@@ -1,6 +1,5 @@
 package com.lw.lemonweather.utils;
 
-
 import com.lw.lemonweather.R;
 
 public class IconUtils {

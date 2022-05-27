@@ -37,11 +37,11 @@ public class WarnActivity extends BaseActivity {
     @BindView(R.id.rv)
     RecyclerView rv;
 
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void initData(Bundle savedInstanceState) {
-        StatusBarUtil.transparencyBar(context);//透明状态栏
+        //透明状态栏
+        StatusBarUtil.transparencyBar(context);
         Back(toolbar);
         WarningResponse data = new Gson().fromJson(getIntent().getStringExtra("warnBodyString"), WarningResponse.class);
         WarnAdapter mAdapter = new WarnAdapter(R.layout.item_warn_list,data.getWarning());

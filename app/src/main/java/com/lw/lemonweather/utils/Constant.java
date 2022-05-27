@@ -2,6 +2,7 @@ package com.lw.lemonweather.utils;
 
 /**
  * 统一管理缓存中对应的KEY
+ * @author zhanghao
  */
 public class Constant {
 
@@ -71,12 +72,10 @@ public class Constant {
      * 今日启动APP的时间
      */
     public static final String START_UP_APP_TIME = "startAppTime";
-
     /**
      * 成功
      */
     public static final String SUCCESS = "success";
-
     /**
      * 壁纸地址
      */
@@ -85,12 +84,10 @@ public class Constant {
      * 壁纸类型  1  壁纸列表  2  每日一图  3  手动上传  4  默认壁纸
      */
     public static final String WALLPAPER_TYPE = "wallpaperType";
-
     /**
      * 每日提示弹窗的背景图
      */
     public static final String EVERYDAY_TIP_IMG = "everydayTipImg";
-
     /**
      * 每日提示弹窗是否弹出
      */
