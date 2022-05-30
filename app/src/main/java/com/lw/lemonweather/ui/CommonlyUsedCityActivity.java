@@ -64,15 +64,17 @@ public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.Sea
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        StatusBarUtil.setStatusBarColor(context, R.color.white);//白色状态栏
-        StatusBarUtil.StatusBarLightMode(context);//黑色字体
+        //白色状态栏
+        StatusBarUtil.setStatusBarColor(context, R.color.white);
+        //黑色字体
+        StatusBarUtil.StatusBarLightMode(context);
         Back(toolbar);
-
-        initCityList();//初始化常用城市列表
-
-        initQueryAddList();//初始化搜索城市列表
-
-        initEdit();//初始化输入框
+        //初始化常用城市列表
+        initCityList();
+        //初始化搜索城市列表
+        initQueryAddList();
+        //初始化输入框
+        initEdit();
     }
 
     /**
@@ -82,7 +84,6 @@ public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.Sea
         mAdapterAdd = new CommonlyCityAddAdapter(R.layout.item_commonly_city_add_list, mList);
         rvSearch.setLayoutManager(new LinearLayoutManager(context));
         rvSearch.setAdapter(mAdapterAdd);
-
         //点击item时保存到数据库中，同时传递数据到主页面查询出天气
         mAdapterAdd.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
@@ -139,14 +140,16 @@ public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.Sea
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (!s.toString().equals("")) {//输入后，显示清除按钮
+                if (!s.toString().equals("")) {
+                    //输入后，显示清除按钮
                     ivClearSearch.setVisibility(View.VISIBLE);
                     mAdapterAdd.changTxColor(s.toString());
-//                    mPresent.searchCity(context, s.toString());//开始搜索
-                    mPresent.newSearchCity(s.toString());//搜索城市  V7  模糊搜索返回十条数据
-                } else {//隐藏和显示控件
+//                  mPresent.searchCity(context, s.toString());//开始搜索
+                    //搜索城市  V7  模糊搜索返回十条数据
+                    mPresent.newSearchCity(s.toString());
+                } else {
+                    //隐藏和显示控件
                     initHideOrShow();
-
                 }
             }
         });
@@ -254,7 +257,8 @@ public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.Sea
      */
     @Override
     public void getDataFailed() {
-        dismissLoadingDialog();//关闭弹窗
+        //关闭弹窗
+        dismissLoadingDialog();
         //这里的context是框架中封装好的，等同于this
         ToastUtils.showShortToast(context, "网络异常");
     }

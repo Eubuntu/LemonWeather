@@ -150,7 +150,6 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
                     intent.putExtra("position", position - 1);
                     startActivity(intent);
                 }
-
             }
         });
 
