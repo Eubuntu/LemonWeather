@@ -29,7 +29,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <!--地图天气-->
-            <ImageView
+<!--            <ImageView
                 android:id="@+id/iv_map"
                 android:layout_width="@dimen/dp_50"
                 android:layout_height="@dimen/dp_50"
@@ -37,7 +37,7 @@
                 android:layout_alignParentEnd="true"
                 android:background="@drawable/selector_bg_img"
                 android:padding="@dimen/dp_12"
-                android:src="@mipmap/icon_map" />
+                android:src="@mipmap/icon_map" />-->
 
             <TextView
                 android:id="@+id/tv_title"

@@ -5,15 +5,21 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
 import com.lw.lemonweather.MainActivity;
 import com.lw.lemonweather.R;
+import com.lw.lemonweather.bean.BiYingImgResponse;
+import com.lw.lemonweather.contract.SplashContract;
+import com.lw.lemonweather.utils.Constant;
+import com.lw.lemonweather.utils.SPUtils;
 import com.lw.lemonweather.utils.StatusBarUtil;
 import com.lw.lemonweather.utils.ToastUtils;
 import com.lw.mvplibrary.base.BaseActivity;
 import com.lw.mvplibrary.bean.Country;
+import com.lw.mvplibrary.mvp.MvpActivity;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import org.litepal.LitePal;
@@ -23,10 +29,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import retrofit2.Response;
+
 /**
  * 欢迎页
  */
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends MvpActivity<SplashContract.SplashPresenter> implements SplashContract.ISplashView {
     //权限请求框架
     private RxPermissions rxPermissions;
 
@@ -67,6 +75,8 @@ public class SplashActivity extends BaseActivity {
                         //得到权限可以进入APP
                         //加载世界国家数据到本地数据库,已有则不加载
                         initCountryData();
+                        //获取必应壁纸
+                        mPresent.biying();
                     } else {//申请失败
                         finish();
                         ToastUtils.showShortToast(this, "权限未开启");
@@ -119,5 +129,30 @@ public class SplashActivity extends BaseActivity {
         }, 1000);
     }
 
+    @Override
+    protected SplashContract.SplashPresenter createPresent() {
+        return new SplashContract.SplashPresenter();
+    }
 
+    /**
+     * 必应壁纸数据返回
+     *
+     * @param response BiYingImgResponse
+     */
+    @Override
+    public void getBiYingResult(Response<BiYingImgResponse> response) {
+        if (response.body().getImages() != null) {
+            //得到的图片地址是没有前缀的，所以加上前缀否则显示不出来
+            String biyingUrl = "http://cn.bing.com" + response.body().getImages().get(0).getUrl();
+            SPUtils.putString(Constant.EVERYDAY_TIP_IMG,biyingUrl,context);
+
+        } else {
+            ToastUtils.showShortToast(context, "未获取到必应的图片");
+        }
+    }
+
+    @Override
+    public void getDataFailed() {
+        Log.d("Network Error", "网络异常");
+    }
 }

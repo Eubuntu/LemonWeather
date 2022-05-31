@@ -139,14 +139,6 @@ public interface ApiService {
     Call<WarningResponse> nowWarn(@Query("location") String location);
 
     /**
-     * APP版本更新
-     *
-     * @return AppVersion 版本信息返回
-     */
-    @GET("/apps/latest/" + UPDATE_USER_ID + "?api_token=" + UPDATE_API_TOKEN)
-    Call<AppVersion> getAppInfo();
-
-    /**
      * 太阳和月亮  日出日落、月升月落
      *
      * @param location 位置

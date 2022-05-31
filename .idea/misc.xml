@@ -37,12 +37,15 @@
         <entry key="app/src/main/res/layout/activity_image.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_map_weather.xml" value="0.10587639311043566" />
+        <entry key="app/src/main/res/layout/activity_more_air.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/activity_search_city.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.12335359675785208" />
         <entry key="app/src/main/res/layout/activity_wall_paper.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_warn.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/activity_weather_plugin.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_web.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_world_city.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/activity_world_city_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_bottom_wallpaper_setting.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_everyday_tip.xml" value="0.1" />
@@ -60,6 +63,7 @@
         <entry key="app/src/main/res/layout/item_search_city_list.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/item_tv_history.xml" value="0.12685185185185185" />
         <entry key="app/src/main/res/layout/item_wallpaper_bottom_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_wallpaper_list.xml" value="0.16134751773049646" />
         <entry key="app/src/main/res/layout/item_warn_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_weather_forecast_list.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/item_weather_hourly_list.xml" value="0.16134751773049646" />

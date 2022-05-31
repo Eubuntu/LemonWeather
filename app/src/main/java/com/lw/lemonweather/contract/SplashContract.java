@@ -1,8 +1,7 @@
 package com.lw.lemonweather.contract;
 
 import com.lw.lemonweather.api.ApiService;
-import com.lw.lemonweather.bean.NewSearchCityResponse;
-import com.lw.lemonweather.bean.NowResponse;
+import com.lw.lemonweather.bean.BiYingImgResponse;
 import com.lw.mvplibrary.base.BasePresenter;
 import com.lw.mvplibrary.base.BaseView;
 import com.lw.mvplibrary.net.NetCallBack;
@@ -15,47 +14,21 @@ public class SplashContract {
 
     public static class SplashPresenter extends BasePresenter<ISplashView> {
         /**
-         * 实况天气  V7版本
-         *
-         * @param location 城市名
+         * 获取必应  每日一图
          */
-        public void nowWeather(String location) {//这个3 表示使用新的V7API访问地址
-            ApiService service = ServiceGenerator.createService(ApiService.class, 3);
-            service.nowWeather(location).enqueue(new NetCallBack<NowResponse>() {
+        public void biying() {
+            ApiService service = ServiceGenerator.createService(ApiService.class, 1);
+            service.biying().enqueue(new NetCallBack<BiYingImgResponse>() {
                 @Override
-                public void onSuccess(Call<NowResponse> call, Response<NowResponse> response) {
+                public void onSuccess(Call<BiYingImgResponse> call, Response<BiYingImgResponse> response) {
                     if (getView() != null) {
-                        getView().getNowResult(response);
+                        getView().getBiYingResult(response);
                     }
                 }
 
                 @Override
                 public void onFailed() {
                     if (getView() != null) {
-                        getView().getDataFailed();
-                    }
-                }
-            });
-        }
-
-
-        /**
-         * 搜索城市  V7
-         * @param location 城市名
-         */
-        public void newSearchCity(String location) {//注意这里的4表示新的搜索城市地址接口
-            ApiService service = ServiceGenerator.createService(ApiService.class, 4);//指明访问的地址
-            service.newSearchCity(location,"exact").enqueue(new NetCallBack<NewSearchCityResponse>() {
-                @Override
-                public void onSuccess(Call<NewSearchCityResponse> call, Response<NewSearchCityResponse> response) {
-                    if(getView() != null){
-                        getView().getNewSearchCityResult(response);
-                    }
-                }
-
-                @Override
-                public void onFailed() {
-                    if(getView() != null){
                         getView().getDataFailed();
                     }
                 }
@@ -65,13 +38,16 @@ public class SplashContract {
 
     public interface ISplashView extends BaseView {
 
-        //实况天气
-        void getNowResult(Response<NowResponse> response);
-
-        //搜索城市返回数据  V7
-        void getNewSearchCityResult(Response<NewSearchCityResponse> response);
+        /**
+         * 获取必应每日一图返回
+         *
+         * @param response BiYingImgResponse
+         */
+        void getBiYingResult(Response<BiYingImgResponse> response);
 
         //错误返回
         void getDataFailed();
+
     }
+
 }

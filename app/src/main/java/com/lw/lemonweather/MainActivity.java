@@ -54,7 +54,6 @@ import com.lw.lemonweather.adapter.HourlyAdapter;
 import com.lw.lemonweather.adapter.MinutePrecAdapter;
 import com.lw.lemonweather.adapter.ProvinceAdapter;
 import com.lw.lemonweather.bean.AirNowResponse;
-import com.lw.lemonweather.bean.BiYingImgResponse;
 import com.lw.lemonweather.bean.CityResponse;
 import com.lw.lemonweather.bean.DailyResponse;
 import com.lw.lemonweather.bean.HourlyResponse;
@@ -67,7 +66,6 @@ import com.lw.lemonweather.contract.WeatherContract;
 import com.lw.lemonweather.eventbus.SearchCityEvent;
 import com.lw.lemonweather.ui.AboutUsActivity;
 import com.lw.lemonweather.ui.CommonlyUsedCityActivity;
-import com.lw.lemonweather.ui.MapWeatherActivity;
 import com.lw.lemonweather.ui.MoreAirActivity;
 import com.lw.lemonweather.ui.MoreDailyActivity;
 import com.lw.lemonweather.ui.MoreLifestyleActivity;
@@ -118,132 +116,199 @@ import retrofit2.Response;
 
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> implements WeatherContract.IWeatherView, View.OnScrollChangeListener {
-
+    /**
+     * 灾害预警跑马灯
+     */
     @BindView(R.id.tv_warn)
-    TextView tvWarn;//灾害预警跑马灯
+    TextView tvWarn;
+    /**
+     * 星期
+     */
     @BindView(R.id.tv_week)
-    TextView tvWeek;//星期
+    TextView tvWeek;
+    /**
+     * 空气质量
+     */
     @BindView(R.id.tv_air_info)
-    TextView tvAirInfo;//空气质量
+    TextView tvAirInfo;
+    /**
+     * 天气状况
+     */
     @BindView(R.id.tv_info)
-    TextView tvInfo;//天气状况
+    TextView tvInfo;
+    /**
+     * 温度
+     */
     @BindView(R.id.tv_temperature)
-    TextView tvTemperature;//温度
+    TextView tvTemperature;
+    /**
+     * 最高温
+     */
     @BindView(R.id.tv_temp_height)
-    TextView tvTempHeight;//最高温
+    TextView tvTempHeight;
+    /**
+     * 最低温
+     */
     @BindView(R.id.tv_temp_low)
-    TextView tvTempLow;//最低温
+    TextView tvTempLow;
+    //城市
     @BindView(R.id.tv_city)
-    TextView tvCity;//城市
+    TextView tvCity;
+    //最近更新时间
     @BindView(R.id.tv_old_time)
-    TextView tvOldTime;//最近更新时间
+    TextView tvOldTime;
+    //天气预报显示列表
     @BindView(R.id.rv)
-    RecyclerView rv;//天气预报显示列表
+    RecyclerView rv;
+    //紫外线
     @BindView(R.id.tv_uv)
-    TextView tvUv;//紫外线
+    TextView tvUv;
+    //舒适度
     @BindView(R.id.tv_comf)
-    TextView tvComf;//舒适度
+    TextView tvComf;
+    //旅游指数
     @BindView(R.id.tv_trav)
-    TextView tvTrav;//旅游指数
+    TextView tvTrav;
+    //运动指数
     @BindView(R.id.tv_sport)
-    TextView tvSport;//运动指数
+    TextView tvSport;
+    //洗车指数
     @BindView(R.id.tv_cw)
-    TextView tvCw;//洗车指数
+    TextView tvCw;
+    //空气指数
     @BindView(R.id.tv_air)
-    TextView tvAir;//空气指数
+    TextView tvAir;
+    //穿衣指数
     @BindView(R.id.tv_drsg)
-    TextView tvDrsg;//穿衣指数
+    TextView tvDrsg;
+    //感冒指数
     @BindView(R.id.tv_flu)
-    TextView tvFlu;//感冒指数
+    TextView tvFlu;
+    //大风车
     @BindView(R.id.ww_big)
-    WhiteWindmills wwBig;//大风车
+    WhiteWindmills wwBig;
+    //小风车
     @BindView(R.id.ww_small)
-    WhiteWindmills wwSmall;//小风车
+    WhiteWindmills wwSmall;
+    //风向
     @BindView(R.id.tv_wind_direction)
-    TextView tvWindDirection;//风向
+    TextView tvWindDirection;
+    //风力
     @BindView(R.id.tv_wind_power)
-    TextView tvWindPower;//风力
-    @BindView(R.id.iv_map)
-    ImageView ivMap;//地图天气
+    TextView tvWindPower;
+    //更多功能
     @BindView(R.id.iv_add)
-    ImageView ivAdd;//更多功能
+    ImageView ivAdd;
+    //背景图
     @BindView(R.id.bg)
-    ImageView bg;//背景图
+    ImageView bg;
+    //刷新布局
     @BindView(R.id.refresh)
-    SmartRefreshLayout refresh;//刷新布局
+    SmartRefreshLayout refresh;
+    //定位图标
     @BindView(R.id.iv_location)
-    ImageView ivLocation;//定位图标
+    ImageView ivLocation;
+    //逐小时天气显示列表
     @BindView(R.id.rv_hourly)
-    RecyclerView rvHourly;//逐小时天气显示列表
+    RecyclerView rvHourly;
+    //污染指数圆环
     @BindView(R.id.rpb_aqi)
-    RoundProgressBar rpbAqi;//污染指数圆环
+    RoundProgressBar rpbAqi;
+    //PM10
     @BindView(R.id.tv_pm10)
-    TextView tvPm10;//PM10
+    TextView tvPm10;
+    //PM2.5
     @BindView(R.id.tv_pm25)
-    TextView tvPm25;//PM2.5
+    TextView tvPm25;
+    //二氧化氮
     @BindView(R.id.tv_no2)
-    TextView tvNo2;//二氧化氮
+    TextView tvNo2;
+    //二氧化硫
     @BindView(R.id.tv_so2)
-    TextView tvSo2;//二氧化硫
+    TextView tvSo2;
+    //臭氧
     @BindView(R.id.tv_o3)
-    TextView tvO3;//臭氧
+    TextView tvO3;
+    //一氧化碳
     @BindView(R.id.tv_co)
-    TextView tvCo;//一氧化碳
+    TextView tvCo;
+    //标题
     @BindView(R.id.tv_title)
-    TextView tvTitle;//标题
+    TextView tvTitle;
+    //当向上滑动超过这个布局的高度时，改变Toolbar中的TextView的显示文本
     @BindView(R.id.lay_slide_area)
-    LinearLayout laySlideArea;//当向上滑动超过这个布局的高度时，改变Toolbar中的TextView的显示文本
+    LinearLayout laySlideArea;
+    //滑动View
     @BindView(R.id.scroll_view)
-    NestedScrollView scrollView;//滑动View
+    NestedScrollView scrollView;
+    //更多天气预报
     @BindView(R.id.tv_more_daily)
-    TextView tvMoreDaily;//更多天气预报
+    TextView tvMoreDaily;
+    //更多空气信息
     @BindView(R.id.tv_more_air)
-    TextView tvMoreAir;//更多空气信息
+    TextView tvMoreAir;
+    //更多生活建议
     @BindView(R.id.tv_more_lifestyle)
-    TextView tvMoreLifestyle;//更多生活建议
+    TextView tvMoreLifestyle;
+    //降水预告
     @BindView(R.id.tv_precipitation)
-    TextView tvPrecipitation;//降水预告
+    TextView tvPrecipitation;
+    //降水详情
     @BindView(R.id.tv_prec_more)
-    TextView tvPrecMore;//降水详情
+    TextView tvPrecMore;
+    //分钟级降水列表
     @BindView(R.id.rv_prec_detail)
-    RecyclerView rvPrecDetail;//分钟级降水列表
+    RecyclerView rvPrecDetail;
     //图标显示标识,true显示，false不显示,只有定位的时候才为true,切换城市和常用城市都为false
     private boolean flag = true;
 
     //定位器
     public LocationClient mLocationClient = null;
     private MyLocationListener myListener = new MyLocationListener();
-
-    //V7 版本
-    private List<DailyResponse.DailyBean> dailyListV7 = new ArrayList<>();//天气预报数据列表
-    private DailyAdapter mAdapterDailyV7;//天气预报适配器
-    private List<HourlyResponse.HourlyBean> hourlyListV7 = new ArrayList<>();//逐小时天气预报数据列表
-    private HourlyAdapter mAdapterHourlyV7;//逐小时预报适配器
-
-    private List<MinutePrecResponse.MinutelyBean> minutelyList = new ArrayList<>();//分钟级降水数据列表
-    private MinutePrecAdapter mAdapterMinutePrec;//分钟级降水适配器
+    //V7 版本  天气预报数据列表
+    private List<DailyResponse.DailyBean> dailyListV7 = new ArrayList<>();
+    //天气预报适配器
+    private DailyAdapter mAdapterDailyV7;
+    //逐小时天气预报数据列表
+    private List<HourlyResponse.HourlyBean> hourlyListV7 = new ArrayList<>();
+    //逐小时预报适配器
+    private HourlyAdapter mAdapterHourlyV7;
+    //分钟级降水数据列表
+    private List<MinutePrecResponse.MinutelyBean> minutelyList = new ArrayList<>();
+    //分钟级降水适配器
+    private MinutePrecAdapter mAdapterMinutePrec;
     //分钟级降水数据 收缩状态  false 收缩  true 展开
     private boolean state = false;
     //字符串列表
     private List<String> list;
-    private List<CityResponse> provinceList;//省列表数据
-    private List<CityResponse.CityBean> citylist;//市列表数据
-    private List<CityResponse.CityBean.AreaBean> arealist;//区/县列表数据
-    private ProvinceAdapter provinceAdapter;//省数据适配器
-    private CityAdapter cityAdapter;//市数据适配器
-    private AreaAdapter areaAdapter;//县/区数据适配器
-    private String provinceTitle;//标题
-    private LiWindow liWindow;//自定义弹窗
-
-    private String district = null;//区/县  改为全局的静态变量,方便更换城市之后也能进行下拉刷新
-    private String city;//市 国控站点数据  用于请求空气质量
-
-    private String locationId = null;//城市id，用于查询城市数据  V7版本 中 才有
-    private String stationName = null;//空气质量站点 查询空气质量站点才需要
-
-    private String lon = null;//经度
-    private String lat = null;//纬度
-
+    //省列表数据
+    private List<CityResponse> provinceList;
+    //市列表数据
+    private List<CityResponse.CityBean> citylist;
+    //区/县列表数据
+    private List<CityResponse.CityBean.AreaBean> arealist;
+    //省数据适配器
+    private ProvinceAdapter provinceAdapter;
+    //市数据适配器
+    private CityAdapter cityAdapter;
+    //县/区数据适配器
+    private AreaAdapter areaAdapter;
+    //标题
+    private String provinceTitle;
+    //自定义弹窗
+    private LiWindow liWindow;
+    //区/县  改为全局的静态变量,方便更换城市之后也能进行下拉刷新
+    private String district = null;
+    //市 国控站点数据  用于请求空气质量
+    private String city;
+    //城市id，用于查询城市数据  V7版本 中 才有
+    private String locationId = null;
+    //空气质量站点 查询空气质量站点才需要
+    private String stationName = null;
+    //经度
+    private String lon = null;
+    //纬度
+    private String lat = null;
     //右上角的弹窗
     private PopupWindow mPopupWindow;
     private AnimationUtil animUtil;
@@ -252,23 +317,30 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     private static final long DURATION = 500;//0.5s
     private static final float START_ALPHA = 0.7f;//开始透明度
     private static final float END_ALPHA = 1f;//结束透明度
-
-    public boolean flagOther = false;//跳转其他页面时才为true
-    public boolean searchCityData = false;//搜索城市是否传递数据回来
-    private String warnBodyString = null;//灾害预警数据字符串
-
-    private AlertDialog updateAppDialog = null;//应用更新提示弹窗
-
-    private int OPEN_LOCATION = 9527;//进入手机定位设置页面标识
-
-    private AlertDialog everyDayTipDialog = null;//每日提醒弹窗
-
-    private String dialogTemp = null;//弹窗中的今日温度
-    private String dialogWeatherState = null;//弹窗中的天气状态
-    private int dialogWeatherStateCode = 0;//弹窗中的天气状态码
-    private String dialogPrecipitation = null;//弹窗中的降水预告
-    private int dialogTempHeight = 0;//弹窗中今日最高温
-    private int dialogTempLow = 0;//弹窗中今日最低温
+    //跳转其他页面时才为true
+    public boolean flagOther = false;
+    //搜索城市是否传递数据回来
+    public boolean searchCityData = false;
+    //灾害预警数据字符串
+    private String warnBodyString = null;
+    //应用更新提示弹窗
+    private AlertDialog updateAppDialog = null;
+    //进入手机定位设置页面标识
+    private int OPEN_LOCATION = 9527;
+    //每日提醒弹窗
+    private AlertDialog everyDayTipDialog = null;
+    //弹窗中的今日温度
+    private String dialogTemp = null;
+    //弹窗中的天气状态
+    private String dialogWeatherState = null;
+    //弹窗中的天气状态码
+    private int dialogWeatherStateCode = 0;
+    //弹窗中的降水预告
+    private String dialogPrecipitation = null;
+    //弹窗中今日最高温
+    private int dialogTempHeight = 0;
+    //弹窗中今日最低温
+    private int dialogTempLow = 0;
 
     /**
      * 数据初始化
@@ -306,14 +378,14 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
      * 检查APP版本
      */
     private void checkAppVersion() {
-        AppVersion appVersion = LitePal.find(AppVersion.class, 1);//读取第一条数据
-        Log.d("appVersion", new Gson().toJson(appVersion.getVersionShort()));
+        //AppVersion appVersion = LitePal.find(AppVersion.class, 1);//读取第一条数据
+        //Log.d("appVersion", new Gson().toJson(appVersion.getVersionShort()));
 
         if (AppStartUpUtils.isTodayFirstStartApp(context)) {//今天第一次打开APP
-            if (!appVersion.getVersionShort().equals(APKVersionInfoUtils.getVerName(context))) {//提示更新
+           /* if (!appVersion.getVersionShort().equals(APKVersionInfoUtils.getVerName(context))) {//提示更新
                 //更新提示弹窗
                 showUpdateAppDialog(appVersion.getInstall_url(), appVersion.getChangelog());
-            }
+            }*/
             //设置每日提示弹窗
             setTipDialog();
         }
@@ -448,8 +520,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(SearchCityEvent event) {
-        //接收
-        flag = false;//切换城市得到的城市不属于定位，因此这里隐藏定位图标
+        //接收 切换城市得到的城市不属于定位，因此这里隐藏定位图标
+        flag = false;
         //V7版本中需要先获取到城市ID ,在结果返回值中再进行下一步的数据查询
         mPresent.newSearchCity(event.mLocation);//相应事件时
     }
@@ -861,13 +933,10 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
      *
      * @param view 控件
      */
-    @OnClick({R.id.iv_map, R.id.iv_add, R.id.tv_warn, R.id.tv_city, R.id.tv_more_daily,
+    @OnClick({R.id.iv_add, R.id.tv_warn, R.id.tv_city, R.id.tv_more_daily,
             R.id.tv_more_air, R.id.tv_more_lifestyle, R.id.tv_prec_more})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.iv_map://地图天气
-                startActivity(new Intent(context, MapWeatherActivity.class));
-                break;
             case R.id.iv_add:
                 //更多功能弹窗
                 showAddWindow();
@@ -1090,7 +1159,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
             } else {
                 ToastUtils.showShortToast(context, "天气预报数据为空");
             }
-        } else {//异常状态码返回
+        } else {
+            //异常状态码返回
             ToastUtils.showShortToast(context, CodeToStringUtils.WeatherCode(response.body().getCode()));
         }
     }
@@ -1218,7 +1288,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
             if (data != null && data.size() > 0) {
                 warnBodyString = new Gson().toJson(response.body());
                 tvWarn.setText(data.get(0).getTitle() + "   " + data.get(0).getText());//设置滚动标题和内容
-            } else {//没有该城市预警有隐藏掉这个TextView
+            } else {
+                //没有该城市预警有隐藏掉这个TextView
                 tvWarn.setVisibility(View.GONE);
             }
 
@@ -1242,7 +1313,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                 minutelyList.clear();
                 minutelyList.addAll(response.body().getMinutely());
                 mAdapterMinutePrec.notifyDataSetChanged();
-                //checkAppVersion();//检查版本信息
+                checkAppVersion();//检查版本信息
             } else {
                 ToastUtils.showShortToast(context, "分钟级降水数据为空");
             }
