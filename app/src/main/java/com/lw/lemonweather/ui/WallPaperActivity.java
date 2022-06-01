@@ -274,7 +274,6 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
                 .setWidthAndHeight(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
                 //壁纸列表
                 .setOnClickListener(R.id.lay_wallpaper_list, v -> {
-
                     Intent intent = new Intent(context, ImageActivity.class);
                     intent.putExtra("position", 0);
                     startActivity(intent);

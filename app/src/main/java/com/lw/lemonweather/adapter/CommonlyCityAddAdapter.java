@@ -22,7 +22,9 @@ import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
  */
 public class CommonlyCityAddAdapter extends BaseQuickAdapter<NewSearchCityResponse.LocationBean, BaseViewHolder> {
 
-    //关键字
+    /**
+     * 关键字
+     */
     private String edStr;
 
     public CommonlyCityAddAdapter(int layoutResId, @Nullable List<NewSearchCityResponse.LocationBean> data) {
@@ -57,7 +59,6 @@ public class CommonlyCityAddAdapter extends BaseQuickAdapter<NewSearchCityRespon
         edStr = str;
         notifyDataSetChanged();
     }
-
 
     /**
      * 改变一段文本中第一个关键字的文字颜色

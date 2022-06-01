@@ -44,7 +44,7 @@ public class WarnActivity extends BaseActivity {
         StatusBarUtil.transparencyBar(context);
         Back(toolbar);
         WarningResponse data = new Gson().fromJson(getIntent().getStringExtra("warnBodyString"), WarningResponse.class);
-        WarnAdapter mAdapter = new WarnAdapter(R.layout.item_warn_list,data.getWarning());
+        WarnAdapter mAdapter = new WarnAdapter(R.layout.item_warn_list, data.getWarning());
         rv.setLayoutManager(new LinearLayoutManager(context));
         rv.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
@@ -72,12 +72,8 @@ public class WarnActivity extends BaseActivity {
             TextView tvTime = helper.getView(R.id.tv_time);
             String time = DateUtils.updateTime(item.getPubTime());
             tvTime.setText("预警发布时间：" + WeatherUtil.showTimeInfo(time) + time);
-
-            helper.setText(R.id.tv_city, item.getSender())//地区
-                    .setText(R.id.tv_type_name_and_level,
-                            item.getTypeName() + item.getLevel() + "预警")//预警类型名称和等级
-                    .setText(R.id.tv_content, item.getText());//预警详情内容
-
+            //地区 预警类型名称和等级 预警详情内容
+            helper.setText(R.id.tv_city, item.getSender()).setText(R.id.tv_type_name_and_level, item.getTypeName() + item.getLevel() + "预警").setText(R.id.tv_content, item.getText());
         }
     }
 }

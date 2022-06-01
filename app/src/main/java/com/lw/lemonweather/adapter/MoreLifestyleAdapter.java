@@ -11,6 +11,9 @@ import com.lw.lemonweather.bean.LifestyleResponse;
 
 import java.util.List;
 
+/**
+ * 生活建议适配器
+ */
 public class MoreLifestyleAdapter extends BaseQuickAdapter<LifestyleResponse.DailyBean, BaseViewHolder> {
 
     public MoreLifestyleAdapter(int layoutResId, @Nullable List<LifestyleResponse.DailyBean> data) {

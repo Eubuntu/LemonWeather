@@ -373,7 +373,6 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         scrollView.setOnScrollChangeListener(this);
     }
 
-
     /**
      * 检查APP版本
      */
@@ -404,7 +403,6 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         }
         return false;
     }
-
 
     /**
      * 应用更新提示弹窗
@@ -460,7 +458,6 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         //设置天气状态图标
         ImageView weatherStateIcon = everyDayTipDialog.getView(R.id.iv_weather_state);
         WeatherUtil.changeIcon(weatherStateIcon, dialogWeatherStateCode);
-
         //不再弹出
         MaterialCheckBox cb = everyDayTipDialog.getView(R.id.cb_no_pop_up);
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -511,7 +508,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         //设置下载时或者下载完成时，通知栏是否显示
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setTitle("下载新版本");
-        request.setVisibleInDownloadsUi(true);//下载UI
+        //下载UI
+        request.setVisibleInDownloadsUi(true);
         //sdcard目录下的download文件夹
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "LemonWeather.apk");
         //将下载请求放入队列
@@ -525,7 +523,6 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         //V7版本中需要先获取到城市ID ,在结果返回值中再进行下一步的数据查询
         mPresent.newSearchCity(event.mLocation);//相应事件时
     }
-
 
     /**
      * 更换壁纸
@@ -557,13 +554,11 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         }
         updateWallpaper();
     }
-
     //绑定布局文件
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
     }
-
     //绑定Presenter ，这里不绑定会报错
     @Override
     protected WeatherContract.WeatherPresenter createPresent() {
@@ -591,7 +586,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         //逐小时天气预报  24小时
         mAdapterHourlyV7 = new HourlyAdapter(R.layout.item_weather_hourly_list, hourlyListV7);
         LinearLayoutManager managerHourly = new LinearLayoutManager(context);
-        managerHourly.setOrientation(RecyclerView.HORIZONTAL);//设置列表为横向
+        //设置列表为横向
+        managerHourly.setOrientation(RecyclerView.HORIZONTAL);
         rvHourly.setLayoutManager(managerHourly);
         rvHourly.setAdapter(mAdapterHourlyV7);
         //逐小时天气预报列表item点击事件
@@ -621,22 +617,36 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         liWindow = new LiWindow(context);
         final View view = LayoutInflater.from(context).inflate(R.layout.window_forecast_detail, null);
         TextView tv_datetime = view.findViewById(R.id.tv_datetime);
-        TextView tv_tmp_max = view.findViewById(R.id.tv_tmp_max);//最高温
-        TextView tv_tmp_min = view.findViewById(R.id.tv_tmp_min);//最低温
-        TextView tv_uv_index = view.findViewById(R.id.tv_uv_index);//紫外线强度
-        TextView tv_cond_txt_d = view.findViewById(R.id.tv_cond_txt_d);//白天天气状态
-        TextView tv_cond_txt_n = view.findViewById(R.id.tv_cond_txt_n);//晚上天气状态
-        TextView tv_wind_deg = view.findViewById(R.id.tv_wind_deg);//风向360角度
-        TextView tv_wind_dir = view.findViewById(R.id.tv_wind_dir);//风向
-        TextView tv_wind_sc = view.findViewById(R.id.tv_wind_sc);//风力
-        TextView tv_wind_spd = view.findViewById(R.id.tv_wind_spd);//风速
-        TextView tv_cloud = view.findViewById(R.id.tv_cloud);//云量  V7 新增
-        TextView tv_hum = view.findViewById(R.id.tv_hum);//相对湿度
-        TextView tv_pres = view.findViewById(R.id.tv_pres);//大气压强
-        TextView tv_pcpn = view.findViewById(R.id.tv_pcpn);//降水量
-        TextView tv_vis = view.findViewById(R.id.tv_vis);//能见度
-
-        tv_datetime.setText(data.getFxDate() + "   " + DateUtils.Week(data.getFxDate()));//时间日期
+        //最高温
+        TextView tv_tmp_max = view.findViewById(R.id.tv_tmp_max);
+        //最低温
+        TextView tv_tmp_min = view.findViewById(R.id.tv_tmp_min);
+        //紫外线强度
+        TextView tv_uv_index = view.findViewById(R.id.tv_uv_index);
+        //白天天气状态
+        TextView tv_cond_txt_d = view.findViewById(R.id.tv_cond_txt_d);
+        //晚上天气状态
+        TextView tv_cond_txt_n = view.findViewById(R.id.tv_cond_txt_n);
+        //风向360角度
+        TextView tv_wind_deg = view.findViewById(R.id.tv_wind_deg);
+        //风向
+        TextView tv_wind_dir = view.findViewById(R.id.tv_wind_dir);
+        //风力
+        TextView tv_wind_sc = view.findViewById(R.id.tv_wind_sc);
+        //风速
+        TextView tv_wind_spd = view.findViewById(R.id.tv_wind_spd);
+        //云量  V7 新增
+        TextView tv_cloud = view.findViewById(R.id.tv_cloud);
+        //相对湿度
+        TextView tv_hum = view.findViewById(R.id.tv_hum);
+        //大气压强
+        TextView tv_pres = view.findViewById(R.id.tv_pres);
+        //降水量
+        TextView tv_pcpn = view.findViewById(R.id.tv_pcpn);
+        //能见度
+        TextView tv_vis = view.findViewById(R.id.tv_vis);
+        //时间日期
+        tv_datetime.setText(data.getFxDate() + "   " + DateUtils.Week(data.getFxDate()));
         tv_tmp_max.setText(data.getTempMax() + "℃");
         tv_tmp_min.setText(data.getTempMin() + "℃");
         tv_uv_index.setText(data.getUvIndex());
@@ -663,19 +673,31 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     private void showHourlyWindow(HourlyResponse.HourlyBean data) {
         liWindow = new LiWindow(context);
         final View view = LayoutInflater.from(context).inflate(R.layout.window_hourly_detail, null);
-        TextView tv_time = view.findViewById(R.id.tv_time);//时间
-        TextView tv_tem = view.findViewById(R.id.tv_tem);//温度
-        TextView tv_cond_txt = view.findViewById(R.id.tv_cond_txt);//天气状态描述
-        TextView tv_wind_deg = view.findViewById(R.id.tv_wind_deg);//风向360角度
-        TextView tv_wind_dir = view.findViewById(R.id.tv_wind_dir);//风向
-        TextView tv_wind_sc = view.findViewById(R.id.tv_wind_sc);//风力
-        TextView tv_wind_spd = view.findViewById(R.id.tv_wind_spd);//风速
-        TextView tv_hum = view.findViewById(R.id.tv_hum);//相对湿度
-        TextView tv_pres = view.findViewById(R.id.tv_pres);//大气压强
-        TextView tv_pop = view.findViewById(R.id.tv_pop);//降水概率
-        TextView tv_dew = view.findViewById(R.id.tv_dew);//露点温度
-        TextView tv_cloud = view.findViewById(R.id.tv_cloud);//云量
-
+        //时间
+        TextView tv_time = view.findViewById(R.id.tv_time);
+        //温度
+        TextView tv_tem = view.findViewById(R.id.tv_tem);
+        //天气状态描述
+        TextView tv_cond_txt = view.findViewById(R.id.tv_cond_txt);
+        //风向360角度
+        TextView tv_wind_deg = view.findViewById(R.id.tv_wind_deg);
+        //风向
+        TextView tv_wind_dir = view.findViewById(R.id.tv_wind_dir);
+        //风力
+        TextView tv_wind_sc = view.findViewById(R.id.tv_wind_sc);
+        //风速
+        TextView tv_wind_spd = view.findViewById(R.id.tv_wind_spd);
+        //相对湿度
+        TextView tv_hum = view.findViewById(R.id.tv_hum);
+        //大气压强
+        TextView tv_pres = view.findViewById(R.id.tv_pres);
+        //降水概率
+        TextView tv_pop = view.findViewById(R.id.tv_pop);
+        //露点温度
+        TextView tv_dew = view.findViewById(R.id.tv_dew);
+        //云量
+        TextView tv_cloud = view.findViewById(R.id.tv_cloud);
+        //更新时间
         String time = DateUtils.updateTime(data.getFxTime());
 
         tv_time.setText(WeatherUtil.showTimeInfo(time) + time);
@@ -945,7 +967,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                 break;
             case R.id.tv_warn:
                 //灾害预警，不一定当前城市就有这个预警，如果有预警的话就可以进入查看详情
-                SPUtils.putBoolean(Constant.FLAG_OTHER_RETURN, false, context);//onViewCli缓存标识
+                //onViewCli缓存标识
+                SPUtils.putBoolean(Constant.FLAG_OTHER_RETURN, false, context);
                 Intent intent = new Intent(context, WarnActivity.class);
                 intent.putExtra("warnBodyString", warnBodyString);
                 startActivity(intent);
@@ -1063,22 +1086,35 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
      */
     @Override
     public void getNewSearchCityResult(Response<NewSearchCityResponse> response) {
-        refresh.finishRefresh();//关闭刷新
-        mLocationClient.stop();//数据返回后关闭定位
+        //关闭刷新
+        refresh.finishRefresh();
+        //数据返回后关闭定位
+        mLocationClient.stop();
         if (response.body().getCode().equals(Constant.SUCCESS_CODE)) {
             if (response.body().getLocation() != null && response.body().getLocation().size() > 0) {
                 NewSearchCityResponse.LocationBean locationBean = response.body().getLocation().get(0);
-                tvCity.setText(locationBean.getName());//城市
-                locationId = locationBean.getId();//城市Id
-                stationName = locationBean.getAdm2();//上级城市 也是空气质量站点
-                lon = locationBean.getLon();//经度
-                lat = locationBean.getLat();//纬度
-                mPresent.nowWeather(locationId);//查询实况天气
-                mPresent.dailyWeather(locationId);//查询天气预报
-                mPresent.hourlyWeather(locationId);//查询逐小时天气预报
-                mPresent.airNowWeather(locationId);//空气质量
-                mPresent.lifestyle(locationId);//生活指数
-                mPresent.nowWarn(locationId);//灾害预警
+                //城市
+                tvCity.setText(locationBean.getName());
+                //城市Id
+                locationId = locationBean.getId();
+                //上级城市 也是空气质量站点
+                stationName = locationBean.getAdm2();
+                //经度
+                lon = locationBean.getLon();
+                //纬度
+                lat = locationBean.getLat();
+                //查询实况天气
+                mPresent.nowWeather(locationId);
+                //查询天气预报
+                mPresent.dailyWeather(locationId);
+                //查询逐小时天气预报
+                mPresent.hourlyWeather(locationId);
+                //空气质量
+                mPresent.airNowWeather(locationId);
+                //生活指数
+                mPresent.lifestyle(locationId);
+                //灾害预警
+                mPresent.nowWarn(locationId);
                 mPresent.getMinutePrec(lon + "," + lat);
             } else {
                 ToastUtils.showShortToast(context, "数据为空");
@@ -1096,7 +1132,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
      */
     @Override
     public void getNowResult(Response<NowResponse> response) {
-        if (response.body().getCode().equals(Constant.SUCCESS_CODE)) {//200则成功返回数据
+        if (response.body().getCode().equals(Constant.SUCCESS_CODE)) {
+            //200则成功返回数据
             //根据V7版本的原则，只要是200就一定有数据，我们可以不用做判空处理，但是，为了使程序不ANR，还是要做的，信自己得永生
             NowResponse data = response.body();
             if (data != null) {
@@ -1106,27 +1143,36 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                 dialogTemp = data.getNow().getTemp();
                 dialogWeatherState = data.getNow().getText();
                 dialogWeatherStateCode = Integer.parseInt(data.getNow().getIcon());
-
-                tvTemperature.setTypeface(typeface);//使用字体
+                //使用字体
+                tvTemperature.setTypeface(typeface);
                 if (flag) {
-                    ivLocation.setVisibility(View.VISIBLE);//显示定位图标
+                    //显示定位图标
+                    ivLocation.setVisibility(View.VISIBLE);
                 } else {
-                    ivLocation.setVisibility(View.GONE);//显示定位图标
+                    //显示定位图标
+                    ivLocation.setVisibility(View.GONE);
                 }
-                tvWeek.setText(DateUtils.getWeekOfDate(new Date()));//星期
-                tvInfo.setText(data.getNow().getText());//天气状况
-
-                String time = DateUtils.updateTime(data.getUpdateTime());//截去前面的字符，保留后面所有的字符，就剩下 22:00
-
+                //星期
+                tvWeek.setText(DateUtils.getWeekOfDate(new Date()));
+                //天气状况
+                tvInfo.setText(data.getNow().getText());
+                //截去前面的字符，保留后面所有的字符，就剩下 22:00
+                String time = DateUtils.updateTime(data.getUpdateTime());
+                //最近更新时间
                 tvOldTime.setText("最近更新时间：" + WeatherUtil.showTimeInfo(time) + time);
-                tvWindDirection.setText("风向     " + data.getNow().getWindDir());//风向
-                tvWindPower.setText("风力     " + data.getNow().getWindScale() + "级");//风力
-                wwBig.startRotate();//大风车开始转动
-                wwSmall.startRotate();//小风车开始转动
+                //风向
+                tvWindDirection.setText("风向     " + data.getNow().getWindDir());
+                //风力
+                tvWindPower.setText("风力     " + data.getNow().getWindScale() + "级");
+                //大风车开始转动
+                wwBig.startRotate();
+                //小风车开始转动
+                wwSmall.startRotate();
             } else {
                 ToastUtils.showShortToast(context, "暂无实况天气数据");
             }
-        } else {//其他状态返回提示文字
+        } else {
+            //其他状态返回提示文字
             ToastUtils.showShortToast(context, CodeToStringUtils.WeatherCode(response.body().getCode()));
         }
     }
@@ -1144,10 +1190,10 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
             if (data != null && data.size() > 0) {
                 tvTempHeight.setText(data.get(0).getTempMax() + "℃");
                 tvTempLow.setText(" / " + data.get(0).getTempMin() + "℃");
-
-                dialogTempHeight = Integer.parseInt(data.get(0).getTempMax());//弹窗今日最高温
-                dialogTempLow = Integer.parseInt(data.get(0).getTempMin());//弹窗今日最低温
-
+                //弹窗今日最高温
+                dialogTempHeight = Integer.parseInt(data.get(0).getTempMax());
+                //弹窗今日最低温
+                dialogTempLow = Integer.parseInt(data.get(0).getTempMin());
                 //添加数据之前先清除
                 dailyListV7.clear();
                 //添加数据
@@ -1197,18 +1243,28 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         if (response.body().getCode().equals(Constant.SUCCESS_CODE)) {
             AirNowResponse.NowBean data = response.body().getNow();
             if (response.body().getNow() != null) {
-                rpbAqi.setMaxProgress(300);//最大进度，用于计算
-                rpbAqi.setMinText("0");//设置显示最小值
+                //最大进度，用于计算
+                rpbAqi.setMaxProgress(300);
+                //设置显示最小值
+                rpbAqi.setMinText("0");
                 rpbAqi.setMinTextSize(32f);
-                rpbAqi.setMaxText("300");//设置显示最大值
+                //设置显示最大值
+                rpbAqi.setMaxText("300");
                 rpbAqi.setMaxTextSize(32f);
-                rpbAqi.setProgress(Float.valueOf(data.getAqi()));//当前进度
-                rpbAqi.setArcBgColor(getColor(R.color.arc_bg_color));//圆弧的颜色
-                rpbAqi.setProgressColor(getColor(R.color.arc_progress_color));//进度圆弧的颜色
-                rpbAqi.setFirstText(data.getCategory());//空气质量描述 取值范围：优，良，轻度污染，中度污染，重度污染，严重污染
-                rpbAqi.setFirstTextSize(44f);//第一行文本的字体大小
-                rpbAqi.setSecondText(data.getAqi());//空气质量值
-                rpbAqi.setSecondTextSize(64f);//第二行文本的字体大小
+                //当前进度
+                rpbAqi.setProgress(Float.valueOf(data.getAqi()));
+                //圆弧的颜色
+                rpbAqi.setArcBgColor(getColor(R.color.arc_bg_color));
+                //进度圆弧的颜色
+                rpbAqi.setProgressColor(getColor(R.color.arc_progress_color));
+                //空气质量描述 取值范围：优，良，轻度污染，中度污染，重度污染，严重污染
+                rpbAqi.setFirstText(data.getCategory());
+                //第一行文本的字体大小
+                rpbAqi.setFirstTextSize(44f);
+                //空气质量值
+                rpbAqi.setSecondText(data.getAqi());
+                //第二行文本的字体大小
+                rpbAqi.setSecondTextSize(64f);
                 rpbAqi.setMinText("0");
                 rpbAqi.setMinTextColor(getColor(R.color.arc_progress_color));
                 tvAirInfo.setText("空气" + data.getCategory());
@@ -1305,15 +1361,18 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
      */
     @Override
     public void getMinutePrecResult(Response<MinutePrecResponse> response) {
-        dismissLoadingDialog();//关闭加载弹窗
+        //关闭加载弹窗
+        dismissLoadingDialog();
         if (response.body().getCode().equals(Constant.SUCCESS_CODE)) {
             tvPrecipitation.setText(response.body().getSummary());
-            dialogPrecipitation = response.body().getSummary();//弹窗降水预告
+            //弹窗降水预告
+            dialogPrecipitation = response.body().getSummary();
             if (response.body().getMinutely() != null && response.body().getMinutely().size() > 0) {
                 minutelyList.clear();
                 minutelyList.addAll(response.body().getMinutely());
                 mAdapterMinutePrec.notifyDataSetChanged();
-                checkAppVersion();//检查版本信息
+                //检查版本信息
+                checkAppVersion();
             } else {
                 ToastUtils.showShortToast(context, "分钟级降水数据为空");
             }
@@ -1401,14 +1460,21 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         // 为了避免部分机型不显示，需要重新设置一下宽高
         mPopupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         mPopupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-        mPopupWindow.setBackgroundDrawable(new ColorDrawable(0x0000));// 设置pop透明效果
-        mPopupWindow.setAnimationStyle(com.lw.mvplibrary.R.style.pop_add);// 设置pop出入动画
-        mPopupWindow.setFocusable(true);// 设置pop获取焦点，如果为false点击返回按钮会退出当前Activity，如果pop中有Editor的话，focusable必须要为true
-        mPopupWindow.setTouchable(true);// 设置pop可点击，为false点击事件无效，默认为true
-        mPopupWindow.setOutsideTouchable(true);// 设置点击pop外侧消失，默认为false；在focusable为true时点击外侧始终消失
-        mPopupWindow.showAsDropDown(ivAdd, -100, 0);// 相对于 + 号正下面，同时可以设置偏移量
+        // 设置pop透明效果
+        mPopupWindow.setBackgroundDrawable(new ColorDrawable(0x0000));
+        // 设置pop出入动画
+        mPopupWindow.setAnimationStyle(com.lw.mvplibrary.R.style.pop_add);
+        // 设置pop获取焦点，如果为false点击返回按钮会退出当前Activity，如果pop中有Editor的话，focusable必须要为true
+        mPopupWindow.setFocusable(true);
+        // 设置pop可点击，为false点击事件无效，默认为true
+        mPopupWindow.setTouchable(true);
+        // 设置点击pop外侧消失，默认为false；在focusable为true时点击外侧始终消失
+        mPopupWindow.setOutsideTouchable(true);
+        // 相对于 + 号正下面，同时可以设置偏移量
+        mPopupWindow.showAsDropDown(ivAdd, -100, 0);
         // 设置pop关闭监听，用于改变背景透明度
-        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {//关闭弹窗
+        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            //关闭弹窗
             @Override
             public void onDismiss() {
                 toggleBright();
@@ -1422,33 +1488,40 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         TextView residentCity = mPopupWindow.getContentView().findViewById(R.id.tv_resident_city);//常用城市
         TextView aboutUs = mPopupWindow.getContentView().findViewById(R.id.tv_about_us);//关于我们
         TextView setting = mPopupWindow.getContentView().findViewById(R.id.tv_setting);//应用设置
-        changeCity.setOnClickListener(view -> {//切换城市
+        changeCity.setOnClickListener(view -> {
+            //切换城市
             showCityWindow();
             mPopupWindow.dismiss();
         });
-        wallpaper.setOnClickListener(view -> {//壁纸管理
+        wallpaper.setOnClickListener(view -> {
+            //壁纸管理
             startActivity(new Intent(context, WallPaperActivity.class));
             mPopupWindow.dismiss();
         });
-        searchCity.setOnClickListener(view -> {//城市搜索
-            SPUtils.putBoolean(Constant.FLAG_OTHER_RETURN, false, context);//缓存标识
+        searchCity.setOnClickListener(view -> {
+            //城市搜索//缓存标识
+            SPUtils.putBoolean(Constant.FLAG_OTHER_RETURN, false, context);
             startActivity(new Intent(context, SearchCityActivity.class));
             mPopupWindow.dismiss();
         });
-        worldCity.setOnClickListener(view -> {//世界城市
+        worldCity.setOnClickListener(view -> {
+            //世界城市
             startActivity(new Intent(context, WorldCityActivity.class));
             mPopupWindow.dismiss();
         });
         residentCity.setOnClickListener(view -> {//常用城市
-            SPUtils.putBoolean(Constant.FLAG_OTHER_RETURN, false, context);//缓存标识
+            SPUtils.putBoolean(Constant.FLAG_OTHER_RETURN, false, context);
+            //缓存标识
             startActivity(new Intent(context, CommonlyUsedCityActivity.class));
             mPopupWindow.dismiss();
         });
-        aboutUs.setOnClickListener(view -> {//关于我们
+        aboutUs.setOnClickListener(view -> {
+            //关于我们
             startActivity(new Intent(context, AboutUsActivity.class));
             mPopupWindow.dismiss();
         });
-        setting.setOnClickListener(view -> {//应用设置
+        setting.setOnClickListener(view -> {
+            //应用设置
             startActivity(new Intent(context, SettingActivity.class));
             mPopupWindow.dismiss();
         });

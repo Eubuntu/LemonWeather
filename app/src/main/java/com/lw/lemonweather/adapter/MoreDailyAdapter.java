@@ -47,7 +47,6 @@ public class MoreDailyAdapter extends BaseQuickAdapter<DailyResponse.DailyBean, 
                 .setText(R.id.tv_pressure, item.getPressure() + "hPa")
         ;
 
-
         //白天天气状态图片描述
         WeatherUtil.changeIcon(helper.getView(R.id.iv_weather_state_d), Integer.parseInt(item.getIconDay()));
         //晚上天气状态图片描述

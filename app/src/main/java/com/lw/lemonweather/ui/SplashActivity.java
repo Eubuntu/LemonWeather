@@ -145,7 +145,6 @@ public class SplashActivity extends MvpActivity<SplashContract.SplashPresenter> 
             //得到的图片地址是没有前缀的，所以加上前缀否则显示不出来
             String biyingUrl = "http://cn.bing.com" + response.body().getImages().get(0).getUrl();
             SPUtils.putString(Constant.EVERYDAY_TIP_IMG,biyingUrl,context);
-
         } else {
             ToastUtils.showShortToast(context, "未获取到必应的图片");
         }
