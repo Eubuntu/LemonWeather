@@ -10,6 +10,9 @@ import com.lw.mvplibrary.net.ServiceGenerator;
 import retrofit2.Call;
 import retrofit2.Response;
 
+/**
+ * 启动页面订阅器
+ */
 public class SplashContract {
 
     public static class SplashPresenter extends BasePresenter<ISplashView> {

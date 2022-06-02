@@ -175,12 +175,14 @@ public class ImageActivity extends BaseActivity {
                 ToastUtils.showShortToast(context, "图片保存成功");
                 return true;
             } else {
+                Log.d("TAG", "saveImageToGallery: 1");
                 ToastUtils.showShortToast(context, "图片保存失败");
                 return false;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Log.d("TAG", "saveImageToGallery: 2");
         ToastUtils.showShortToast(context, "图片保存失败");
         return false;
     }

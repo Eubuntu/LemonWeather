@@ -43,24 +43,49 @@ import retrofit2.Response;
 public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.SearchCityPresenter>
         implements SearchCityContract.ISearchCityView {
 
+    /**
+     * 输入框
+     */
     @BindView(R.id.edit_query)
-    EditText editQuery;//输入框
+    EditText editQuery;
+    /**
+     * 清除输入框内容的图标
+     */
     @BindView(R.id.iv_clear_search)
-    ImageView ivClearSearch;//清除输入框内容的图标
+    ImageView ivClearSearch;
+    /**
+     * 标题控件
+     */
     @BindView(R.id.toolbar)
-    Toolbar toolbar;//标题控件
+    Toolbar toolbar;
+    /**
+     * 常用城市列表
+     */
     @BindView(R.id.rv_commonly_used)
-    RecyclerView rvCommonlyUsed;//常用城市列表
+    RecyclerView rvCommonlyUsed;
+    /**
+     * 搜索城市列表
+     */
     @BindView(R.id.rv_search)
-    RecyclerView rvSearch;//搜索城市列表
+    RecyclerView rvSearch;
+    /**
+     * 常用城市为空时展示的布局
+     */
     @BindView(R.id.lay_normal)
-    LinearLayout layNormal;//常用城市为空时展示的布局
-
-    CommonlyCityAdapter mAdapter;//常用城市列表适配器
+    LinearLayout layNormal;
+    /**
+     * 常用城市列表适配器
+     */
+    CommonlyCityAdapter mAdapter;
     List<NewSearchCityResponse.LocationBean> mList = new ArrayList<>();
-    CommonlyCityAddAdapter mAdapterAdd;//搜索城市列表适配器
-
-    List<ResidentCity> cityList;//常用城市列表
+    /**
+     * 搜索城市列表适配器
+     */
+    CommonlyCityAddAdapter mAdapterAdd;
+    /**
+     * 常用城市列表
+     */
+    List<ResidentCity> cityList;
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -164,12 +189,12 @@ public class CommonlyUsedCityActivity extends MvpActivity<SearchCityContract.Sea
         //隐藏搜索结果列表
         rvSearch.setVisibility(View.GONE);
         if (cityList != null && cityList.size() > 0) {
-            //有数据//显示常用城市列表
+            //有数据 显示常用城市列表
             rvCommonlyUsed.setVisibility(View.VISIBLE);
             //隐藏没有数据时的布局
             layNormal.setVisibility(View.GONE);
-        } else {//没数据
-            //隐藏常用城市列表
+        } else {
+            //没数据 隐藏常用城市列表
             rvCommonlyUsed.setVisibility(View.GONE);
             //显示没有数据时的布局
             layNormal.setVisibility(View.VISIBLE);

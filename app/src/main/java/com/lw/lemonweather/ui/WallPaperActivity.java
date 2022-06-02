@@ -263,9 +263,9 @@ public class WallPaperActivity extends MvpActivity<WallPaperContract.WallPaperPr
      * 壁纸底部弹窗弹窗
      */
     private void showSettingDialog(int type) {
-
+        //默认弹窗动画
         AlertDialog.Builder builder = new AlertDialog.Builder(context)
-                .addDefaultAnimation()//默认弹窗动画
+                .addDefaultAnimation()
                 .setCancelable(true)
                 .fromBottom(true)
                 //载入布局文件

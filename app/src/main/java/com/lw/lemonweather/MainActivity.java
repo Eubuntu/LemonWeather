@@ -314,9 +314,12 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     private AnimationUtil animUtil;
     private float bgAlpha = 1f;
     private boolean bright = false;
-    private static final long DURATION = 500;//0.5s
-    private static final float START_ALPHA = 0.7f;//开始透明度
-    private static final float END_ALPHA = 1f;//结束透明度
+    //0.5s
+    private static final long DURATION = 500;
+    //开始透明度
+    private static final float START_ALPHA = 0.7f;
+    //结束透明度
+    private static final float END_ALPHA = 1f;
     //跳转其他页面时才为true
     public boolean flagOther = false;
     //搜索城市是否传递数据回来
