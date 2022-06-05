@@ -145,9 +145,7 @@ public class CameraUtils {
                     default:
                         digree = 0;
                         break;
-
                 }
-
             }
             //如果图片不为0
             if (digree != 0) {

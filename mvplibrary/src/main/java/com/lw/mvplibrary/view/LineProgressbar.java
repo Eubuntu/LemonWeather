@@ -15,16 +15,16 @@ import android.view.animation.AccelerateInterpolator;
 import com.lw.mvplibrary.R;
 
 public class LineProgressbar extends View {
-
-    private Paint mPaint;//画笔
-
-    private float mPaintWidth = 6f;//初始画笔宽度
-
-    private int mProgressbarWidth;//控件外边框宽度
-
-    private int mProgressbarHeight;//控件外边框高度
-
-    private int mPercent = 0;//已转化为0至100范围的当前进度，随动画时间改变而改变
+    //画笔
+    private Paint mPaint;
+    //初始画笔宽度
+    private float mPaintWidth = 6f;
+    //控件外边框宽度
+    private int mProgressbarWidth;
+    //控件外边框高度
+    private int mProgressbarHeight;
+    //已转化为0至100范围的当前进度，随动画时间改变而改变
+    private int mPercent = 0;
 
     public LineProgressbar(Context context) {
         super(context);
@@ -76,7 +76,8 @@ public class LineProgressbar extends View {
         int percent = 0;
 
         //得出当前progress占最大进度值百分比（0-100）
-        if (progress.contains(".")) {//float或者double类型
+        if (progress.contains(".")) {
+            //float或者double类型
             percent = ((int) Float.parseFloat(progress) * 10) * 100 / (maxProgress * 10);
         } else {//int类型
             percent = Integer.parseInt(progress) * 100 / maxProgress;

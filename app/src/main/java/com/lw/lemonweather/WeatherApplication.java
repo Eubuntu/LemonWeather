@@ -53,7 +53,6 @@ public class WeatherApplication extends BaseApplication {
         context = getApplicationContext();
         weatherApplication = this;
 
-
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
@@ -62,7 +61,6 @@ public class WeatherApplication extends BaseApplication {
             @Override
             public void onActivityStarted(Activity activity) {
                 sActivity = activity;
-
             }
 
             @Override
@@ -90,15 +88,15 @@ public class WeatherApplication extends BaseApplication {
 
             }
         });
+        //初始化
+        LitePal.initialize(this);
 
-        LitePal.initialize(this);//初始化
-
+        SDKInitializer.setAgreePrivacy(this,true);
         //在使用SDK各组件之前初始化context信息，传入ApplicationContext
-        //SDKInitializer.initialize(this);
-
+        SDKInitializer.initialize(this);
         //自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.
         //包括BD09LL和GCJ02两种坐标，默认是BD09LL坐标。
-        //SDKInitializer.setCoordType(CoordType.BD09LL);
+        SDKInitializer.setCoordType(CoordType.BD09LL);
     }
 
 
@@ -113,15 +111,15 @@ public class WeatherApplication extends BaseApplication {
         super.onConfigurationChanged(newConfig);
     }
 
-
     //static 代码段可以防止内存泄露
     static {
         //设置全局的Header构建器
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
             @Override
             public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
-                layout.setPrimaryColorsId(android.R.color.darker_gray, android.R.color.black);//全局设置主题颜色
-                return new ClassicsHeader(context);//.setTimeFormat(new DynamicTimeFormat("更新于 %s"));//指定为经典Header，默认是 贝塞尔雷达Header
+                //全局设置主题颜色
+                layout.setPrimaryColorsId(android.R.color.darker_gray, android.R.color.black);
+                return new ClassicsHeader(context);
             }
         });
         //设置全局的Footer构建器

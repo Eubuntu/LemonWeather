@@ -243,11 +243,11 @@ public class WeatherUtil {
                 break;
             //浓雾
             case 509:
-                //强浓雾
+            //强浓雾
             case 510:
-                //大雾
+            //大雾
             case 514:
-                //特强浓雾
+            //特强浓雾
             case 515:
                 weatherStateIcon.setBackgroundResource(R.mipmap.icon_509);
                 break;
@@ -309,8 +309,6 @@ public class WeatherUtil {
                 timeInfo = "未知";
             }
         }
-
-
         return timeInfo;
     }
 
@@ -428,7 +426,8 @@ public class WeatherUtil {
             } else if (height < 15) {
                 stringBuffer.append("关怀不是今天才开始，关心也不是今天就结束，希望你注意保暖ヾ(◍°∇°◍)ﾉﾞ");
             }
-        } else {//温差小
+        } else {
+            //温差小
             if (low < 25) {
                 stringBuffer.append("多运动，多喝水，注意补充水分(*￣︶￣)");
             } else if (low < 20) {

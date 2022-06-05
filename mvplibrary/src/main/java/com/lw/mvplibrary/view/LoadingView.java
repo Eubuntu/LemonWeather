@@ -18,8 +18,10 @@ import java.lang.ref.SoftReference;
  * 加载框
  */
 public class LoadingView extends androidx.appcompat.widget.AppCompatImageView {
-    private int mCenterRotateX;//图片旋转点x
-    private int mCenterRotateY;//图片旋转点y
+    //图片旋转点x
+    private int mCenterRotateX;
+    //图片旋转点y
+    private int mCenterRotateY;
     private LoadingRunnable mRunnable;
 
     public LoadingView(Context context) {

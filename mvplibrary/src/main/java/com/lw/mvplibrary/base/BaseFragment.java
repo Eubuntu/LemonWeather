@@ -24,7 +24,8 @@ public abstract class BaseFragment extends Fragment implements UiCallBack {
     protected LayoutInflater layoutInflater;
     protected Activity context;
     private Unbinder unbinder;
-    private Dialog mDialog;//加载弹窗
+    //加载弹窗
+    private Dialog mDialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

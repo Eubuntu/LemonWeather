@@ -2,13 +2,14 @@ package com.lw.lemonweather.utils;
 
 /**
  * 统一管理缓存中对应的KEY
+ * @author zhanghao
  */
 public class Constant {
 
     /**
      * 和风天气KEY
      */
-    public static final String API_KEY = "d4a619bfe3244190bfa84bb468c14316";
+    public static final String API_KEY = "806072ffa95d4a5897fcbcf1b5866452";
     /**
      * 更新APP的用户Id
      */
@@ -91,33 +92,5 @@ public class Constant {
      * 每日提示弹窗是否弹出
      */
     public static final String EVERYDAY_POP_BOOLEAN = "everydayPopBoolean";
-    /**
-     * 语音搜索是否关闭
-     */
-    public static final String VOICE_SEARCH_BOOLEAN = "voiceSearchBoolean";
-    /**
-     * 播报人
-     */
-    public static final String VOICE_NAME = "voiceName";
-    /**
-     * 语速
-     */
-    public static final String SPEED = "speed";
-    /**
-     * 音调
-     */
-    public static final String PITCH = "pitch";
-    /**
-     * 音量
-     */
-    public static final String VOLUME = "volume";
-    /**
-     * 是否同意隐私协议
-     */
-    public static final String AGREE = "agree";
-    /**
-     * 友盟SDK  AppKey
-     */
-    public static final String U_MENG_APPKEY = "612a33dc4bede245d9edf7c4";
 
 }

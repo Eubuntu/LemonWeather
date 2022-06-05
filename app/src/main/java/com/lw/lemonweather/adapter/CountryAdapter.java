@@ -20,7 +20,7 @@ public class CountryAdapter extends BaseQuickAdapter<Country, BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, Country item) {
-        helper.setText(R.id.tv_country_name,item.getName());
+        helper.setText(R.id.tv_country_name, item.getName());
         helper.addOnClickListener(R.id.tv_country_name);
     }
 }

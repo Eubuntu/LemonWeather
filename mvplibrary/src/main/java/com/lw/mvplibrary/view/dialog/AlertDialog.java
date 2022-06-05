@@ -12,7 +12,6 @@ import androidx.annotation.StyleRes;
 
 import com.lw.mvplibrary.R;
 
-
 /**
  * 自定义弹窗
  */
@@ -38,7 +37,6 @@ public class AlertDialog extends Dialog {
         mAlert.setOnClickListener(viewId, onClickListener);
     }
 
-
 //----------------------------------------------------------------------------------------------
 
     public static class Builder {
@@ -47,7 +45,6 @@ public class AlertDialog extends Dialog {
         public Builder(Context context) {
             this(context, R.style.dialog);
         }
-
 
         public Builder(Context context, int themeResId) {
             P = new AlertController.AlertParams(context, themeResId);

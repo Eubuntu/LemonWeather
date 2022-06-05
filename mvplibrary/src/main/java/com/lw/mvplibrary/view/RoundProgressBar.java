@@ -16,8 +16,8 @@ import androidx.annotation.Nullable;
 import com.lw.mvplibrary.R;
 
 public class RoundProgressBar extends View {
-
-    private int mStrokeWidth = dp2px(8);//圆弧的宽度
+    //圆弧的宽度
+    private int mStrokeWidth = dp2px(8);
     private float mStartAngle = 135;//圆弧开始的角度
     private float mAngleSize = 270;//起点角度和终点角度对应的夹角大小
     private int mArcBgColor;//圆弧背景颜色
@@ -38,10 +38,6 @@ public class RoundProgressBar extends View {
     private String mMaxText = "0";//进度最大值
     private int mMaxTextColor = Color.WHITE;//最大值文本的颜色
     private float mMaxTextSize = 32f;//最大值字体大小
-
-
-
-
 
     public RoundProgressBar(Context context) {
         super(context, null);
@@ -203,7 +199,7 @@ public class RoundProgressBar extends View {
         paint.setTextSize(mMinTextSize);
         Rect bounds = new Rect();
         paint.getTextBounds(mMinText, 0, mMinText.length(), bounds);//TextView的高度和宽度
-        canvas.drawText(mMinText, leftX + bounds.width() * 4, bottomY+16, paint);
+        canvas.drawText(mMinText, leftX + bounds.width() * 4, bottomY + 16, paint);
     }
 
     /**
@@ -221,7 +217,7 @@ public class RoundProgressBar extends View {
         paint.setTextSize(mMaxTextSize);
         Rect bounds = new Rect();
         paint.getTextBounds(mMaxText, 0, mMaxText.length(), bounds);//TextView的高度和宽度
-        canvas.drawText(mMaxText, rightX - bounds.width(), bottomY+16, paint);
+        canvas.drawText(mMaxText, rightX - bounds.width(), bottomY + 16, paint);
     }
 
     /**

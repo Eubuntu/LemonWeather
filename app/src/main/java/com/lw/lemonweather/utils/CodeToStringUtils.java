@@ -1,5 +1,9 @@
 package com.lw.lemonweather.utils;
 
+/**
+ * 提示文本
+ * @author zhanghao
+ */
 public class CodeToStringUtils {
 
     public static String WeatherCode(String code) {

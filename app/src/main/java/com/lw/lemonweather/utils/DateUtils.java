@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-
 /**
  * 日期工具类
  */
@@ -26,7 +25,6 @@ public class DateUtils {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return sdf.format(new Date());
     }
-
     /**
      * 获取当前日期
      *
@@ -36,7 +34,6 @@ public class DateUtils {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(new Date());
     }
-
     /**
      * 获取当前日期
      *
@@ -46,7 +43,6 @@ public class DateUtils {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd号");
         return sdf.format(new Date());
     }
-
     /**
      * 获取当前日期  没有分隔符
      *
@@ -56,7 +52,6 @@ public class DateUtils {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         return sdf.format(new Date());
     }
-
     /**
      * 前一天
      *
@@ -73,7 +68,6 @@ public class DateUtils {
         tomorrow = formatter.format(date);
         return tomorrow;
     }
-
     /**
      * 后一天
      *
@@ -90,7 +84,6 @@ public class DateUtils {
         tomorrow = formatter.format(date);
         return tomorrow;
     }
-
     /**
      * 获取当前时间
      *
@@ -100,7 +93,6 @@ public class DateUtils {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         return sdf.format(new Date());
     }
-
     /**
      * 获取当前日期(精确到毫秒)
      *
@@ -110,7 +102,6 @@ public class DateUtils {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
         return sdf.format(new Date());
     }
-
     /**
      * 根据传入的时间，先转换再截取，得到更新时间  传入  "2020-07-16T09:39+08:00"
      *
@@ -129,7 +120,6 @@ public class DateUtils {
         }
         return result;
     }
-
     /**
      * 获取今天是星期几
      *
@@ -146,7 +136,6 @@ public class DateUtils {
         }
         return weekDays[w];
     }
-
     /**
      * 计算星期几
      *
@@ -173,7 +162,6 @@ public class DateUtils {
         }
         return cal.get(Calendar.DAY_OF_WEEK);
     }
-
     /**
      * 根据年月日计算是星期几并与当前日期判断  非昨天、今天、明天 则以星期显示
      *
@@ -219,13 +207,9 @@ public class DateUtils {
                     week = "星期六";
                     break;
             }
-
         }
-
-
         return week;
     }
-
     /**
      * 时间截取
      *
@@ -239,7 +223,6 @@ public class DateUtils {
         result = array[1] + "/" + array[2];
         return result;
     }
-
     /**
      * 时间截取plus
      *
@@ -253,7 +236,6 @@ public class DateUtils {
         result = Integer.parseInt(array[1]) + "月" + Integer.parseInt(array[2]) + "号";
         return result;
     }
-
     /**
      * 将时间戳转化为对应的时间(10位或者13位都可以)
      *
@@ -270,7 +252,6 @@ public class DateUtils {
         }
         return times;
     }
-
     /**
      * 将时间字符串转为时间戳字符串
      *
@@ -284,11 +265,9 @@ public class DateUtils {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Long longTime = sdf.parse(time).getTime() / 1000;
             timestamp = Long.toString(longTime);
-
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return timestamp;
     }
-
 }

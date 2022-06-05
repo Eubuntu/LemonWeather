@@ -39,7 +39,8 @@ public class MoreLifestyleActivity extends MvpActivity<MoreLifestyleContract.Mor
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        StatusBarUtil.transparencyBar(context);//透明状态栏
+        //透明状态栏
+        StatusBarUtil.transparencyBar(context);
         Back(toolbar);
         showLoadingDialog();
         tvTitle.setText(getIntent().getStringExtra("cityName"));

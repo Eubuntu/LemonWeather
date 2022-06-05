@@ -53,12 +53,12 @@
 
                 <TextView
                     android:id="@+id/tv_temp_max"
-                    android:typeface="sans"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="最高温"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/sp_36" />
+                    android:textSize="@dimen/sp_36"
+                    android:typeface="sans" />
 
                 <TextView
                     android:layout_width="wrap_content"

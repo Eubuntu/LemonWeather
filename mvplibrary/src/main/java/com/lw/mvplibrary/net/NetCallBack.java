@@ -9,7 +9,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 /**
  * 网络请求回调
  *
@@ -23,12 +22,15 @@ public abstract class NetCallBack<T> implements Callback<T> {//这里实现了re
         if (response != null && response.body() != null && response.isSuccessful()) {
 
             BaseResponse baseResponse = new Gson().fromJson(new Gson().toJson(response.body()), BaseResponse.class);
-            if(baseResponse.getCode() == 400){
-                Log.e("Warn",baseResponse.getData().toString());
-            }else if (baseResponse.getCode() == 404) {//404
-                Log.e("Warn",baseResponse.getData().toString());
-            }else if(baseResponse.getCode() == 500) {//500
-                Log.e("Warn",baseResponse.getData().toString());
+            if (baseResponse.getCode() == 400) {
+                Log.e("Error", 400 + "");
+                onSuccess(call, response);
+            } else if (baseResponse.getCode() == 404) {//404
+                Log.e("Error", 404 + "");
+                onSuccess(call, response);
+            } else if (baseResponse.getCode() == 500) {//500
+                Log.e("Error", 500 + "");
+                onSuccess(call, response);
             } else {//无异常则返回数据
                 onSuccess(call, response);
             }

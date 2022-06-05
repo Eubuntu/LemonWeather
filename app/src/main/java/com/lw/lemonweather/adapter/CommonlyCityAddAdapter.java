@@ -16,12 +16,15 @@ import com.lw.lemonweather.bean.NewSearchCityResponse;
 import java.util.List;
 
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
+
 /**
  * 添加城市时搜索返回结果列表适配器
  */
 public class CommonlyCityAddAdapter extends BaseQuickAdapter<NewSearchCityResponse.LocationBean, BaseViewHolder> {
 
-    //关键字
+    /**
+     * 关键字
+     */
     private String edStr;
 
     public CommonlyCityAddAdapter(int layoutResId, @Nullable List<NewSearchCityResponse.LocationBean> data) {
@@ -56,7 +59,6 @@ public class CommonlyCityAddAdapter extends BaseQuickAdapter<NewSearchCityRespon
         edStr = str;
         notifyDataSetChanged();
     }
-
 
     /**
      * 改变一段文本中第一个关键字的文字颜色

@@ -20,10 +20,11 @@ public class MoreAirFiveAdapter extends BaseQuickAdapter<MoreAirFiveResponse.Dai
 
     @Override
     protected void convert(BaseViewHolder helper, MoreAirFiveResponse.DailyBean item) {
-        helper.setText(R.id.tv_date_info, DateUtils.Week(item.getFxDate()))//日期描述
-                .setText(R.id.tv_date, DateUtils.dateSplit(item.getFxDate()))//日期
-                .setText(R.id.tv_aqi,item.getAqi())//空气质量指数
-                .setText(R.id.tv_category,item.getCategory())//空气质量描述
-                .setText(R.id.tv_primary, item.getPrimary().equals("NA") ? "无污染" : item.getPrimary());//污染物
+        //日期描述 日期 空气质量指数 空气质量描述 污染物
+        helper.setText(R.id.tv_date_info, DateUtils.Week(item.getFxDate()))
+                .setText(R.id.tv_date, DateUtils.dateSplit(item.getFxDate()))
+                .setText(R.id.tv_aqi, item.getAqi())
+                .setText(R.id.tv_category, item.getCategory())
+                .setText(R.id.tv_primary, item.getPrimary().equals("NA") ? "无污染" : item.getPrimary());
     }
 }

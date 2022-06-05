@@ -4,61 +4,74 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.31203703703703706" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/drawable/cursor_style.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/drawable/shape_gray_bg_14.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/drawable/shape_white_5.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_background_manager.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_commonly_used_city.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_map_weather.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_more_air.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_more_daily.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_more_lifestyle.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_search_city.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_splash.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_warn.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_world_city.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_world_city_weather.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_city_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_commonly_city_add_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_commonly_city_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_country_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_more_air_five_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_more_air_station_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_more_daily_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_more_lifestyle_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_search_city_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_seven_day_daily_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_today_detail.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_tv_history.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_warn_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_weather_forecast_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_weather_hourly_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/item_weather_hourly_world_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/window_add.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/window_city_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/window_forecast_detail.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/window_hourly_detail.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/window_img_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/window_world_city_list.xml" value="0.1" />
-        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/menu/menu_main.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/check_checked_rb.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/check_normal_rb.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/check_style.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/cursor_style.xml" value="0.1685" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/message_red.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/progress_bg.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/selector_bg_img.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/selector_collection.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_blue_8.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_btn_jianbian_bg.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_dash_line.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_dialog_foreground_bg_12.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_gradient_white.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/shape_gray_bg_14.xml" value="0.1685" />
+        <entry key="app/src/main/res/drawable/shape_left_bg.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_orange_8.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_pink_8.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_purple.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_right_bg.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_search_bg.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_splash_bg.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_top_radius_20.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_transparent_12.xml" value="0.166" />
+        <entry key="app/src/main/res/drawable/shape_transparent_collection_bg.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/shape_white_5.xml" value="0.1685" />
+        <entry key="app/src/main/res/layout/activity_about_us.xml" value="0.12031408308004053" />
+        <entry key="app/src/main/res/layout/activity_background_manager.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_commonly_used_city.xml" value="0.16894630192502533" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.16134751773049646" />
+        <entry key="app/src/main/res/layout/activity_image.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_map_weather.xml" value="0.10587639311043566" />
+        <entry key="app/src/main/res/layout/activity_more_air.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/activity_search_city.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.12335359675785208" />
+        <entry key="app/src/main/res/layout/activity_wall_paper.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_warn.xml" value="0.16894630192502533" />
+        <entry key="app/src/main/res/layout/activity_weather_plugin.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_web.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_world_city.xml" value="0.16894630192502533" />
+        <entry key="app/src/main/res/layout/activity_world_city_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/dialog_bottom_wallpaper_setting.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/dialog_everyday_tip.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/dialog_tip.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/dialog_update_app_tip.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_city_list.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/item_commonly_city_add_list.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/item_commonly_city_list.xml" value="0.16894630192502533" />
+        <entry key="app/src/main/res/layout/item_image_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_more_air_five_list.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_more_air_station_list.xml" value="0.16894630192502533" />
+        <entry key="app/src/main/res/layout/item_more_daily_list.xml" value="0.16894630192502533" />
+        <entry key="app/src/main/res/layout/item_more_lifestyle_list.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_prec_detail_list.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_search_city_list.xml" value="0.16894630192502533" />
+        <entry key="app/src/main/res/layout/item_tv_history.xml" value="0.12685185185185185" />
+        <entry key="app/src/main/res/layout/item_wallpaper_bottom_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_wallpaper_list.xml" value="0.16134751773049646" />
+        <entry key="app/src/main/res/layout/item_warn_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_weather_forecast_list.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/item_weather_hourly_list.xml" value="0.16134751773049646" />
         <entry key="app/src/main/res/layout/window_add.xml" value="0.25" />
         <entry key="app/src/main/res/layout/window_city_list.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/window_forecast_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/window_hourly_detail.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/window_img_list.xml" value="0.1" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.16894630192502533" />
         <entry key="mvplibrary/src/main/res/drawable-v21/bg_white.xml" value="0.135" />
         <entry key="mvplibrary/src/main/res/drawable-v21/bg_wihte.xml" value="0.135" />
@@ -72,7 +85,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
