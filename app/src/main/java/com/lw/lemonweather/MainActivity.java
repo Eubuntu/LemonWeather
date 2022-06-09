@@ -7,6 +7,7 @@ import android.animation.Animator;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.location.LocationManager;
@@ -91,6 +92,9 @@ import com.lw.mvplibrary.utils.SizeUtils;
 import com.lw.mvplibrary.view.RoundProgressBar;
 import com.lw.mvplibrary.view.WhiteWindmills;
 import com.lw.mvplibrary.view.dialog.AlertDialog;
+import com.qweather.plugin.view.HeContent;
+import com.qweather.plugin.view.LeftLargeView;
+import com.qweather.plugin.view.QWeatherConfig;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import org.greenrobot.eventbus.EventBus;
