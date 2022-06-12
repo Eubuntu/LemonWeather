@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.lw.lemonweather">
     <!-- 以下权限与application标签是平级的 -->
     <!-- 这个权限用于进行网络定位 -->
@@ -8,6 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 读取扩展存储 -->
     <!--允许访问网络-->
@@ -19,7 +21,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <!--悬浮窗权限，如果使用悬浮窗功能，该权限为必选-->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-
     <application
         android:name=".WeatherApplication"
         android:allowBackup="true"
@@ -78,15 +79,29 @@
         <!-- Android7.0以后读取文件需要配置Provider -->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.lw.goodweather.fileprovider"
+            android:authorities="com.lw.lemonweather.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
-
             <!-- 元数据 -->
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <!--天气小组件-->
+        <receiver
+            android:name=".widget.WightProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_config" >
+            </meta-data>
+        </receiver>
+        <service android:name="com.lw.lemonweather.plugin.TimerService"></service>
+
     </application>
 
 </manifest>

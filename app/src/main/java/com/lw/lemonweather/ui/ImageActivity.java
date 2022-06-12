@@ -153,7 +153,9 @@ public class ImageActivity extends BaseActivity {
      */
     public boolean saveImageToGallery(Context context, Bitmap bitmap) {
         // 首先保存图片
-        String filePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "good_weather";
+        //String filePath = Environment.getExternalStorageDirectory() + File.separator + "lemon_weather";
+        String filePath = context.getFilesDir().getPath() + File.separator + "lemon_weather";
+        Log.d("TAG", "saveImageToGallery: "+filePath);
         File appDir = new File(filePath);
         if (!appDir.exists()) {
             appDir.mkdir();
