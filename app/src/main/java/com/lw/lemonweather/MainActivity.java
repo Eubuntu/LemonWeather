@@ -75,7 +75,6 @@ import com.lw.lemonweather.ui.SettingActivity;
 import com.lw.lemonweather.ui.WallPaperActivity;
 import com.lw.lemonweather.ui.WarnActivity;
 import com.lw.lemonweather.ui.WorldCityActivity;
-import com.lw.lemonweather.utils.APKVersionInfoUtils;
 import com.lw.lemonweather.utils.AppStartUpUtils;
 import com.lw.lemonweather.utils.CodeToStringUtils;
 import com.lw.lemonweather.utils.Constant;
@@ -84,7 +83,6 @@ import com.lw.lemonweather.utils.SPUtils;
 import com.lw.lemonweather.utils.StatusBarUtil;
 import com.lw.lemonweather.utils.ToastUtils;
 import com.lw.lemonweather.utils.WeatherUtil;
-import com.lw.mvplibrary.bean.AppVersion;
 import com.lw.mvplibrary.mvp.MvpActivity;
 import com.lw.mvplibrary.utils.AnimationUtil;
 import com.lw.mvplibrary.utils.LiWindow;
@@ -92,9 +90,6 @@ import com.lw.mvplibrary.utils.SizeUtils;
 import com.lw.mvplibrary.view.RoundProgressBar;
 import com.lw.mvplibrary.view.WhiteWindmills;
 import com.lw.mvplibrary.view.dialog.AlertDialog;
-import com.qweather.plugin.view.HeContent;
-import com.qweather.plugin.view.LeftLargeView;
-import com.qweather.plugin.view.QWeatherConfig;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import org.greenrobot.eventbus.EventBus;
@@ -722,7 +717,9 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         liWindow.showCenterPopupWindow(view, SizeUtils.dp2px(context, 300), SizeUtils.dp2px(context, 400), true);
     }
 
-    //定位
+    /**
+     * 定位
+     */
     private void startLocation() {
         LocationClient.setAgreePrivacy(true);
         //声明LocationClient类
@@ -919,9 +916,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
-
 
     /**
      * 滑动监听

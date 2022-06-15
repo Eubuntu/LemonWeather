@@ -25,11 +25,10 @@ public class WightProvider extends AppWidgetProvider {
         super.onDisabled(context);
     }
 
-
     // 当该Widget第一次添加到桌面是调用该方法，可添加多次但只第一次调用
     @Override
     public void onEnabled(Context context) {
-        context.startService(new Intent(context,TimerService.class));
+        context.startService(new Intent(context, TimerService.class));
         super.onEnabled(context);
     }
 
@@ -41,8 +40,7 @@ public class WightProvider extends AppWidgetProvider {
 
     //每次更新都调用一次该方法
     @Override
-    public void onUpdate(Context context, AppWidgetManager appWidgetManager,
-                         int[] appWidgetIds) {
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
 }
