@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@mipmap/icon_top_wallpaper"
     android:orientation="vertical"
     android:padding="5dp">
 
@@ -38,15 +38,13 @@
             android:textColor="@color/white"
             android:textSize="15dp" />
 
-
-        <ImageView
+<!--        <ImageView
             android:id="@+id/imageView_widget_weather_ic1"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:src="@mipmap/icon_wind_speed" />
-
+            android:src="@mipmap/icon_wind_speed" />-->
 
         <TextView
             android:id="@+id/textView_widget_avgTemp"
@@ -62,8 +60,8 @@
             android:id="@+id/textView_widget_lowHighTemp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_below="@+id/textView_widget_avgTemp"
+            android:layout_alignParentRight="true"
             android:text="18/30℃"
             android:textColor="@color/white"
             android:textSize="20dp" />
@@ -72,8 +70,8 @@
             android:id="@+id/textView_widget_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_below="@+id/textView_widget_lowHighTemp"
+            android:layout_alignParentRight="true"
             android:text="4-24 星期日"
             android:textColor="@color/white"
             android:textSize="20dp" />

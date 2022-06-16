@@ -100,7 +100,6 @@
                 android:resource="@xml/widget_config" >
             </meta-data>
         </receiver>
-        <service android:name="com.lw.lemonweather.plugin.TimerService"></service>
 
     </application>
 
