@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.31203703703703706" />
+        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_main.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_more_air.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_more_daily.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/Eubuntu/AndroidStudioProjects/LemonWeather/app/src/main/res/layout/activity_more_lifestyle.xml" value="0.12335359675785208" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/check_checked_rb.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/check_normal_rb.xml" value="0.166" />
@@ -31,7 +35,7 @@
         <entry key="app/src/main/res/drawable/shape_transparent_12.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/shape_transparent_collection_bg.xml" value="0.166" />
         <entry key="app/src/main/res/drawable/shape_white_5.xml" value="0.1685" />
-        <entry key="app/src/main/res/layout/activity_about_us.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_about_us.xml" value="0.12031408308004053" />
         <entry key="app/src/main/res/layout/activity_background_manager.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_commonly_used_city.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/activity_image.xml" value="0.1" />
@@ -67,7 +71,7 @@
         <entry key="app/src/main/res/layout/item_warn_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_weather_forecast_list.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/item_weather_hourly_list.xml" value="0.16134751773049646" />
-        <entry key="app/src/main/res/layout/lemonplugin_view.xml" value="0.16134751773049646" />
+        <entry key="app/src/main/res/layout/lemonplugin_view.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/window_add.xml" value="0.25" />
         <entry key="app/src/main/res/layout/window_city_list.xml" value="0.16894630192502533" />
         <entry key="app/src/main/res/layout/window_forecast_detail.xml" value="0.25" />

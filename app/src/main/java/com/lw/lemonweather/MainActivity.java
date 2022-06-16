@@ -1131,6 +1131,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                 ToastUtils.showShortToast(context, "数据为空");
             }
         } else {
+            dismissLoadingDialog();
             tvCity.setText("查询城市失败");
             ToastUtils.showShortToast(context, CodeToStringUtils.WeatherCode(response.body().getCode()));
         }
@@ -1282,7 +1283,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                 //PM10
                 tvPm10.setText(data.getPm10());
                 //PM2.5
-                tvPm25.setText(data.getPm10());
+                tvPm25.setText(data.getPm2p5());
                 //二氧化氮
                 tvNo2.setText(data.getNo2());
                 //二氧化硫
