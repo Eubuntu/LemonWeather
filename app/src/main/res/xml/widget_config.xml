@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:initialLayout="@layout/lemonplugin_view"
-    android:minHeight="@dimen/dp_50"
+    android:minHeight="@dimen/dp_30"
     android:minWidth="@dimen/dp_250"
-    android:updatePeriodMillis="86400000" >
+    android:updatePeriodMillis="60000" >
     <!--参数依次是
     1.小组件的主布局
     2.最小高度

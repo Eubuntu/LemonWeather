@@ -83,6 +83,7 @@ import com.lw.lemonweather.utils.SPUtils;
 import com.lw.lemonweather.utils.StatusBarUtil;
 import com.lw.lemonweather.utils.ToastUtils;
 import com.lw.lemonweather.utils.WeatherUtil;
+import com.lw.mvplibrary.bean.WeatherInfo;
 import com.lw.mvplibrary.mvp.MvpActivity;
 import com.lw.mvplibrary.utils.AnimationUtil;
 import com.lw.mvplibrary.utils.LiWindow;
@@ -344,6 +345,10 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     //弹窗中今日最低温
     private int dialogTempLow = 0;
 
+    //天气状况数据库对象
+    WeatherInfo weatherInfo = new WeatherInfo();
+    private String weatherCity=null;
+
     /**
      * 数据初始化
      */
@@ -373,6 +378,7 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         EventBus.getDefault().register(this);
         //指定当前页面，不写则滑动监听无效
         scrollView.setOnScrollChangeListener(this);
+
     }
 
     /**
@@ -381,7 +387,6 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
     private void checkAppVersion() {
         //AppVersion appVersion = LitePal.find(AppVersion.class, 1);//读取第一条数据
         //Log.d("appVersion", new Gson().toJson(appVersion.getVersionShort()));
-
         if (AppStartUpUtils.isTodayFirstStartApp(context)) {//今天第一次打开APP
            /* if (!appVersion.getVersionShort().equals(APKVersionInfoUtils.getVerName(context))) {//提示更新
                 //更新提示弹窗
@@ -556,11 +561,13 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
         }
         updateWallpaper();
     }
+
     //绑定布局文件
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
     }
+
     //绑定Presenter ，这里不绑定会报错
     @Override
     protected WeatherContract.WeatherPresenter createPresent() {
@@ -1097,6 +1104,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                 NewSearchCityResponse.LocationBean locationBean = response.body().getLocation().get(0);
                 //城市
                 tvCity.setText(locationBean.getName());
+                //小组件数据
+                weatherCity = locationBean.getName();
                 //城市Id
                 locationId = locationBean.getId();
                 //上级城市 也是空气质量站点
@@ -1140,8 +1149,8 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
             NowResponse data = response.body();
             if (data != null) {
                 Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Light.ttf");
-                tvTemperature.setText(data.getNow().getTemp());//温度
-
+                //温度
+                tvTemperature.setText(data.getNow().getTemp());
                 dialogTemp = data.getNow().getTemp();
                 dialogWeatherState = data.getNow().getText();
                 dialogWeatherStateCode = Integer.parseInt(data.getNow().getIcon());
@@ -1375,6 +1384,23 @@ public class MainActivity extends MvpActivity<WeatherContract.WeatherPresenter> 
                 mAdapterMinutePrec.notifyDataSetChanged();
                 //检查版本信息
                 checkAppVersion();
+                //LitePal.deleteAll(WeatherInfo.class);
+                weatherInfo.setCityName(weatherCity);
+                weatherInfo.setTemp(dialogTemp);
+                weatherInfo.setTempMin(dialogTempLow);
+                weatherInfo.setTempMax(dialogTempHeight);
+                weatherInfo.setWeatherInfoState(dialogWeatherState);
+                weatherInfo.setWeatherInfoStateCode(dialogWeatherStateCode);
+                weatherInfo.save();
+                if (weatherInfo.save()) {
+                    //保存成功
+                    //然后使用之前在搜索城市天气中写好的代码
+                    //SPUtils.putString(Constant.LOCATION, locationBean.getName(), context);
+                    Log.d("success", weatherInfo.toString());
+                } else {
+                    //保存失败
+                    Log.d("de", weatherInfo.toString());
+                }
             } else {
                 ToastUtils.showShortToast(context, "分钟级降水数据为空");
             }

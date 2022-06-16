@@ -31,9 +31,6 @@ public class AboutUsActivity extends BaseActivity {
     //版本
     @BindView(R.id.tv_version)
     TextView tvVersion;
-    //博客
-    @BindView(R.id.tv_blog)
-    TextView tvBlog;
     //源码
     @BindView(R.id.tv_code)
     TextView tvCode;
@@ -63,39 +60,39 @@ public class AboutUsActivity extends BaseActivity {
         return R.layout.activity_about_us;
     }
 
-    @OnClick({R.id.tv_blog, R.id.tv_code, R.id.tv_copy_email,R.id.tv_author})
+    @OnClick({R.id.tv_code, R.id.tv_copy_email, R.id.tv_author})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            //博客地址
-            case R.id.tv_blog:
-                //jumpUrl(");
-                break;
             //源码地址
             case R.id.tv_code:
-                //jumpUrl("");
+                jumpUrl("https://github.com/Eubuntu/LemonWeather.git");
                 break;
             //复制邮箱
             case R.id.tv_copy_email:
                 myClipboard = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
-                myClip = ClipData.newPlainText("text", "123@qq.com");
+                myClip = ClipData.newPlainText("text", "123456789@qq.com");
                 myClipboard.setPrimaryClip(myClip);
-                ToastUtils.showShortToast(context,"邮箱已复制");
+                ToastUtils.showShortToast(context, "邮箱已复制");
                 break;
             case R.id.tv_author:
-                ToastUtils.showShortToast(context,"你为啥要点我呢？");
+                ToastUtils.showShortToast(context, "你为啥要点我呢？");
+                break;
+            default:
+                ToastUtils.showShortToast(context, "点你咋的！");
                 break;
         }
     }
 
     /**
      * 跳转URL
+     *
      * @param url 地址
      */
-    private void jumpUrl(String url){
-        if(url!=null){
+    private void jumpUrl(String url) {
+        if (url != null) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
-        }else{
-            ToastUtils.showShortToast(context,"未找到相关地址");
+        } else {
+            ToastUtils.showShortToast(context, "未找到相关地址");
         }
     }
 }

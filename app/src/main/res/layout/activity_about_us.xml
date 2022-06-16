@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_12"
             android:layout_marginBottom="@dimen/dp_80"
-            android:text="Weather"
+            android:text="LemonWeather"
             android:textColor="@color/black_4"
             android:textSize="@dimen/sp_18" />
 
@@ -74,7 +74,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:textColor="@color/black_4"
-                android:textSize="@dimen/sp_16" />
+                android:textSize="@dimen/sp_16"
+                android:text="v1.0"/>
         </LinearLayout>
 
         <View
@@ -82,7 +83,7 @@
             android:layout_height="0.5dp"
             android:background="@color/line" />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/tv_blog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -93,7 +94,7 @@
             android:padding="@dimen/dp_12"
             android:text="博客地址"
             android:textColor="@color/black_4"
-            android:textSize="@dimen/sp_16" />
+            android:textSize="@dimen/sp_16" />-->
 
         <View
             android:layout_width="match_parent"
@@ -139,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:text="123@qq.com"
+                android:text="123456789@qq.com"
                 android:textColor="@color/black_4"
                 android:textSize="@dimen/sp_16" />
 
@@ -150,7 +151,7 @@
     <TextView
         android:id="@+id/tv_author"
         android:gravity="center"
-        android:text="zh"
+        android:text="zhanghao"
         android:background="@color/gray_white"
         android:textSize="@dimen/sp_14"
         android:textColor="@color/black_4"
